@@ -74,6 +74,9 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
     grados = dict(G.degree())
     
     # Nodos
+    # Calcular posiciones fijas para que no pierda la forma
+    pos = nx.spring_layout(G, k=0.18, iterations=100, seed=42)
+    
     for node, d in G.nodes(data=True):
         nombre = d.get('nombre', node)
         linea = d.get('linea', '')
@@ -89,6 +92,10 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
             f"</div>"
         )
         
+        # Multiplicamos la coordenada por un factor para que se expanda bien
+        x = pos[node][0] * 1000
+        y = pos[node][1] * 1000
+        
         net.add_node(
             node, 
             label=f"{nombre} ({linea})", 
@@ -97,21 +104,31 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
             size=tamanio, 
             borderWidth=2, 
             borderWidthSelected=4, 
-            shape='dot'
+            shape='dot',
+            x=x,
+            y=y
         )
         
+    # Función auxiliar para formatear tiempo (min:seg)
+    def format_time(peso):
+        m = int(peso)
+        s = int(round((peso - m) * 60))
+        return f"{m}:{s:02d}"
+
     # Aristas
     for u, v, data in G.edges(data=True):
         peso = data.get('tiempo', 2.0)
         linea = data.get('linea', '')
         tipo = data.get('tipo', 'via')
         
+        tiempo_formateado = format_time(peso)
+        
         if tipo == 'transbordo':
             # Pasillo peatonal
             net.add_edge(
                 u, v, 
                 value=2.0, 
-                title=f"Pasillo de Transbordo a pie: {peso:.1f} min", 
+                title=f"Pasillo de Transbordo a pie: {tiempo_formateado} min", 
                 color="#FFFFFF", 
                 dashes=True, 
                 width=2
@@ -122,26 +139,81 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
             net.add_edge(
                 u, v, 
                 value=peso, 
-                title=f"Tramo Línea {linea}: {peso:.1f} min", 
+                title=f"Tramo Línea {linea}: {tiempo_formateado} min", 
                 color=color, 
                 width=3.5
             )
         
-    # Físicas optimizadas
+    # Físicas desactivadas para que no se mueva el grafo
     net.set_options("""
     var options = {
       "physics": {
-        "barnesHut": {
-          "gravitationalConstant": -12000,
-          "centralGravity": 0.25,
-          "springLength": 80,
-          "springConstant": 0.05,
-          "damping": 0.09
-        },
-        "minVelocity": 0.75
+        "enabled": false
       }
     }
     """)
     
-    net.show(output_file, notebook=False)
+    # Generar el HTML y escribirlo usando UTF-8 para arreglar las tildes
+    html_content = net.generate_html(notebook=False)
+    # Insertar la etiqueta meta charset="utf-8" si no la tiene
+    if "<meta charset=\"utf-8\">" not in html_content.lower():
+        html_content = html_content.replace("<head>", "<head>\n<meta charset=\"utf-8\">")
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(html_content)
+        
     print(f"Visualización interactiva guardada en: {output_file}")
+
+
+def plot_route_matplotlib(G, path, title="Ruta Óptima"):
+    """
+    Genera una visualización estática destacando la ruta óptima usando matplotlib.
+    path es una lista de nodos en el orden del recorrido.
+    """
+    plt.figure(figsize=(24, 24), facecolor='#121212')
+    
+    pos = nx.spring_layout(G, k=0.18, iterations=60, seed=42)
+    
+    path_edges = set(zip(path[:-1], path[1:]))
+    path_edges.update([(v, u) for u, v in path_edges])
+    
+    # Separar aristas que pertenecen a la ruta y las que no
+    route_edges = [(u, v) for u, v in G.edges() if (u, v) in path_edges]
+    other_edges = [(u, v) for u, v in G.edges() if (u, v) not in path_edges]
+    
+    # Nodos de la ruta y otros nodos
+    route_nodes = [n for n in G.nodes() if n in path]
+    other_nodes = [n for n in G.nodes() if n not in path]
+    
+    # Colores base
+    node_colors_other = [COLORES_LINEAS.get(G.nodes[n].get('linea', ''), '#00E5FF') for n in other_nodes]
+    
+    # 1. Dibujar el resto de la red (atenuado)
+    nx.draw_networkx_edges(G, pos, edgelist=other_edges, width=1.0, edge_color='#444444', alpha=0.3)
+    nx.draw_networkx_nodes(G, pos, nodelist=other_nodes, node_size=30, node_color=node_colors_other, alpha=0.2)
+    
+    # 2. Dibujar la ruta (resaltada)
+    nx.draw_networkx_edges(G, pos, edgelist=route_edges, width=5.0, edge_color='#00FF00', alpha=0.9)
+    nx.draw_networkx_nodes(G, pos, nodelist=route_nodes, node_size=150, node_color='#00FF00', edgecolors='#FFFFFF', linewidths=2)
+    
+    # 3. Etiquetas de texto sólo para los nodos de la ruta
+    labels = {n: G.nodes[n].get('nombre', str(n)) for n in route_nodes}
+    pos_labels = {k: (v[0], v[1]+0.015) for k, v in pos.items() if k in route_nodes}
+    nx.draw_networkx_labels(G, pos_labels, labels, font_size=12, font_color='#00FF00', font_weight='bold')
+    
+    # 4. Resaltar inicio y fin
+    if path:
+        start_node, end_node = path[0], path[-1]
+        nx.draw_networkx_nodes(G, pos, nodelist=[start_node], node_size=300, node_color='#FFFF00', edgecolors='#FFFFFF')
+        nx.draw_networkx_nodes(G, pos, nodelist=[end_node], node_size=300, node_color='#FF0000', edgecolors='#FFFFFF')
+        
+        pos_start = {start_node: (pos[start_node][0], pos[start_node][1]-0.02)}
+        pos_end = {end_node: (pos[end_node][0], pos[end_node][1]-0.02)}
+        nx.draw_networkx_labels(G, pos_start, {start_node: 'INICIO'}, font_size=14, font_color='#FFFF00', font_weight='bold')
+        nx.draw_networkx_labels(G, pos_end, {end_node: 'FIN'}, font_size=14, font_color='#FF0000', font_weight='bold')
+    
+    plt.title(title, fontsize=24, fontweight='bold', color='white', pad=20)
+    plt.axis('off')
+    plt.tight_layout()
+    plt.show()
+
