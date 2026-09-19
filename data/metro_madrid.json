@@ -1,0 +1,8589 @@
+{
+  "estaciones": [
+    {
+      "id": "258556530",
+      "nombre": "Plaza Elíptica",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3849534,
+      "lon": -3.7184376
+    },
+    {
+      "id": "299642717",
+      "nombre": "Abrantes",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3809739,
+      "lon": -3.7279428
+    },
+    {
+      "id": "299642733",
+      "nombre": "Pan Bendito",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3761572,
+      "lon": -3.7341489
+    },
+    {
+      "id": "427885573",
+      "nombre": "San Francisco",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3736359,
+      "lon": -3.7397559
+    },
+    {
+      "id": "23646367",
+      "nombre": "Carabanchel Alto",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3718603,
+      "lon": -3.7519182
+    },
+    {
+      "id": "427885568",
+      "nombre": "La Peseta",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3630999,
+      "lon": -3.7572923
+    },
+    {
+      "id": "344477421",
+      "nombre": "La Fortuna",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3581745,
+      "lon": -3.7776732
+    },
+    {
+      "id": "2609596245",
+      "nombre": "Laguna",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3992874,
+      "lon": -3.744664
+    },
+    {
+      "id": "265068165",
+      "nombre": "Lucero",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4051379,
+      "lon": -3.7453776
+    },
+    {
+      "id": "265067803",
+      "nombre": "Alto de Extremadura",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4101126,
+      "lon": -3.7381171
+    },
+    {
+      "id": "265067381",
+      "nombre": "Puerta del Ángel",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4138504,
+      "lon": -3.7268636
+    },
+    {
+      "id": "5305486978",
+      "nombre": "Príncipe Pío",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4210687,
+      "lon": -3.7192161
+    },
+    {
+      "id": "25935520",
+      "nombre": "Argüelles",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4306024,
+      "lon": -3.7163329
+    },
+    {
+      "id": "26578948",
+      "nombre": "Moncloa",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4347116,
+      "lon": -3.7193305
+    },
+    {
+      "id": "152831505",
+      "nombre": "Ciudad Universitaria",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4439615,
+      "lon": -3.7260508
+    },
+    {
+      "id": "150785162",
+      "nombre": "Vicente Aleixandre",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4464026,
+      "lon": -3.7193004
+    },
+    {
+      "id": "27515687",
+      "nombre": "Guzmán el Bueno",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4464716,
+      "lon": -3.7120365
+    },
+    {
+      "id": "8590458173",
+      "nombre": "Cuatro Caminos",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4468737,
+      "lon": -3.7039691
+    },
+    {
+      "id": "4998656171",
+      "nombre": "Nuevos Ministerios",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4463167,
+      "lon": -3.6944799
+    },
+    {
+      "id": "265972430",
+      "nombre": "República Argentina",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4442691,
+      "lon": -3.6845414
+    },
+    {
+      "id": "4893932593",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4378327,
+      "lon": -3.6781207
+    },
+    {
+      "id": "4892883352",
+      "nombre": "Diego de León",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4329379,
+      "lon": -3.6728434
+    },
+    {
+      "id": "265808842",
+      "nombre": "Manuel Becerra",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4272271,
+      "lon": -3.6684201
+    },
+    {
+      "id": "265971848",
+      "nombre": "O'Donnell",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4221688,
+      "lon": -3.6688835
+    },
+    {
+      "id": "5305486984",
+      "nombre": "Sainz de Baranda",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4152827,
+      "lon": -3.6693979
+    },
+    {
+      "id": "265971846",
+      "nombre": "Conde de Casal",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4072841,
+      "lon": -3.6701291
+    },
+    {
+      "id": "265971328",
+      "nombre": "Pacífico",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4015758,
+      "lon": -3.6744607
+    },
+    {
+      "id": "325130452",
+      "nombre": "Méndez Álvaro",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3957001,
+      "lon": -3.6794652
+    },
+    {
+      "id": "265971320",
+      "nombre": "Arganzuela-Planetario",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3933136,
+      "lon": -3.6880416
+    },
+    {
+      "id": "265970746",
+      "nombre": "Legazpi",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3911492,
+      "lon": -3.6950782
+    },
+    {
+      "id": "265970742",
+      "nombre": "Usera",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3880134,
+      "lon": -3.7056083
+    },
+    {
+      "id": "5305486990",
+      "nombre": "Plaza Elíptica",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3851532,
+      "lon": -3.715803
+    },
+    {
+      "id": "258556529",
+      "nombre": "Opañel",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3869088,
+      "lon": -3.7231943
+    },
+    {
+      "id": "21759736",
+      "nombre": "Oporto",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3886398,
+      "lon": -3.7317687
+    },
+    {
+      "id": "259656546",
+      "nombre": "Carpetana",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3929021,
+      "lon": -3.7410119
+    },
+    {
+      "id": "4178663198",
+      "nombre": "Moncloa",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4345927,
+      "lon": -3.7189891
+    },
+    {
+      "id": "5303173539",
+      "nombre": "Argüelles",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4311149,
+      "lon": -3.7165974
+    },
+    {
+      "id": "26808567",
+      "nombre": "Ventura Rodríguez",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4267691,
+      "lon": -3.7132548
+    },
+    {
+      "id": "5303173542",
+      "nombre": "Plaza de España",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4238222,
+      "lon": -3.7115671
+    },
+    {
+      "id": "21964104",
+      "nombre": "Callao",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4203838,
+      "lon": -3.706136
+    },
+    {
+      "id": "21759678",
+      "nombre": "Sol",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4169107,
+      "lon": -3.703897
+    },
+    {
+      "id": "21956103",
+      "nombre": "Lavapiés",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4085263,
+      "lon": -3.7009288
+    },
+    {
+      "id": "2609596152",
+      "nombre": "Embajadores",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4050176,
+      "lon": -3.7022777
+    },
+    {
+      "id": "324340440",
+      "nombre": "Palos de la Frontera",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4030685,
+      "lon": -3.6945951
+    },
+    {
+      "id": "324338501",
+      "nombre": "Delicias",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3991804,
+      "lon": -3.694108
+    },
+    {
+      "id": "5303173548",
+      "nombre": "Legazpi",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3925309,
+      "lon": -3.6948702
+    },
+    {
+      "id": "316631344",
+      "nombre": "Almendrales",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3841447,
+      "lon": -3.6980337
+    },
+    {
+      "id": "316631343",
+      "nombre": "Hospital 12 de Octubre",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3754619,
+      "lon": -3.6958732
+    },
+    {
+      "id": "27582265",
+      "nombre": "San Fermín-Orcasur",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3699785,
+      "lon": -3.6943222
+    },
+    {
+      "id": "248842472",
+      "nombre": "Ciudad de los Ángeles",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3601825,
+      "lon": -3.6933661
+    },
+    {
+      "id": "248888586",
+      "nombre": "Villaverde Bajo - Cruce",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3510058,
+      "lon": -3.6927409
+    },
+    {
+      "id": "316631342",
+      "nombre": "San Cristóbal",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3415352,
+      "lon": -3.693715
+    },
+    {
+      "id": "2609596309",
+      "nombre": "Villaverde Alto",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3410018,
+      "lon": -3.7117718
+    },
+    {
+      "id": "12772138469",
+      "nombre": "El Casar",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3187269,
+      "lon": -3.7091104
+    },
+    {
+      "id": "305918710",
+      "nombre": "Hospital Infanta Sofía",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5598295,
+      "lon": -3.6114873
+    },
+    {
+      "id": "996145344",
+      "nombre": "Reyes Católicos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5508643,
+      "lon": -3.6240611
+    },
+    {
+      "id": "262347821",
+      "nombre": "Baunatal",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5544555,
+      "lon": -3.6356009
+    },
+    {
+      "id": "262347151",
+      "nombre": "Manuel de Falla",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5501689,
+      "lon": -3.6469119
+    },
+    {
+      "id": "262347883",
+      "nombre": "Marqués de la Valdavia",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5404754,
+      "lon": -3.6380167
+    },
+    {
+      "id": "259431857",
+      "nombre": "La Moraleja",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5315629,
+      "lon": -3.6355035
+    },
+    {
+      "id": "257708881",
+      "nombre": "La Granja",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5273867,
+      "lon": -3.6584623
+    },
+    {
+      "id": "260750333",
+      "nombre": "Ronda de la Comunicación",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5151155,
+      "lon": -3.6622635
+    },
+    {
+      "id": "262658666",
+      "nombre": "Las Tablas",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.508632,
+      "lon": -3.669404
+    },
+    {
+      "id": "262348722",
+      "nombre": "Montecarmelo",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.505451,
+      "lon": -3.6961757
+    },
+    {
+      "id": "9871197151",
+      "nombre": "Tres Olivos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5005608,
+      "lon": -3.6948556
+    },
+    {
+      "id": "5303271992",
+      "nombre": "Cuatro Caminos",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4458156,
+      "lon": -3.7039755
+    },
+    {
+      "id": "5303271994",
+      "nombre": "Canal",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4391553,
+      "lon": -3.7042456
+    },
+    {
+      "id": "324376827",
+      "nombre": "Quevedo",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4329501,
+      "lon": -3.7045069
+    },
+    {
+      "id": "25935011",
+      "nombre": "San Bernardo",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4303075,
+      "lon": -3.7054229
+    },
+    {
+      "id": "26066629",
+      "nombre": "Noviciado",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4245967,
+      "lon": -3.7073723
+    },
+    {
+      "id": "26068173",
+      "nombre": "Santo Domingo",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4210356,
+      "lon": -3.7081322
+    },
+    {
+      "id": "4405991654",
+      "nombre": "Ópera",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4180644,
+      "lon": -3.7093712
+    },
+    {
+      "id": "4405988107",
+      "nombre": "Sol",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4171106,
+      "lon": -3.7032691
+    },
+    {
+      "id": "25903354",
+      "nombre": "Sevilla",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4177772,
+      "lon": -3.6999479
+    },
+    {
+      "id": "25903355",
+      "nombre": "Banco de España",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4190696,
+      "lon": -3.6949281
+    },
+    {
+      "id": "25903356",
+      "nombre": "Retiro",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4204766,
+      "lon": -3.6864209
+    },
+    {
+      "id": "5303272002",
+      "nombre": "Príncipe de Vergara",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4225496,
+      "lon": -3.6806225
+    },
+    {
+      "id": "4405987842",
+      "nombre": "Goya",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4244234,
+      "lon": -3.6764503
+    },
+    {
+      "id": "5303272004",
+      "nombre": "Manuel Becerra",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4281593,
+      "lon": -3.6687181
+    },
+    {
+      "id": "252522982",
+      "nombre": "Ventas",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4305112,
+      "lon": -3.6639213
+    },
+    {
+      "id": "265809417",
+      "nombre": "La Elipa",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4270122,
+      "lon": -3.6494682
+    },
+    {
+      "id": "1206348013",
+      "nombre": "La Almudena",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4231831,
+      "lon": -3.6382571
+    },
+    {
+      "id": "1206347978",
+      "nombre": "Alsacia",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4182504,
+      "lon": -3.6238119
+    },
+    {
+      "id": "20962897",
+      "nombre": "Avenida de Guadalajara",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4224813,
+      "lon": -3.6121729
+    },
+    {
+      "id": "5303272008",
+      "nombre": "Las Rosas",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4235678,
+      "lon": -3.6028371
+    },
+    {
+      "id": "5303127328",
+      "nombre": "Casa de Campo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4035529,
+      "lon": -3.7609038
+    },
+    {
+      "id": "49409124",
+      "nombre": "Campamento",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.394697,
+      "lon": -3.768238
+    },
+    {
+      "id": "21722663",
+      "nombre": "Empalme",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3907288,
+      "lon": -3.7654716
+    },
+    {
+      "id": "5303127335",
+      "nombre": "Aluche",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3857188,
+      "lon": -3.7606715
+    },
+    {
+      "id": "21722641",
+      "nombre": "Eugenia de Montijo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3844291,
+      "lon": -3.7510838
+    },
+    {
+      "id": "21759737",
+      "nombre": "Carabanchel",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3878336,
+      "lon": -3.7449956
+    },
+    {
+      "id": "21775778",
+      "nombre": "Vista Alegre",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3888034,
+      "lon": -3.7400577
+    },
+    {
+      "id": "5303127341",
+      "nombre": "Oporto",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3886561,
+      "lon": -3.7317297
+    },
+    {
+      "id": "26068752",
+      "nombre": "Urgel",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3925542,
+      "lon": -3.7253867
+    },
+    {
+      "id": "21759735",
+      "nombre": "Marqués de Vadillo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3973162,
+      "lon": -3.7167387
+    },
+    {
+      "id": "5303127345",
+      "nombre": "Pirámides",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4020445,
+      "lon": -3.7120002
+    },
+    {
+      "id": "21775666",
+      "nombre": "Acacias",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4041047,
+      "lon": -3.7059068
+    },
+    {
+      "id": "21759700",
+      "nombre": "Puerta de Toledo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.407048,
+      "lon": -3.7111052
+    },
+    {
+      "id": "21759690",
+      "nombre": "La Latina",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4117597,
+      "lon": -3.708072
+    },
+    {
+      "id": "5303127349",
+      "nombre": "Ópera",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4180017,
+      "lon": -3.7095378
+    },
+    {
+      "id": "5303127353",
+      "nombre": "Callao",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.420224,
+      "lon": -3.7058148
+    },
+    {
+      "id": "22032372",
+      "nombre": "Gran Vía",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4200143,
+      "lon": -3.7015909
+    },
+    {
+      "id": "25906279",
+      "nombre": "Chueca",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4227327,
+      "lon": -3.6976417
+    },
+    {
+      "id": "5303127355",
+      "nombre": "Alonso Martínez",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4275461,
+      "lon": -3.6958816
+    },
+    {
+      "id": "255881693",
+      "nombre": "Rubén Darío",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4330269,
+      "lon": -3.6896885
+    },
+    {
+      "id": "5303127358",
+      "nombre": "Núñez de Balboa",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4326586,
+      "lon": -3.6795477
+    },
+    {
+      "id": "265811748",
+      "nombre": "Diego de León",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4323876,
+      "lon": -3.674219
+    },
+    {
+      "id": "5303127360",
+      "nombre": "Ventas",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4314788,
+      "lon": -3.6637579
+    },
+    {
+      "id": "254133797",
+      "nombre": "El Carmen",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4319937,
+      "lon": -3.6561971
+    },
+    {
+      "id": "252523583",
+      "nombre": "Quintana",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4331291,
+      "lon": -3.6481597
+    },
+    {
+      "id": "5303127364",
+      "nombre": "Pueblo Nuevo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4353939,
+      "lon": -3.6434195
+    },
+    {
+      "id": "26009598",
+      "nombre": "Ciudad Lineal",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.437947,
+      "lon": -3.6377478
+    },
+    {
+      "id": "251940779",
+      "nombre": "Suanzes",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4408907,
+      "lon": -3.6270212
+    },
+    {
+      "id": "251942153",
+      "nombre": "Torre Arias",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4436304,
+      "lon": -3.617128
+    },
+    {
+      "id": "26009601",
+      "nombre": "Canillejas",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4491308,
+      "lon": -3.608597
+    },
+    {
+      "id": "21759679",
+      "nombre": "El Capricho",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4536101,
+      "lon": -3.5941372
+    },
+    {
+      "id": "251945588",
+      "nombre": "Alameda de Osuna",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4575988,
+      "lon": -3.5879859
+    },
+    {
+      "id": "5304749213",
+      "nombre": "Ópera",
+      "lineas": [
+        "R"
+      ],
+      "lat": 40.4178444,
+      "lon": -3.7098259
+    },
+    {
+      "id": "5304749535",
+      "nombre": "Príncipe Pío",
+      "lineas": [
+        "R"
+      ],
+      "lat": 40.4206322,
+      "lon": -3.7201735
+    },
+    {
+      "id": "5299262127",
+      "nombre": "Pinar de Chamartín",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.480017,
+      "lon": -3.6670926
+    },
+    {
+      "id": "355162548",
+      "nombre": "Bambú",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4769678,
+      "lon": -3.676576
+    },
+    {
+      "id": "5301861034",
+      "nombre": "Chamartín",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4739145,
+      "lon": -3.6826608
+    },
+    {
+      "id": "26203554",
+      "nombre": "Plaza de Castilla",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4664767,
+      "lon": -3.6896943
+    },
+    {
+      "id": "299513996",
+      "nombre": "Valdeacederas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4645191,
+      "lon": -3.6949932
+    },
+    {
+      "id": "299514322",
+      "nombre": "Tetuán",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4608446,
+      "lon": -3.6982001
+    },
+    {
+      "id": "299644680",
+      "nombre": "Estrecho",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4545108,
+      "lon": -3.7027409
+    },
+    {
+      "id": "299515114",
+      "nombre": "Alvarado",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4500883,
+      "lon": -3.7034718
+    },
+    {
+      "id": "5299314589",
+      "nombre": "Cuatro Caminos",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4458782,
+      "lon": -3.7034255
+    },
+    {
+      "id": "324391382",
+      "nombre": "Ríos Rosas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4416021,
+      "lon": -3.701574
+    },
+    {
+      "id": "324391956",
+      "nombre": "Iglesia",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4352912,
+      "lon": -3.6988428
+    },
+    {
+      "id": "5299314586",
+      "nombre": "Bilbao",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4297801,
+      "lon": -3.7009856
+    },
+    {
+      "id": "5299314584",
+      "nombre": "Tribunal",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4260727,
+      "lon": -3.7011716
+    },
+    {
+      "id": "5299314582",
+      "nombre": "Gran Vía",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4199313,
+      "lon": -3.7016891
+    },
+    {
+      "id": "5299314580",
+      "nombre": "Sol",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4169531,
+      "lon": -3.703164
+    },
+    {
+      "id": "26340396",
+      "nombre": "Tirso de Molina",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4124283,
+      "lon": -3.7042517
+    },
+    {
+      "id": "26340397",
+      "nombre": "Antón Martín",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.412312,
+      "lon": -3.6990832
+    },
+    {
+      "id": "26494720",
+      "nombre": "Estación del Arte",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.408809,
+      "lon": -3.6913929
+    },
+    {
+      "id": "26494721",
+      "nombre": "Atocha",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.406975,
+      "lon": -3.688582
+    },
+    {
+      "id": "323411634",
+      "nombre": "Menéndez Pelayo",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4043543,
+      "lon": -3.6811432
+    },
+    {
+      "id": "5299314574",
+      "nombre": "Pacífico",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4015294,
+      "lon": -3.6753272
+    },
+    {
+      "id": "323403727",
+      "nombre": "Puente de Vallecas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3981283,
+      "lon": -3.6689375
+    },
+    {
+      "id": "323400134",
+      "nombre": "Nueva Numancia",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.395981,
+      "lon": -3.6647437
+    },
+    {
+      "id": "323387579",
+      "nombre": "Portazgo",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3930351,
+      "lon": -3.6591674
+    },
+    {
+      "id": "324398584",
+      "nombre": "Buenos Aires",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3916519,
+      "lon": -3.6538854
+    },
+    {
+      "id": "330235720",
+      "nombre": "Alto del Arenal",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3900729,
+      "lon": -3.6458041
+    },
+    {
+      "id": "330235642",
+      "nombre": "Miguel Hernández",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3876456,
+      "lon": -3.6402008
+    },
+    {
+      "id": "330236023",
+      "nombre": "Sierra de Guadalupe",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3826136,
+      "lon": -3.624924
+    },
+    {
+      "id": "330236831",
+      "nombre": "Villa de Vallecas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3794628,
+      "lon": -3.6213084
+    },
+    {
+      "id": "330236828",
+      "nombre": "Congosto",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3721991,
+      "lon": -3.6187057
+    },
+    {
+      "id": "330237676",
+      "nombre": "La Gavia",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3693214,
+      "lon": -3.6125016
+    },
+    {
+      "id": "330238287",
+      "nombre": "Las Suertes",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.363528,
+      "lon": -3.5991485
+    },
+    {
+      "id": "330238286",
+      "nombre": "Valdecarros",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3600267,
+      "lon": -3.5920827
+    },
+    {
+      "id": "258586813",
+      "nombre": "Pitis",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4951996,
+      "lon": -3.725692
+    },
+    {
+      "id": "4039004733",
+      "nombre": "Arroyofresno",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.490434,
+      "lon": -3.7258299
+    },
+    {
+      "id": "258587099",
+      "nombre": "Lacoma",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4850861,
+      "lon": -3.7229768
+    },
+    {
+      "id": "258587993",
+      "nombre": "Avenida de la Ilustración",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4800553,
+      "lon": -3.7182708
+    },
+    {
+      "id": "262344419",
+      "nombre": "Peñagrande",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4758926,
+      "lon": -3.7159008
+    },
+    {
+      "id": "60335812",
+      "nombre": "Antonio Machado",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4701806,
+      "lon": -3.7176942
+    },
+    {
+      "id": "344856991",
+      "nombre": "Valdezarza",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4649338,
+      "lon": -3.7164801
+    },
+    {
+      "id": "988334626",
+      "nombre": "Francos Rodríguez",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.456605,
+      "lon": -3.712077
+    },
+    {
+      "id": "5304690741",
+      "nombre": "Guzmán el Bueno",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4466938,
+      "lon": -3.7134507
+    },
+    {
+      "id": "324354506",
+      "nombre": "Islas Filipinas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4390877,
+      "lon": -3.7139872
+    },
+    {
+      "id": "324355017",
+      "nombre": "Canal",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4387008,
+      "lon": -3.7045236
+    },
+    {
+      "id": "324407894",
+      "nombre": "Alonso Cano",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4384521,
+      "lon": -3.6992665
+    },
+    {
+      "id": "5304690737",
+      "nombre": "Gregorio Marañón",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4380087,
+      "lon": -3.6912119
+    },
+    {
+      "id": "4893932597",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.437518,
+      "lon": -3.6791377
+    },
+    {
+      "id": "259857216",
+      "nombre": "Cartagena",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.439451,
+      "lon": -3.6719214
+    },
+    {
+      "id": "299597934",
+      "nombre": "Parque de las Avenidas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4390256,
+      "lon": -3.6631545
+    },
+    {
+      "id": "299644350",
+      "nombre": "Barrio de la Concepción",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4394656,
+      "lon": -3.652796
+    },
+    {
+      "id": "254133716",
+      "nombre": "Pueblo Nuevo",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.435696,
+      "lon": -3.6446266
+    },
+    {
+      "id": "299597818",
+      "nombre": "Ascao",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4303234,
+      "lon": -3.6404272
+    },
+    {
+      "id": "473217146",
+      "nombre": "García Noblejas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.42867,
+      "lon": -3.6328686
+    },
+    {
+      "id": "1594978041",
+      "nombre": "Simancas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4275782,
+      "lon": -3.6229899
+    },
+    {
+      "id": "455188592",
+      "nombre": "San Blas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4275244,
+      "lon": -3.6159571
+    },
+    {
+      "id": "21757086",
+      "nombre": "Las Musas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4325743,
+      "lon": -3.6078911
+    },
+    {
+      "id": "29797659",
+      "nombre": "Estadio Metropolitano",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4338228,
+      "lon": -3.6009618
+    },
+    {
+      "id": "332412246",
+      "nombre": "Barrio del Puerto",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4225828,
+      "lon": -3.5691595
+    },
+    {
+      "id": "332412974",
+      "nombre": "Coslada Central",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4239161,
+      "lon": -3.5619901
+    },
+    {
+      "id": "332413315",
+      "nombre": "La Rambla",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4251714,
+      "lon": -3.5479212
+    },
+    {
+      "id": "332413739",
+      "nombre": "San Fernando",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4245226,
+      "lon": -3.5359695
+    },
+    {
+      "id": "332414252",
+      "nombre": "Jarama",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4233625,
+      "lon": -3.5253356
+    },
+    {
+      "id": "382936499",
+      "nombre": "Henares",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4175613,
+      "lon": -3.5269871
+    },
+    {
+      "id": "352682750",
+      "nombre": "Hospital de Henares",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4175875,
+      "lon": -3.5345338
+    },
+    {
+      "id": "4998691474",
+      "nombre": "Nuevos Ministerios",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4454819,
+      "lon": -3.6915827
+    },
+    {
+      "id": "252728558",
+      "nombre": "Colombia",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4571282,
+      "lon": -3.67706
+    },
+    {
+      "id": "4405987845",
+      "nombre": "Pinar del Rey",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4678583,
+      "lon": -3.64869
+    },
+    {
+      "id": "4405987844",
+      "nombre": "Mar de Cristal",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4698884,
+      "lon": -3.6385733
+    },
+    {
+      "id": "4405987840",
+      "nombre": "Feria de Madrid",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4639359,
+      "lon": -3.6155543
+    },
+    {
+      "id": "4405987841",
+      "nombre": "Aeropuerto T1-T2-T3",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4677938,
+      "lon": -3.5717894
+    },
+    {
+      "id": "4405987839",
+      "nombre": "Barajas",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4761602,
+      "lon": -3.5834125
+    },
+    {
+      "id": "4405987838",
+      "nombre": "Aeropuerto T4",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4923948,
+      "lon": -3.593248
+    },
+    {
+      "id": "2575149571",
+      "nombre": "Paco de Lucía",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4996143,
+      "lon": -3.7093378
+    },
+    {
+      "id": "1430344237",
+      "nombre": "Mirasierra",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4912608,
+      "lon": -3.7166613
+    },
+    {
+      "id": "26203552",
+      "nombre": "Herrera Oria",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4846603,
+      "lon": -3.7079102
+    },
+    {
+      "id": "26203551",
+      "nombre": "Barrio del Pilar",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4771092,
+      "lon": -3.7034268
+    },
+    {
+      "id": "26203553",
+      "nombre": "Ventilla",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4698795,
+      "lon": -3.6961919
+    },
+    {
+      "id": "5307455074",
+      "nombre": "Plaza de Castilla",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.466397,
+      "lon": -3.6877602
+    },
+    {
+      "id": "102223740",
+      "nombre": "Duque de Pastrana",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4675047,
+      "lon": -3.6805869
+    },
+    {
+      "id": "1437132920",
+      "nombre": "Pío XII",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4618052,
+      "lon": -3.6765115
+    },
+    {
+      "id": "5302030276",
+      "nombre": "Colombia",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4574009,
+      "lon": -3.676912
+    },
+    {
+      "id": "258564816",
+      "nombre": "Concha Espina",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4513059,
+      "lon": -3.677594
+    },
+    {
+      "id": "258563993",
+      "nombre": "Cruz del Rayo",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4445822,
+      "lon": -3.6783604
+    },
+    {
+      "id": "4893932598",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4381366,
+      "lon": -3.6790525
+    },
+    {
+      "id": "265811742",
+      "nombre": "Núñez de Balboa",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4326404,
+      "lon": -3.6795402
+    },
+    {
+      "id": "5110782972",
+      "nombre": "Príncipe de Vergara",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4226854,
+      "lon": -3.6803536
+    },
+    {
+      "id": "4405987843",
+      "nombre": "Ibiza",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4183993,
+      "lon": -3.6791508
+    },
+    {
+      "id": "265971847",
+      "nombre": "Sainz de Baranda",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4143808,
+      "lon": -3.6696184
+    },
+    {
+      "id": "1538557946",
+      "nombre": "Estrella",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4113217,
+      "lon": -3.6613404
+    },
+    {
+      "id": "1538569021",
+      "nombre": "Vinateros",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4103568,
+      "lon": -3.6524978
+    },
+    {
+      "id": "352693701",
+      "nombre": "Artilleros",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4052864,
+      "lon": -3.6418398
+    },
+    {
+      "id": "352692539",
+      "nombre": "Pavones",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4005849,
+      "lon": -3.6351975
+    },
+    {
+      "id": "1859530943",
+      "nombre": "Valdebernardo",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3999245,
+      "lon": -3.6215644
+    },
+    {
+      "id": "352689806",
+      "nombre": "Vicálvaro",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4042665,
+      "lon": -3.6089918
+    },
+    {
+      "id": "352689520",
+      "nombre": "San Cipriano",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4040417,
+      "lon": -3.6035709
+    },
+    {
+      "id": "1539159351",
+      "nombre": "Puerta de Arganda",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4012506,
+      "lon": -3.5957071
+    },
+    {
+      "id": "311134372",
+      "nombre": "Rivas Urbanizaciones",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3671528,
+      "lon": -3.5476318
+    },
+    {
+      "id": "420672882",
+      "nombre": "Rivas Futura",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3417192,
+      "lon": -3.5249707
+    },
+    {
+      "id": "420671908",
+      "nombre": "Rivas Vaciamadrid",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3281153,
+      "lon": -3.520431
+    },
+    {
+      "id": "306019923",
+      "nombre": "La Poveda",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3190504,
+      "lon": -3.4777881
+    },
+    {
+      "id": "420675386",
+      "nombre": "Arganda del Rey",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3036608,
+      "lon": -3.4474726
+    },
+    {
+      "id": "5305116633",
+      "nombre": "Puerta del Sur",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3452143,
+      "lon": -3.8120031
+    },
+    {
+      "id": "338298428",
+      "nombre": "San Nicasio",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3367183,
+      "lon": -3.7767533
+    },
+    {
+      "id": "307987235",
+      "nombre": "Leganés Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3280877,
+      "lon": -3.772345
+    },
+    {
+      "id": "1437138212",
+      "nombre": "Hospital Severo Ochoa",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3217907,
+      "lon": -3.767829
+    },
+    {
+      "id": "317778611",
+      "nombre": "Casa del Reloj",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3266694,
+      "lon": -3.7595122
+    },
+    {
+      "id": "317778608",
+      "nombre": "Julián Besteiro",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3346566,
+      "lon": -3.7524619
+    },
+    {
+      "id": "338347206",
+      "nombre": "El Carrascal",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3365076,
+      "lon": -3.7405192
+    },
+    {
+      "id": "338349891",
+      "nombre": "El Bercial",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3292979,
+      "lon": -3.7297609
+    },
+    {
+      "id": "317780196",
+      "nombre": "Los Espartales",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3242535,
+      "lon": -3.7182688
+    },
+    {
+      "id": "317780194",
+      "nombre": "El Casar",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3184028,
+      "lon": -3.7101924
+    },
+    {
+      "id": "317780189",
+      "nombre": "Juan de la Cierva",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3120308,
+      "lon": -3.72221
+    },
+    {
+      "id": "308599585",
+      "nombre": "Getafe Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3099209,
+      "lon": -3.7339959
+    },
+    {
+      "id": "411900896",
+      "nombre": "Alonso de Mendoza",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3001337,
+      "lon": -3.7370145
+    },
+    {
+      "id": "356359145",
+      "nombre": "Conservatorio",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2926555,
+      "lon": -3.7462006
+    },
+    {
+      "id": "356362568",
+      "nombre": "Arroyo Culebro",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2886063,
+      "lon": -3.7567191
+    },
+    {
+      "id": "308215251",
+      "nombre": "Parque de los Estados",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2866426,
+      "lon": -3.7871212
+    },
+    {
+      "id": "308210965",
+      "nombre": "Fuenlabrada Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2822682,
+      "lon": -3.7982889
+    },
+    {
+      "id": "324518557",
+      "nombre": "Parque Europa",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2851981,
+      "lon": -3.8074574
+    },
+    {
+      "id": "1116641891",
+      "nombre": "Hospital de Fuenlabrada",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2858224,
+      "lon": -3.8158403
+    },
+    {
+      "id": "324419030",
+      "nombre": "Loranca",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2967117,
+      "lon": -3.836777
+    },
+    {
+      "id": "315293834",
+      "nombre": "Manuela Malasaña",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.309016,
+      "lon": -3.8642824
+    },
+    {
+      "id": "317777579",
+      "nombre": "Hospital de Móstoles",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3163347,
+      "lon": -3.8744698
+    },
+    {
+      "id": "317777577",
+      "nombre": "Pradillo",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3221693,
+      "lon": -3.8644359
+    },
+    {
+      "id": "2609596291",
+      "nombre": "Móstoles Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3289611,
+      "lon": -3.863556
+    },
+    {
+      "id": "323136833",
+      "nombre": "Universidad Rey Juan Carlos",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3348571,
+      "lon": -3.8722147
+    },
+    {
+      "id": "4912161019",
+      "nombre": "Parque Oeste",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3458477,
+      "lon": -3.8490609
+    },
+    {
+      "id": "2609596056",
+      "nombre": "Alcorcón Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3501202,
+      "lon": -3.8315675
+    },
+    {
+      "id": "1067987272",
+      "nombre": "Parque Lisboa",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3495034,
+      "lon": -3.8207757
+    },
+    {
+      "id": "5299261413",
+      "nombre": "Pinar de Chamartín",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4799899,
+      "lon": -3.6670805
+    },
+    {
+      "id": "354898747",
+      "nombre": "Manoteras",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4767341,
+      "lon": -3.6626413
+    },
+    {
+      "id": "253543665",
+      "nombre": "Hortaleza",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.47477,
+      "lon": -3.6521548
+    },
+    {
+      "id": "253533921",
+      "nombre": "Parque de Santa María",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4771661,
+      "lon": -3.6457089
+    },
+    {
+      "id": "253533918",
+      "nombre": "San Lorenzo",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4745669,
+      "lon": -3.6395849
+    },
+    {
+      "id": "5302030278",
+      "nombre": "Mar de Cristal",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4699396,
+      "lon": -3.6386313
+    },
+    {
+      "id": "253601582",
+      "nombre": "Canillas",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4637731,
+      "lon": -3.6353925
+    },
+    {
+      "id": "253602179",
+      "nombre": "Esperanza",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4592054,
+      "lon": -3.6455656
+    },
+    {
+      "id": "253603189",
+      "nombre": "Arturo Soria",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4559074,
+      "lon": -3.6561549
+    },
+    {
+      "id": "253603188",
+      "nombre": "Avenida de la Paz",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4528467,
+      "lon": -3.6626926
+    },
+    {
+      "id": "253611377",
+      "nombre": "Alfonso XIII",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4483589,
+      "lon": -3.667818
+    },
+    {
+      "id": "11358105045",
+      "nombre": "Prosperidad",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4437544,
+      "lon": -3.6746278
+    },
+    {
+      "id": "4893932595",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4380258,
+      "lon": -3.6780472
+    },
+    {
+      "id": "4892851842",
+      "nombre": "Diego de León",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4342041,
+      "lon": -3.6749689
+    },
+    {
+      "id": "265814419",
+      "nombre": "Lista",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4293985,
+      "lon": -3.6753828
+    },
+    {
+      "id": "265808559",
+      "nombre": "Goya",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4247928,
+      "lon": -3.6767543
+    },
+    {
+      "id": "265814147",
+      "nombre": "Velázquez",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4250841,
+      "lon": -3.6825915
+    },
+    {
+      "id": "25902051",
+      "nombre": "Serrano",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4252673,
+      "lon": -3.6865794
+    },
+    {
+      "id": "25902050",
+      "nombre": "Colón",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4258155,
+      "lon": -3.6922281
+    },
+    {
+      "id": "3602269606",
+      "nombre": "Alonso Martínez",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.427654,
+      "lon": -3.6960731
+    },
+    {
+      "id": "25934729",
+      "nombre": "Bilbao",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4287276,
+      "lon": -3.7006942
+    },
+    {
+      "id": "5302296741",
+      "nombre": "San Bernardo",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4296137,
+      "lon": -3.7063641
+    },
+    {
+      "id": "5302296742",
+      "nombre": "Argüelles",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.430502,
+      "lon": -3.7155187
+    },
+    {
+      "id": "10047607608",
+      "nombre": "Tres Olivos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5005695,
+      "lon": -3.6949124
+    },
+    {
+      "id": "5310093839",
+      "nombre": "Montecarmelo",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5054212,
+      "lon": -3.6962025
+    },
+    {
+      "id": "5310093832",
+      "nombre": "Las Tablas",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.508689,
+      "lon": -3.6694295
+    },
+    {
+      "id": "5310093830",
+      "nombre": "Ronda de la Comunicación",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5152261,
+      "lon": -3.6623623
+    },
+    {
+      "id": "5310093829",
+      "nombre": "La Granja",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5274973,
+      "lon": -3.6585611
+    },
+    {
+      "id": "5310093822",
+      "nombre": "La Moraleja",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5318796,
+      "lon": -3.6355777
+    },
+    {
+      "id": "5310093519",
+      "nombre": "Marqués de la Valdavia",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5404409,
+      "lon": -3.6381009
+    },
+    {
+      "id": "5310093514",
+      "nombre": "Manuel de Falla",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5502794,
+      "lon": -3.6470107
+    },
+    {
+      "id": "5310093507",
+      "nombre": "Baunatal",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.554566,
+      "lon": -3.6356997
+    },
+    {
+      "id": "5310093492",
+      "nombre": "Reyes Católicos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5509489,
+      "lon": -3.624052
+    },
+    {
+      "id": "5310093479",
+      "nombre": "Hospital Infanta Sofía",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5598685,
+      "lon": -3.6115918
+    },
+    {
+      "id": "5307422105",
+      "nombre": "Arganda del Rey",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3036537,
+      "lon": -3.4475079
+    },
+    {
+      "id": "4427602014",
+      "nombre": "La Poveda",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3190191,
+      "lon": -3.477792
+    },
+    {
+      "id": "4427602016",
+      "nombre": "Rivas Vaciamadrid",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3281054,
+      "lon": -3.5204542
+    },
+    {
+      "id": "4427602015",
+      "nombre": "Rivas Futura",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3417029,
+      "lon": -3.5250192
+    },
+    {
+      "id": "5307426085",
+      "nombre": "Rivas Urbanizaciones",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3671354,
+      "lon": -3.5476723
+    },
+    {
+      "id": "5307423809",
+      "nombre": "Puerta de Arganda",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4012325,
+      "lon": -3.5957583
+    },
+    {
+      "id": "5307423814",
+      "nombre": "San Cipriano",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4039375,
+      "lon": -3.6035127
+    },
+    {
+      "id": "5307423817",
+      "nombre": "Vicálvaro",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4041614,
+      "lon": -3.6088841
+    },
+    {
+      "id": "5307425733",
+      "nombre": "Valdebernardo",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.3999006,
+      "lon": -3.6214736
+    },
+    {
+      "id": "5307425743",
+      "nombre": "Pavones",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4005086,
+      "lon": -3.6352378
+    },
+    {
+      "id": "5307425762",
+      "nombre": "Artilleros",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4052454,
+      "lon": -3.6418821
+    },
+    {
+      "id": "5307425771",
+      "nombre": "Vinateros",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4102849,
+      "lon": -3.6525188
+    },
+    {
+      "id": "5307425782",
+      "nombre": "Estrella",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4112543,
+      "lon": -3.6613556
+    },
+    {
+      "id": "5307425799",
+      "nombre": "Sainz de Baranda",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.41433,
+      "lon": -3.6696197
+    },
+    {
+      "id": "5307418582",
+      "nombre": "Ibiza",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4184013,
+      "lon": -3.6792502
+    },
+    {
+      "id": "5307422112",
+      "nombre": "Príncipe de Vergara",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4226047,
+      "lon": -3.6804654
+    },
+    {
+      "id": "5307435834",
+      "nombre": "Núñez de Balboa",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4326446,
+      "lon": -3.6796283
+    },
+    {
+      "id": "4893932599",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4381379,
+      "lon": -3.6791166
+    },
+    {
+      "id": "5307418592",
+      "nombre": "Cruz del Rayo",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.444478,
+      "lon": -3.6785474
+    },
+    {
+      "id": "5307418593",
+      "nombre": "Concha Espina",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4513087,
+      "lon": -3.6776366
+    },
+    {
+      "id": "5307418595",
+      "nombre": "Colombia",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4574034,
+      "lon": -3.6769475
+    },
+    {
+      "id": "5307418597",
+      "nombre": "Pío XII",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4618048,
+      "lon": -3.6765497
+    },
+    {
+      "id": "5307418611",
+      "nombre": "Duque de Pastrana",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4674527,
+      "lon": -3.6805841
+    },
+    {
+      "id": "5307455073",
+      "nombre": "Plaza de Castilla",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4663611,
+      "lon": -3.6877466
+    },
+    {
+      "id": "5307425534",
+      "nombre": "Ventilla",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4697754,
+      "lon": -3.6963789
+    },
+    {
+      "id": "5307425554",
+      "nombre": "Barrio del Pilar",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4770051,
+      "lon": -3.7036138
+    },
+    {
+      "id": "5307425567",
+      "nombre": "Herrera Oria",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4845562,
+      "lon": -3.7080972
+    },
+    {
+      "id": "5307435828",
+      "nombre": "Mirasierra",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4911747,
+      "lon": -3.7167771
+    },
+    {
+      "id": "5307426097",
+      "nombre": "Paco de Lucía",
+      "lineas": [
+        "L9"
+      ],
+      "lat": 40.4996559,
+      "lon": -3.709367
+    },
+    {
+      "id": "5296502805",
+      "nombre": "Argüelles",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4305848,
+      "lon": -3.7155061
+    },
+    {
+      "id": "5296502806",
+      "nombre": "San Bernardo",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4296512,
+      "lon": -3.7063574
+    },
+    {
+      "id": "5296502807",
+      "nombre": "Bilbao",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4287656,
+      "lon": -3.7006772
+    },
+    {
+      "id": "5296502809",
+      "nombre": "Alonso Martínez",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4277017,
+      "lon": -3.6960538
+    },
+    {
+      "id": "5296502810",
+      "nombre": "Colón",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4258546,
+      "lon": -3.6921656
+    },
+    {
+      "id": "5296502820",
+      "nombre": "Serrano",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4253113,
+      "lon": -3.6865803
+    },
+    {
+      "id": "5296502819",
+      "nombre": "Velázquez",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4251276,
+      "lon": -3.6825954
+    },
+    {
+      "id": "5296503324",
+      "nombre": "Goya",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4248325,
+      "lon": -3.6767551
+    },
+    {
+      "id": "5296503327",
+      "nombre": "Lista",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4293985,
+      "lon": -3.6754152
+    },
+    {
+      "id": "4892851002",
+      "nombre": "Diego de León",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4342037,
+      "lon": -3.6750134
+    },
+    {
+      "id": "4893932594",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4380019,
+      "lon": -3.6780901
+    },
+    {
+      "id": "5296502803",
+      "nombre": "Prosperidad",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4437947,
+      "lon": -3.6746734
+    },
+    {
+      "id": "5296502802",
+      "nombre": "Alfonso XIII",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4483999,
+      "lon": -3.667856
+    },
+    {
+      "id": "5296502801",
+      "nombre": "Avenida de la Paz",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.452884,
+      "lon": -3.6626968
+    },
+    {
+      "id": "5296502800",
+      "nombre": "Arturo Soria",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4559672,
+      "lon": -3.6562049
+    },
+    {
+      "id": "5296502796",
+      "nombre": "Esperanza",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4592961,
+      "lon": -3.6455638
+    },
+    {
+      "id": "5296502783",
+      "nombre": "Canillas",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4637641,
+      "lon": -3.6354826
+    },
+    {
+      "id": "5302296725",
+      "nombre": "Mar de Cristal",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4699264,
+      "lon": -3.6387113
+    },
+    {
+      "id": "5296502775",
+      "nombre": "San Lorenzo",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4745463,
+      "lon": -3.6396509
+    },
+    {
+      "id": "5296502773",
+      "nombre": "Parque de Santa María",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4770842,
+      "lon": -3.6456762
+    },
+    {
+      "id": "5296502772",
+      "nombre": "Hortaleza",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.474666,
+      "lon": -3.6520837
+    },
+    {
+      "id": "5296502768",
+      "nombre": "Manoteras",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.4766772,
+      "lon": -3.6627179
+    },
+    {
+      "id": "5296502767",
+      "nombre": "Pinar de Chamartín",
+      "lineas": [
+        "L4"
+      ],
+      "lat": 40.479916,
+      "lon": -3.6671654
+    },
+    {
+      "id": "5299216970",
+      "nombre": "Valdecarros",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3599634,
+      "lon": -3.5921671
+    },
+    {
+      "id": "5299216972",
+      "nombre": "Las Suertes",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3634748,
+      "lon": -3.5991869
+    },
+    {
+      "id": "5299216977",
+      "nombre": "La Gavia",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3692643,
+      "lon": -3.6124981
+    },
+    {
+      "id": "5299216982",
+      "nombre": "Congosto",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3721742,
+      "lon": -3.6187642
+    },
+    {
+      "id": "5299216985",
+      "nombre": "Villa de Vallecas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3794553,
+      "lon": -3.6213588
+    },
+    {
+      "id": "5299216987",
+      "nombre": "Sierra de Guadalupe",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.382605,
+      "lon": -3.6249635
+    },
+    {
+      "id": "5299216997",
+      "nombre": "Miguel Hernández",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3876172,
+      "lon": -3.6402187
+    },
+    {
+      "id": "5299217000",
+      "nombre": "Alto del Arenal",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3900182,
+      "lon": -3.6458264
+    },
+    {
+      "id": "5299217006",
+      "nombre": "Buenos Aires",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3915983,
+      "lon": -3.6538731
+    },
+    {
+      "id": "5299217008",
+      "nombre": "Portazgo",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3930004,
+      "lon": -3.6592062
+    },
+    {
+      "id": "5299217010",
+      "nombre": "Nueva Numancia",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3959292,
+      "lon": -3.6647907
+    },
+    {
+      "id": "5299217011",
+      "nombre": "Puente de Vallecas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.3980679,
+      "lon": -3.6689877
+    },
+    {
+      "id": "5299217013",
+      "nombre": "Pacífico",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.401957,
+      "lon": -3.6762655
+    },
+    {
+      "id": "5299217017",
+      "nombre": "Menéndez Pelayo",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4042921,
+      "lon": -3.6811818
+    },
+    {
+      "id": "5299219122",
+      "nombre": "Atocha",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4069495,
+      "lon": -3.6885928
+    },
+    {
+      "id": "5299219127",
+      "nombre": "Estación del Arte",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4087894,
+      "lon": -3.6914124
+    },
+    {
+      "id": "5299219130",
+      "nombre": "Antón Martín",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4122762,
+      "lon": -3.6990937
+    },
+    {
+      "id": "5299219185",
+      "nombre": "Tirso de Molina",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4124068,
+      "lon": -3.7042524
+    },
+    {
+      "id": "5299219187",
+      "nombre": "Sol",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4169569,
+      "lon": -3.7031982
+    },
+    {
+      "id": "5299219188",
+      "nombre": "Gran Vía",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4199161,
+      "lon": -3.7017321
+    },
+    {
+      "id": "5299219189",
+      "nombre": "Tribunal",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4260669,
+      "lon": -3.7012182
+    },
+    {
+      "id": "5299219190",
+      "nombre": "Bilbao",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4297968,
+      "lon": -3.7010239
+    },
+    {
+      "id": "5299219193",
+      "nombre": "Iglesia",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4352746,
+      "lon": -3.6989306
+    },
+    {
+      "id": "5299219194",
+      "nombre": "Ríos Rosas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4415952,
+      "lon": -3.7016088
+    },
+    {
+      "id": "5299219195",
+      "nombre": "Cuatro Caminos",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4458693,
+      "lon": -3.703463
+    },
+    {
+      "id": "5299219197",
+      "nombre": "Alvarado",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4500926,
+      "lon": -3.7035365
+    },
+    {
+      "id": "5299219209",
+      "nombre": "Estrecho",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4545167,
+      "lon": -3.7027758
+    },
+    {
+      "id": "5299219215",
+      "nombre": "Tetuán",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4608653,
+      "lon": -3.6982584
+    },
+    {
+      "id": "5299219204",
+      "nombre": "Valdeacederas",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4645454,
+      "lon": -3.6950053
+    },
+    {
+      "id": "5299219138",
+      "nombre": "Plaza de Castilla",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4664985,
+      "lon": -3.6897462
+    },
+    {
+      "id": "5299219156",
+      "nombre": "Chamartín",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4739641,
+      "lon": -3.6826335
+    },
+    {
+      "id": "5299219167",
+      "nombre": "Bambú",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4769838,
+      "lon": -3.6766574
+    },
+    {
+      "id": "5299219181",
+      "nombre": "Pinar de Chamartín",
+      "lineas": [
+        "L1"
+      ],
+      "lat": 40.4800712,
+      "lon": -3.6670144
+    },
+    {
+      "id": "5302031690",
+      "nombre": "Aeropuerto T4",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4923988,
+      "lon": -3.592969
+    },
+    {
+      "id": "5302031695",
+      "nombre": "Barajas",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4762898,
+      "lon": -3.5834408
+    },
+    {
+      "id": "5302031696",
+      "nombre": "Aeropuerto T1-T2-T3",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4677924,
+      "lon": -3.5717481
+    },
+    {
+      "id": "5302031714",
+      "nombre": "Feria de Madrid",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4637736,
+      "lon": -3.6155204
+    },
+    {
+      "id": "5302031715",
+      "nombre": "Mar de Cristal",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4698401,
+      "lon": -3.6386203
+    },
+    {
+      "id": "5302031882",
+      "nombre": "Pinar del Rey",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4677559,
+      "lon": -3.6486621
+    },
+    {
+      "id": "5302031883",
+      "nombre": "Colombia",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4571009,
+      "lon": -3.6770608
+    },
+    {
+      "id": "5302031475",
+      "nombre": "Nuevos Ministerios",
+      "lineas": [
+        "L8"
+      ],
+      "lat": 40.4454795,
+      "lon": -3.6915608
+    },
+    {
+      "id": "5303043429",
+      "nombre": "Alameda de Osuna",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4575643,
+      "lon": -3.5879592
+    },
+    {
+      "id": "5303043428",
+      "nombre": "El Capricho",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4535744,
+      "lon": -3.5941136
+    },
+    {
+      "id": "5303043425",
+      "nombre": "Canillejas",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4490963,
+      "lon": -3.6085703
+    },
+    {
+      "id": "5303043422",
+      "nombre": "Torre Arias",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4435959,
+      "lon": -3.6171013
+    },
+    {
+      "id": "5303043421",
+      "nombre": "Suanzes",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4408647,
+      "lon": -3.6270065
+    },
+    {
+      "id": "5303043320",
+      "nombre": "Ciudad Lineal",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4379125,
+      "lon": -3.6377211
+    },
+    {
+      "id": "5303043318",
+      "nombre": "Pueblo Nuevo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4353594,
+      "lon": -3.6433992
+    },
+    {
+      "id": "5303043317",
+      "nombre": "Quintana",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4330946,
+      "lon": -3.648133
+    },
+    {
+      "id": "5303043313",
+      "nombre": "El Carmen",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4319506,
+      "lon": -3.6561798
+    },
+    {
+      "id": "5303043306",
+      "nombre": "Ventas",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4314566,
+      "lon": -3.6637613
+    },
+    {
+      "id": "5303043493",
+      "nombre": "Diego de León",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4323628,
+      "lon": -3.6742182
+    },
+    {
+      "id": "5303043490",
+      "nombre": "Núñez de Balboa",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4326155,
+      "lon": -3.6795514
+    },
+    {
+      "id": "5303043488",
+      "nombre": "Rubén Darío",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4329846,
+      "lon": -3.6896838
+    },
+    {
+      "id": "5303043473",
+      "nombre": "Alonso Martínez",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4275256,
+      "lon": -3.6958451
+    },
+    {
+      "id": "5303043472",
+      "nombre": "Chueca",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.422716,
+      "lon": -3.6975664
+    },
+    {
+      "id": "5303043466",
+      "nombre": "Gran Vía",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4199716,
+      "lon": -3.7015889
+    },
+    {
+      "id": "5303043465",
+      "nombre": "Callao",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4201896,
+      "lon": -3.7058098
+    },
+    {
+      "id": "5303127350",
+      "nombre": "Ópera",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4180064,
+      "lon": -3.709486
+    },
+    {
+      "id": "5303043432",
+      "nombre": "La Latina",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4117443,
+      "lon": -3.7080272
+    },
+    {
+      "id": "5303043330",
+      "nombre": "Puerta de Toledo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.407056,
+      "lon": -3.711038
+    },
+    {
+      "id": "5303043351",
+      "nombre": "Acacias",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.4040804,
+      "lon": -3.7058891
+    },
+    {
+      "id": "5303043349",
+      "nombre": "Pirámides",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.402002,
+      "lon": -3.711945
+    },
+    {
+      "id": "5303043348",
+      "nombre": "Marqués de Vadillo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3972916,
+      "lon": -3.7167111
+    },
+    {
+      "id": "5303043343",
+      "nombre": "Urgel",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3925104,
+      "lon": -3.725332
+    },
+    {
+      "id": "5303043342",
+      "nombre": "Oporto",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3886084,
+      "lon": -3.7317322
+    },
+    {
+      "id": "5303043340",
+      "nombre": "Vista Alegre",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.388772,
+      "lon": -3.7400212
+    },
+    {
+      "id": "5303043339",
+      "nombre": "Carabanchel",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3878022,
+      "lon": -3.7449591
+    },
+    {
+      "id": "5303043337",
+      "nombre": "Eugenia de Montijo",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3843977,
+      "lon": -3.7510473
+    },
+    {
+      "id": "5303127336",
+      "nombre": "Aluche",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3856318,
+      "lon": -3.7608684
+    },
+    {
+      "id": "5303042475",
+      "nombre": "Empalme",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3907184,
+      "lon": -3.7655034
+    },
+    {
+      "id": "5303042471",
+      "nombre": "Campamento",
+      "lineas": [
+        "L5"
+      ],
+      "lat": 40.3946802,
+      "lon": -3.7683228
+    },
+    {
+      "id": "12772138470",
+      "nombre": "El Casar",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.318724,
+      "lon": -3.7091731
+    },
+    {
+      "id": "5303173563",
+      "nombre": "Villaverde Alto",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3410594,
+      "lon": -3.7117741
+    },
+    {
+      "id": "5303173570",
+      "nombre": "San Cristóbal",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3415747,
+      "lon": -3.693745
+    },
+    {
+      "id": "5303173571",
+      "nombre": "Villaverde Bajo - Cruce",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3510057,
+      "lon": -3.6928136
+    },
+    {
+      "id": "5303173574",
+      "nombre": "Ciudad de los Ángeles",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3601739,
+      "lon": -3.6934883
+    },
+    {
+      "id": "5303173575",
+      "nombre": "San Fermín-Orcasur",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3699862,
+      "lon": -3.6944341
+    },
+    {
+      "id": "5303173576",
+      "nombre": "Hospital 12 de Octubre",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3754616,
+      "lon": -3.6959491
+    },
+    {
+      "id": "5303173578",
+      "nombre": "Almendrales",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3841063,
+      "lon": -3.6981966
+    },
+    {
+      "id": "5303173582",
+      "nombre": "Legazpi",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3925477,
+      "lon": -3.6949049
+    },
+    {
+      "id": "5303173587",
+      "nombre": "Delicias",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.3991885,
+      "lon": -3.6941411
+    },
+    {
+      "id": "5303173594",
+      "nombre": "Palos de la Frontera",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4030544,
+      "lon": -3.694679
+    },
+    {
+      "id": "5303173598",
+      "nombre": "Embajadores",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4050116,
+      "lon": -3.7023125
+    },
+    {
+      "id": "5303173603",
+      "nombre": "Lavapiés",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4085142,
+      "lon": -3.7009495
+    },
+    {
+      "id": "5303173605",
+      "nombre": "Sol",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4169053,
+      "lon": -3.7039198
+    },
+    {
+      "id": "9666807257",
+      "nombre": "Callao",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.420368,
+      "lon": -3.7061668
+    },
+    {
+      "id": "5303173607",
+      "nombre": "Plaza de España",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4238071,
+      "lon": -3.7115984
+    },
+    {
+      "id": "5303173608",
+      "nombre": "Ventura Rodríguez",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4267497,
+      "lon": -3.7133263
+    },
+    {
+      "id": "5303173609",
+      "nombre": "Argüelles",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4311088,
+      "lon": -3.7166268
+    },
+    {
+      "id": "5303173613",
+      "nombre": "Moncloa",
+      "lineas": [
+        "L3"
+      ],
+      "lat": 40.4345809,
+      "lon": -3.7190144
+    },
+    {
+      "id": "5303272058",
+      "nombre": "Las Rosas",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.423544,
+      "lon": -3.6028538
+    },
+    {
+      "id": "5303272050",
+      "nombre": "Avenida de Guadalajara",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4224579,
+      "lon": -3.6121571
+    },
+    {
+      "id": "5303272046",
+      "nombre": "Alsacia",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4182259,
+      "lon": -3.6237973
+    },
+    {
+      "id": "5303272281",
+      "nombre": "La Almudena",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4231561,
+      "lon": -3.6382568
+    },
+    {
+      "id": "4894222724",
+      "nombre": "La Elipa",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4269857,
+      "lon": -3.6494619
+    },
+    {
+      "id": "5303272274",
+      "nombre": "Ventas",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4304923,
+      "lon": -3.6639077
+    },
+    {
+      "id": "5303272268",
+      "nombre": "Manuel Becerra",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4281259,
+      "lon": -3.6687076
+    },
+    {
+      "id": "5303272264",
+      "nombre": "Goya",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.424396,
+      "lon": -3.6764319
+    },
+    {
+      "id": "5303272061",
+      "nombre": "Príncipe de Vergara",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4225211,
+      "lon": -3.6805976
+    },
+    {
+      "id": "5303272012",
+      "nombre": "Retiro",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.420447,
+      "lon": -3.6864129
+    },
+    {
+      "id": "5303272236",
+      "nombre": "Banco de España",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4190434,
+      "lon": -3.6949231
+    },
+    {
+      "id": "5303272231",
+      "nombre": "Sevilla",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.417751,
+      "lon": -3.6999429
+    },
+    {
+      "id": "5303272075",
+      "nombre": "Sol",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4170867,
+      "lon": -3.7032671
+    },
+    {
+      "id": "5303272068",
+      "nombre": "Ópera",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4180427,
+      "lon": -3.7093916
+    },
+    {
+      "id": "5303272249",
+      "nombre": "Santo Domingo",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4210306,
+      "lon": -3.7081955
+    },
+    {
+      "id": "5303272248",
+      "nombre": "Noviciado",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.424594,
+      "lon": -3.707432
+    },
+    {
+      "id": "5303272246",
+      "nombre": "San Bernardo",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4303184,
+      "lon": -3.7054868
+    },
+    {
+      "id": "5303272244",
+      "nombre": "Quevedo",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4329607,
+      "lon": -3.7045592
+    },
+    {
+      "id": "5303272243",
+      "nombre": "Canal",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4391564,
+      "lon": -3.7042949
+    },
+    {
+      "id": "5303272239",
+      "nombre": "Cuatro Caminos",
+      "lineas": [
+        "L2"
+      ],
+      "lat": 40.4458271,
+      "lon": -3.7040952
+    },
+    {
+      "id": "5304629166",
+      "nombre": "Hospital de Henares",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4176356,
+      "lon": -3.5345052
+    },
+    {
+      "id": "5304629171",
+      "nombre": "Henares",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4175942,
+      "lon": -3.5269979
+    },
+    {
+      "id": "5304629180",
+      "nombre": "Jarama",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4233635,
+      "lon": -3.5253881
+    },
+    {
+      "id": "5304629186",
+      "nombre": "San Fernando",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4244704,
+      "lon": -3.5359658
+    },
+    {
+      "id": "5304628974",
+      "nombre": "La Rambla",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4251196,
+      "lon": -3.5479131
+    },
+    {
+      "id": "5304628979",
+      "nombre": "Coslada Central",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4238643,
+      "lon": -3.561982
+    },
+    {
+      "id": "5304628983",
+      "nombre": "Barrio del Puerto",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.422531,
+      "lon": -3.5691514
+    },
+    {
+      "id": "5304628987",
+      "nombre": "Estadio Metropolitano",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4337839,
+      "lon": -3.6009678
+    },
+    {
+      "id": "5304628998",
+      "nombre": "Las Musas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4325725,
+      "lon": -3.6078092
+    },
+    {
+      "id": "5304629005",
+      "nombre": "San Blas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4274726,
+      "lon": -3.615949
+    },
+    {
+      "id": "5304629006",
+      "nombre": "Simancas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4275264,
+      "lon": -3.6229818
+    },
+    {
+      "id": "5304629012",
+      "nombre": "García Noblejas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.428631,
+      "lon": -3.632842
+    },
+    {
+      "id": "5304629229",
+      "nombre": "Ascao",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4303054,
+      "lon": -3.6404695
+    },
+    {
+      "id": "5304629231",
+      "nombre": "Pueblo Nuevo",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4356435,
+      "lon": -3.6447256
+    },
+    {
+      "id": "5304629233",
+      "nombre": "Barrio de la Concepción",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.439435,
+      "lon": -3.6527745
+    },
+    {
+      "id": "5304629235",
+      "nombre": "Parque de las Avenidas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.438994,
+      "lon": -3.663174
+    },
+    {
+      "id": "5304629237",
+      "nombre": "Cartagena",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4394199,
+      "lon": -3.6719077
+    },
+    {
+      "id": "4893932596",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4374191,
+      "lon": -3.6791451
+    },
+    {
+      "id": "5304628705",
+      "nombre": "Gregorio Marañón",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4379757,
+      "lon": -3.6912127
+    },
+    {
+      "id": "5304628707",
+      "nombre": "Alonso Cano",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4384252,
+      "lon": -3.6992688
+    },
+    {
+      "id": "5304628708",
+      "nombre": "Canal",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4386738,
+      "lon": -3.7045235
+    },
+    {
+      "id": "5304628711",
+      "nombre": "Islas Filipinas",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4390609,
+      "lon": -3.7139918
+    },
+    {
+      "id": "5304629129",
+      "nombre": "Guzmán el Bueno",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.446702,
+      "lon": -3.7134845
+    },
+    {
+      "id": "5304629131",
+      "nombre": "Francos Rodríguez",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4566287,
+      "lon": -3.712143
+    },
+    {
+      "id": "5304629137",
+      "nombre": "Valdezarza",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4648688,
+      "lon": -3.7165085
+    },
+    {
+      "id": "5304629139",
+      "nombre": "Antonio Machado",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4702219,
+      "lon": -3.717747
+    },
+    {
+      "id": "5304629143",
+      "nombre": "Peñagrande",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4761023,
+      "lon": -3.7160343
+    },
+    {
+      "id": "5304629145",
+      "nombre": "Avenida de la Ilustración",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4800289,
+      "lon": -3.7183484
+    },
+    {
+      "id": "5304629151",
+      "nombre": "Lacoma",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4850704,
+      "lon": -3.7230412
+    },
+    {
+      "id": "5306531887",
+      "nombre": "Arroyofresno",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4904098,
+      "lon": -3.7259012
+    },
+    {
+      "id": "5304629164",
+      "nombre": "Pitis",
+      "lineas": [
+        "L7"
+      ],
+      "lat": 40.4952326,
+      "lon": -3.725745
+    },
+    {
+      "id": "5305117482",
+      "nombre": "Puerta del Sur",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.345195,
+      "lon": -3.8120195
+    },
+    {
+      "id": "5305117519",
+      "nombre": "Parque Lisboa",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3494918,
+      "lon": -3.8207858
+    },
+    {
+      "id": "5305117415",
+      "nombre": "Alcorcón Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3500841,
+      "lon": -3.8315104
+    },
+    {
+      "id": "5305117732",
+      "nombre": "Parque Oeste",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3457845,
+      "lon": -3.8490306
+    },
+    {
+      "id": "5305117598",
+      "nombre": "Universidad Rey Juan Carlos",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3348543,
+      "lon": -3.8721344
+    },
+    {
+      "id": "5305117575",
+      "nombre": "Móstoles Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3290173,
+      "lon": -3.8634137
+    },
+    {
+      "id": "5305117562",
+      "nombre": "Pradillo",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3221312,
+      "lon": -3.8643012
+    },
+    {
+      "id": "5305117544",
+      "nombre": "Hospital de Móstoles",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.316281,
+      "lon": -3.8743582
+    },
+    {
+      "id": "5305117700",
+      "nombre": "Manuela Malasaña",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3091005,
+      "lon": -3.8642773
+    },
+    {
+      "id": "5305117668",
+      "nombre": "Loranca",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2967607,
+      "lon": -3.8367713
+    },
+    {
+      "id": "5305116704",
+      "nombre": "Hospital de Fuenlabrada",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2858668,
+      "lon": -3.8158135
+    },
+    {
+      "id": "5305116697",
+      "nombre": "Parque Europa",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2852421,
+      "lon": -3.8074427
+    },
+    {
+      "id": "5305117634",
+      "nombre": "Fuenlabrada Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2823121,
+      "lon": -3.7982654
+    },
+    {
+      "id": "5305116708",
+      "nombre": "Parque de los Estados",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2866766,
+      "lon": -3.7871972
+    },
+    {
+      "id": "5305116661",
+      "nombre": "Arroyo Culebro",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.288658,
+      "lon": -3.7567291
+    },
+    {
+      "id": "5305117353",
+      "nombre": "Conservatorio",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.2926896,
+      "lon": -3.746267
+    },
+    {
+      "id": "5305117300",
+      "nombre": "Alonso de Mendoza",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3001356,
+      "lon": -3.7370745
+    },
+    {
+      "id": "5305117280",
+      "nombre": "Getafe Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3100592,
+      "lon": -3.7340075
+    },
+    {
+      "id": "5305117262",
+      "nombre": "Juan de la Cierva",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.312076,
+      "lon": -3.7222788
+    },
+    {
+      "id": "5305117232",
+      "nombre": "El Casar",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3183963,
+      "lon": -3.7102652
+    },
+    {
+      "id": "5305117532",
+      "nombre": "Los Espartales",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3241323,
+      "lon": -3.718351
+    },
+    {
+      "id": "5305117623",
+      "nombre": "El Bercial",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3292759,
+      "lon": -3.729814
+    },
+    {
+      "id": "5305117446",
+      "nombre": "El Carrascal",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3364229,
+      "lon": -3.7405131
+    },
+    {
+      "id": "5305117368",
+      "nombre": "Julián Besteiro",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3346037,
+      "lon": -3.7523752
+    },
+    {
+      "id": "5305116014",
+      "nombre": "Casa del Reloj",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3266283,
+      "lon": -3.7594465
+    },
+    {
+      "id": "5305117320",
+      "nombre": "Hospital Severo Ochoa",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3217635,
+      "lon": -3.76783
+    },
+    {
+      "id": "5305117470",
+      "nombre": "Leganés Central",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.3280959,
+      "lon": -3.7723654
+    },
+    {
+      "id": "5305117379",
+      "nombre": "San Nicasio",
+      "lineas": [
+        "L12"
+      ],
+      "lat": 40.336694,
+      "lon": -3.7767792
+    },
+    {
+      "id": "5305487735",
+      "nombre": "Laguna",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3993145,
+      "lon": -3.7446043
+    },
+    {
+      "id": "5305487730",
+      "nombre": "Carpetana",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3929391,
+      "lon": -3.7409644
+    },
+    {
+      "id": "5305487727",
+      "nombre": "Oporto",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3886813,
+      "lon": -3.7317264
+    },
+    {
+      "id": "5305487724",
+      "nombre": "Opañel",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3869526,
+      "lon": -3.7231636
+    },
+    {
+      "id": "5305487723",
+      "nombre": "Plaza Elíptica",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3852164,
+      "lon": -3.7157944
+    },
+    {
+      "id": "5305486519",
+      "nombre": "Usera",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3880557,
+      "lon": -3.7056013
+    },
+    {
+      "id": "5305486514",
+      "nombre": "Legazpi",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3911701,
+      "lon": -3.6950818
+    },
+    {
+      "id": "5305487570",
+      "nombre": "Arganzuela-Planetario",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.393356,
+      "lon": -3.6880541
+    },
+    {
+      "id": "5305487567",
+      "nombre": "Méndez Álvaro",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.3957423,
+      "lon": -3.6794812
+    },
+    {
+      "id": "5305487555",
+      "nombre": "Pacífico",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4024407,
+      "lon": -3.6737962
+    },
+    {
+      "id": "5305487550",
+      "nombre": "Conde de Casal",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4083531,
+      "lon": -3.6701083
+    },
+    {
+      "id": "5305487548",
+      "nombre": "Sainz de Baranda",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4152839,
+      "lon": -3.6695595
+    },
+    {
+      "id": "5305487547",
+      "nombre": "O'Donnell",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4221699,
+      "lon": -3.6689306
+    },
+    {
+      "id": "5305487546",
+      "nombre": "Manuel Becerra",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4272313,
+      "lon": -3.6685539
+    },
+    {
+      "id": "4892883351",
+      "nombre": "Diego de León",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4329074,
+      "lon": -3.6728882
+    },
+    {
+      "id": "4893932592",
+      "nombre": "Avenida de América",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4377822,
+      "lon": -3.6781834
+    },
+    {
+      "id": "5305486995",
+      "nombre": "República Argentina",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4442467,
+      "lon": -3.6845988
+    },
+    {
+      "id": "4998656170",
+      "nombre": "Nuevos Ministerios",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4462855,
+      "lon": -3.6944851
+    },
+    {
+      "id": "5305487543",
+      "nombre": "Cuatro Caminos",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4468445,
+      "lon": -3.7039696
+    },
+    {
+      "id": "5305487540",
+      "nombre": "Guzmán el Bueno",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4464373,
+      "lon": -3.7120222
+    },
+    {
+      "id": "5305487530",
+      "nombre": "Vicente Aleixandre",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4463586,
+      "lon": -3.719294
+    },
+    {
+      "id": "5305487524",
+      "nombre": "Ciudad Universitaria",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.443951,
+      "lon": -3.7260048
+    },
+    {
+      "id": "5305487017",
+      "nombre": "Moncloa",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4347279,
+      "lon": -3.7193
+    },
+    {
+      "id": "5305487015",
+      "nombre": "Argüelles",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4306128,
+      "lon": -3.7162913
+    },
+    {
+      "id": "5305487011",
+      "nombre": "Príncipe Pío",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4210451,
+      "lon": -3.7191825
+    },
+    {
+      "id": "5305487008",
+      "nombre": "Puerta del Ángel",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4138092,
+      "lon": -3.7268597
+    },
+    {
+      "id": "5305487006",
+      "nombre": "Alto de Extremadura",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4100779,
+      "lon": -3.7380802
+    },
+    {
+      "id": "5305486998",
+      "nombre": "Lucero",
+      "lineas": [
+        "L6"
+      ],
+      "lat": 40.4051321,
+      "lon": -3.7453299
+    },
+    {
+      "id": "5305513307",
+      "nombre": "La Fortuna",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3582151,
+      "lon": -3.7776404
+    },
+    {
+      "id": "5305513302",
+      "nombre": "La Peseta",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3631495,
+      "lon": -3.7573685
+    },
+    {
+      "id": "5305513300",
+      "nombre": "Carabanchel Alto",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3719031,
+      "lon": -3.75202
+    },
+    {
+      "id": "5305513292",
+      "nombre": "San Francisco",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3736855,
+      "lon": -3.7398321
+    },
+    {
+      "id": "5305513290",
+      "nombre": "Pan Bendito",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3762068,
+      "lon": -3.7342251
+    },
+    {
+      "id": "5305513289",
+      "nombre": "Abrantes",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3810235,
+      "lon": -3.728019
+    },
+    {
+      "id": "5305513287",
+      "nombre": "Plaza Elíptica",
+      "lineas": [
+        "L11"
+      ],
+      "lat": 40.3849775,
+      "lon": -3.7184629
+    },
+    {
+      "id": "77813234",
+      "nombre": "Tres Olivos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5005626,
+      "lon": -3.6946402
+    },
+    {
+      "id": "26753652",
+      "nombre": "Fuencarral",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.494746,
+      "lon": -3.6930347
+    },
+    {
+      "id": "136855152",
+      "nombre": "Begoña",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4826544,
+      "lon": -3.6865041
+    },
+    {
+      "id": "55966818",
+      "nombre": "Chamartín",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4739047,
+      "lon": -3.6826376
+    },
+    {
+      "id": "4411734251",
+      "nombre": "Plaza de Castilla",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4673481,
+      "lon": -3.6881082
+    },
+    {
+      "id": "25920146",
+      "nombre": "Cuzco",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4594822,
+      "lon": -3.6899628
+    },
+    {
+      "id": "25903008",
+      "nombre": "Santiago Bernabéu",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4523258,
+      "lon": -3.6906623
+    },
+    {
+      "id": "4998656212",
+      "nombre": "Nuevos Ministerios",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4452219,
+      "lon": -3.6913246
+    },
+    {
+      "id": "25902689",
+      "nombre": "Gregorio Marañón",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4376518,
+      "lon": -3.6912014
+    },
+    {
+      "id": "25906012",
+      "nombre": "Alonso Martínez",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4283179,
+      "lon": -3.6965617
+    },
+    {
+      "id": "21990715",
+      "nombre": "Tribunal",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.426534,
+      "lon": -3.7004678
+    },
+    {
+      "id": "25906011",
+      "nombre": "Plaza de España",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4240727,
+      "lon": -3.7097314
+    },
+    {
+      "id": "25906010",
+      "nombre": "Príncipe Pío",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4209771,
+      "lon": -3.7190967
+    },
+    {
+      "id": "21722690",
+      "nombre": "Lago",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4164656,
+      "lon": -3.7350259
+    },
+    {
+      "id": "21722670",
+      "nombre": "Batán",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4078337,
+      "lon": -3.7531106
+    },
+    {
+      "id": "21722667",
+      "nombre": "Casa de Campo",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4034711,
+      "lon": -3.7608635
+    },
+    {
+      "id": "5310153780",
+      "nombre": "Colonia Jardín",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3968408,
+      "lon": -3.7747744
+    },
+    {
+      "id": "330557378",
+      "nombre": "Aviación Española",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3836531,
+      "lon": -3.783957
+    },
+    {
+      "id": "317737950",
+      "nombre": "Cuatro Vientos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3772546,
+      "lon": -3.792539
+    },
+    {
+      "id": "2540747290",
+      "nombre": "Joaquín Vilumbrales",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3497231,
+      "lon": -3.8073107
+    },
+    {
+      "id": "317775809",
+      "nombre": "Puerta del Sur",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3452514,
+      "lon": -3.8120018
+    },
+    {
+      "id": "5310093477",
+      "nombre": "Puerta del Sur",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3452601,
+      "lon": -3.8120156
+    },
+    {
+      "id": "5310093476",
+      "nombre": "Joaquín Vilumbrales",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3497775,
+      "lon": -3.8073638
+    },
+    {
+      "id": "5310093473",
+      "nombre": "Cuatro Vientos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3773312,
+      "lon": -3.7926243
+    },
+    {
+      "id": "5310093472",
+      "nombre": "Aviación Española",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3837639,
+      "lon": -3.7840558
+    },
+    {
+      "id": "5310093471",
+      "nombre": "Colonia Jardín",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.3969025,
+      "lon": -3.774819
+    },
+    {
+      "id": "5310093469",
+      "nombre": "Casa de Campo",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4036173,
+      "lon": -3.7609688
+    },
+    {
+      "id": "5310093465",
+      "nombre": "Batán",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4078483,
+      "lon": -3.7531252
+    },
+    {
+      "id": "5310093882",
+      "nombre": "Lago",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4165164,
+      "lon": -3.735037
+    },
+    {
+      "id": "5310093880",
+      "nombre": "Príncipe Pío",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4211411,
+      "lon": -3.7192943
+    },
+    {
+      "id": "5310093878",
+      "nombre": "Plaza de España",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.42411,
+      "lon": -3.7097362
+    },
+    {
+      "id": "5310093877",
+      "nombre": "Tribunal",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4265632,
+      "lon": -3.7004942
+    },
+    {
+      "id": "7559826150",
+      "nombre": "Alonso Martínez",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4283397,
+      "lon": -3.696593
+    },
+    {
+      "id": "5310093903",
+      "nombre": "Gregorio Marañón",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4376498,
+      "lon": -3.6912404
+    },
+    {
+      "id": "4998656211",
+      "nombre": "Nuevos Ministerios",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4452235,
+      "lon": -3.6913658
+    },
+    {
+      "id": "5310093872",
+      "nombre": "Santiago Bernabéu",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4524365,
+      "lon": -3.6907611
+    },
+    {
+      "id": "5310093871",
+      "nombre": "Cuzco",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4595929,
+      "lon": -3.6900616
+    },
+    {
+      "id": "5310093862",
+      "nombre": "Plaza de Castilla",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4673687,
+      "lon": -3.6881528
+    },
+    {
+      "id": "5310093856",
+      "nombre": "Chamartín",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4740154,
+      "lon": -3.6827364
+    },
+    {
+      "id": "5310093848",
+      "nombre": "Begoña",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.4826494,
+      "lon": -3.6865672
+    },
+    {
+      "id": "5310093842",
+      "nombre": "Fuencarral",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.494731,
+      "lon": -3.6931152
+    },
+    {
+      "id": "5310093841",
+      "nombre": "Tres Olivos",
+      "lineas": [
+        "L10"
+      ],
+      "lat": 40.5005654,
+      "lon": -3.6946962
+    }
+  ],
+  "conexiones": [
+    {
+      "origen": "258556530",
+      "destino": "299642717",
+      "tiempo": 1.8,
+      "linea": "L11"
+    },
+    {
+      "origen": "299642717",
+      "destino": "299642733",
+      "tiempo": 1.5,
+      "linea": "L11"
+    },
+    {
+      "origen": "299642733",
+      "destino": "427885573",
+      "tiempo": 1.1,
+      "linea": "L11"
+    },
+    {
+      "origen": "427885573",
+      "destino": "23646367",
+      "tiempo": 2.1,
+      "linea": "L11"
+    },
+    {
+      "origen": "23646367",
+      "destino": "427885568",
+      "tiempo": 2.2,
+      "linea": "L11"
+    },
+    {
+      "origen": "427885568",
+      "destino": "344477421",
+      "tiempo": 3.6,
+      "linea": "L11"
+    },
+    {
+      "origen": "2609596245",
+      "destino": "265068165",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "265068165",
+      "destino": "265067803",
+      "tiempo": 1.7,
+      "linea": "L6"
+    },
+    {
+      "origen": "265067803",
+      "destino": "265067381",
+      "tiempo": 2.1,
+      "linea": "L6"
+    },
+    {
+      "origen": "265067381",
+      "destino": "5305486978",
+      "tiempo": 2.1,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305486978",
+      "destino": "25935520",
+      "tiempo": 2.2,
+      "linea": "L6"
+    },
+    {
+      "origen": "25935520",
+      "destino": "26578948",
+      "tiempo": 1.0,
+      "linea": "L6"
+    },
+    {
+      "origen": "26578948",
+      "destino": "152831505",
+      "tiempo": 2.4,
+      "linea": "L6"
+    },
+    {
+      "origen": "152831505",
+      "destino": "150785162",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "150785162",
+      "destino": "27515687",
+      "tiempo": 1.2,
+      "linea": "L6"
+    },
+    {
+      "origen": "27515687",
+      "destino": "8590458173",
+      "tiempo": 1.4,
+      "linea": "L6"
+    },
+    {
+      "origen": "8590458173",
+      "destino": "4998656171",
+      "tiempo": 1.6,
+      "linea": "L6"
+    },
+    {
+      "origen": "4998656171",
+      "destino": "265972430",
+      "tiempo": 1.7,
+      "linea": "L6"
+    },
+    {
+      "origen": "265972430",
+      "destino": "4893932593",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "4893932593",
+      "destino": "4892883352",
+      "tiempo": 1.4,
+      "linea": "L6"
+    },
+    {
+      "origen": "4892883352",
+      "destino": "265808842",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "265808842",
+      "destino": "265971848",
+      "tiempo": 1.1,
+      "linea": "L6"
+    },
+    {
+      "origen": "265971848",
+      "destino": "5305486984",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305486984",
+      "destino": "265971846",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "265971846",
+      "destino": "265971328",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "265971328",
+      "destino": "325130452",
+      "tiempo": 1.6,
+      "linea": "L6"
+    },
+    {
+      "origen": "325130452",
+      "destino": "265971320",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "265971320",
+      "destino": "265970746",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "265970746",
+      "destino": "265970742",
+      "tiempo": 1.9,
+      "linea": "L6"
+    },
+    {
+      "origen": "265970742",
+      "destino": "5305486990",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305486990",
+      "destino": "258556529",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "258556529",
+      "destino": "21759736",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "21759736",
+      "destino": "259656546",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "259656546",
+      "destino": "2609596245",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "4178663198",
+      "destino": "5303173539",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173539",
+      "destino": "26808567",
+      "tiempo": 1.1,
+      "linea": "L3"
+    },
+    {
+      "origen": "26808567",
+      "destino": "5303173542",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173542",
+      "destino": "21964104",
+      "tiempo": 1.2,
+      "linea": "L3"
+    },
+    {
+      "origen": "21964104",
+      "destino": "21759678",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "21759678",
+      "destino": "21956103",
+      "tiempo": 1.9,
+      "linea": "L3"
+    },
+    {
+      "origen": "21956103",
+      "destino": "2609596152",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "2609596152",
+      "destino": "324340440",
+      "tiempo": 1.4,
+      "linea": "L3"
+    },
+    {
+      "origen": "324340440",
+      "destino": "324338501",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "324338501",
+      "destino": "5303173548",
+      "tiempo": 1.5,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173548",
+      "destino": "316631344",
+      "tiempo": 1.9,
+      "linea": "L3"
+    },
+    {
+      "origen": "316631344",
+      "destino": "316631343",
+      "tiempo": 2.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "316631343",
+      "destino": "27582265",
+      "tiempo": 1.2,
+      "linea": "L3"
+    },
+    {
+      "origen": "27582265",
+      "destino": "248842472",
+      "tiempo": 2.2,
+      "linea": "L3"
+    },
+    {
+      "origen": "248842472",
+      "destino": "248888586",
+      "tiempo": 2.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "248888586",
+      "destino": "316631342",
+      "tiempo": 2.1,
+      "linea": "L3"
+    },
+    {
+      "origen": "316631342",
+      "destino": "2609596309",
+      "tiempo": 3.1,
+      "linea": "L3"
+    },
+    {
+      "origen": "2609596309",
+      "destino": "12772138469",
+      "tiempo": 5.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "305918710",
+      "destino": "996145344",
+      "tiempo": 2.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "996145344",
+      "destino": "262347821",
+      "tiempo": 2.1,
+      "linea": "L10"
+    },
+    {
+      "origen": "262347821",
+      "destino": "262347151",
+      "tiempo": 2.1,
+      "linea": "L10"
+    },
+    {
+      "origen": "262347151",
+      "destino": "262347883",
+      "tiempo": 2.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "262347883",
+      "destino": "259431857",
+      "tiempo": 2.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "259431857",
+      "destino": "257708881",
+      "tiempo": 4.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "257708881",
+      "destino": "260750333",
+      "tiempo": 2.8,
+      "linea": "L10"
+    },
+    {
+      "origen": "260750333",
+      "destino": "262658666",
+      "tiempo": 1.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "262658666",
+      "destino": "262348722",
+      "tiempo": 4.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "262348722",
+      "destino": "9871197151",
+      "tiempo": 1.1,
+      "linea": "L10"
+    },
+    {
+      "origen": "5303271992",
+      "destino": "5303271994",
+      "tiempo": 1.5,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303271994",
+      "destino": "324376827",
+      "tiempo": 1.4,
+      "linea": "L2"
+    },
+    {
+      "origen": "324376827",
+      "destino": "25935011",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "25935011",
+      "destino": "26066629",
+      "tiempo": 1.3,
+      "linea": "L2"
+    },
+    {
+      "origen": "26066629",
+      "destino": "26068173",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "26068173",
+      "destino": "4405991654",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "4405991654",
+      "destino": "4405988107",
+      "tiempo": 1.1,
+      "linea": "L2"
+    },
+    {
+      "origen": "4405988107",
+      "destino": "25903354",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "25903354",
+      "destino": "25903355",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "25903355",
+      "destino": "25903356",
+      "tiempo": 1.5,
+      "linea": "L2"
+    },
+    {
+      "origen": "25903356",
+      "destino": "5303272002",
+      "tiempo": 1.1,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272002",
+      "destino": "4405987842",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "4405987842",
+      "destino": "5303272004",
+      "tiempo": 1.6,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272004",
+      "destino": "252522982",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "252522982",
+      "destino": "265809417",
+      "tiempo": 2.6,
+      "linea": "L2"
+    },
+    {
+      "origen": "265809417",
+      "destino": "1206348013",
+      "tiempo": 2.1,
+      "linea": "L2"
+    },
+    {
+      "origen": "1206348013",
+      "destino": "1206347978",
+      "tiempo": 2.7,
+      "linea": "L2"
+    },
+    {
+      "origen": "1206347978",
+      "destino": "20962897",
+      "tiempo": 2.2,
+      "linea": "L2"
+    },
+    {
+      "origen": "20962897",
+      "destino": "5303272008",
+      "tiempo": 1.6,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303127328",
+      "destino": "49409124",
+      "tiempo": 2.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "49409124",
+      "destino": "21722663",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "21722663",
+      "destino": "5303127335",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127335",
+      "destino": "21722641",
+      "tiempo": 1.6,
+      "linea": "L5"
+    },
+    {
+      "origen": "21722641",
+      "destino": "21759737",
+      "tiempo": 1.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "21759737",
+      "destino": "21775778",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "21775778",
+      "destino": "5303127341",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127341",
+      "destino": "26068752",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "26068752",
+      "destino": "21759735",
+      "tiempo": 1.8,
+      "linea": "L5"
+    },
+    {
+      "origen": "21759735",
+      "destino": "5303127345",
+      "tiempo": 1.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127345",
+      "destino": "21775666",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "21775666",
+      "destino": "21759700",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "21759700",
+      "destino": "21759690",
+      "tiempo": 1.2,
+      "linea": "L5"
+    },
+    {
+      "origen": "21759690",
+      "destino": "5303127349",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127349",
+      "destino": "5303127353",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127353",
+      "destino": "22032372",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "22032372",
+      "destino": "25906279",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "25906279",
+      "destino": "5303127355",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127355",
+      "destino": "255881693",
+      "tiempo": 1.6,
+      "linea": "L5"
+    },
+    {
+      "origen": "255881693",
+      "destino": "5303127358",
+      "tiempo": 1.7,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127358",
+      "destino": "265811748",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "265811748",
+      "destino": "5303127360",
+      "tiempo": 1.8,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127360",
+      "destino": "254133797",
+      "tiempo": 1.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "254133797",
+      "destino": "252523583",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "252523583",
+      "destino": "5303127364",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127364",
+      "destino": "26009598",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "26009598",
+      "destino": "251940779",
+      "tiempo": 1.9,
+      "linea": "L5"
+    },
+    {
+      "origen": "251940779",
+      "destino": "251942153",
+      "tiempo": 1.8,
+      "linea": "L5"
+    },
+    {
+      "origen": "251942153",
+      "destino": "26009601",
+      "tiempo": 1.9,
+      "linea": "L5"
+    },
+    {
+      "origen": "26009601",
+      "destino": "21759679",
+      "tiempo": 2.6,
+      "linea": "L5"
+    },
+    {
+      "origen": "21759679",
+      "destino": "251945588",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5304749213",
+      "destino": "5304749535",
+      "tiempo": 1.9,
+      "linea": "R"
+    },
+    {
+      "origen": "5299262127",
+      "destino": "355162548",
+      "tiempo": 1.7,
+      "linea": "L1"
+    },
+    {
+      "origen": "355162548",
+      "destino": "5301861034",
+      "tiempo": 1.2,
+      "linea": "L1"
+    },
+    {
+      "origen": "5301861034",
+      "destino": "26203554",
+      "tiempo": 2.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "26203554",
+      "destino": "299513996",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "299513996",
+      "destino": "299514322",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "299514322",
+      "destino": "299644680",
+      "tiempo": 1.6,
+      "linea": "L1"
+    },
+    {
+      "origen": "299644680",
+      "destino": "299515114",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "299515114",
+      "destino": "5299314589",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299314589",
+      "destino": "324391382",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "324391382",
+      "destino": "324391956",
+      "tiempo": 1.5,
+      "linea": "L1"
+    },
+    {
+      "origen": "324391956",
+      "destino": "5299314586",
+      "tiempo": 1.3,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299314586",
+      "destino": "5299314584",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299314584",
+      "destino": "5299314582",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299314582",
+      "destino": "5299314580",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299314580",
+      "destino": "26340396",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "26340396",
+      "destino": "26340397",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "26340397",
+      "destino": "26494720",
+      "tiempo": 1.5,
+      "linea": "L1"
+    },
+    {
+      "origen": "26494720",
+      "destino": "26494721",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "26494721",
+      "destino": "323411634",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "323411634",
+      "destino": "5299314574",
+      "tiempo": 1.2,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299314574",
+      "destino": "323403727",
+      "tiempo": 1.3,
+      "linea": "L1"
+    },
+    {
+      "origen": "323403727",
+      "destino": "323400134",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "323400134",
+      "destino": "323387579",
+      "tiempo": 1.1,
+      "linea": "L1"
+    },
+    {
+      "origen": "323387579",
+      "destino": "324398584",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "324398584",
+      "destino": "330235720",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "330235720",
+      "destino": "330235642",
+      "tiempo": 1.1,
+      "linea": "L1"
+    },
+    {
+      "origen": "330235642",
+      "destino": "330236023",
+      "tiempo": 2.8,
+      "linea": "L1"
+    },
+    {
+      "origen": "330236023",
+      "destino": "330236831",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "330236831",
+      "destino": "330236828",
+      "tiempo": 1.7,
+      "linea": "L1"
+    },
+    {
+      "origen": "330236828",
+      "destino": "330237676",
+      "tiempo": 1.2,
+      "linea": "L1"
+    },
+    {
+      "origen": "330237676",
+      "destino": "330238287",
+      "tiempo": 2.6,
+      "linea": "L1"
+    },
+    {
+      "origen": "330238287",
+      "destino": "330238286",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "258586813",
+      "destino": "4039004733",
+      "tiempo": 1.1,
+      "linea": "L7"
+    },
+    {
+      "origen": "4039004733",
+      "destino": "258587099",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "258587099",
+      "destino": "258587993",
+      "tiempo": 1.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "258587993",
+      "destino": "262344419",
+      "tiempo": 1.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "262344419",
+      "destino": "60335812",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "60335812",
+      "destino": "344856991",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "344856991",
+      "destino": "988334626",
+      "tiempo": 2.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "988334626",
+      "destino": "5304690741",
+      "tiempo": 2.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304690741",
+      "destino": "324354506",
+      "tiempo": 1.7,
+      "linea": "L7"
+    },
+    {
+      "origen": "324354506",
+      "destino": "324355017",
+      "tiempo": 1.6,
+      "linea": "L7"
+    },
+    {
+      "origen": "324355017",
+      "destino": "324407894",
+      "tiempo": 1.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "324407894",
+      "destino": "5304690737",
+      "tiempo": 1.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304690737",
+      "destino": "4893932597",
+      "tiempo": 2.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "4893932597",
+      "destino": "259857216",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "259857216",
+      "destino": "299597934",
+      "tiempo": 1.5,
+      "linea": "L7"
+    },
+    {
+      "origen": "299597934",
+      "destino": "299644350",
+      "tiempo": 1.8,
+      "linea": "L7"
+    },
+    {
+      "origen": "299644350",
+      "destino": "254133716",
+      "tiempo": 1.6,
+      "linea": "L7"
+    },
+    {
+      "origen": "254133716",
+      "destino": "299597818",
+      "tiempo": 1.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "299597818",
+      "destino": "473217146",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "473217146",
+      "destino": "1594978041",
+      "tiempo": 1.7,
+      "linea": "L7"
+    },
+    {
+      "origen": "1594978041",
+      "destino": "455188592",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "455188592",
+      "destino": "21757086",
+      "tiempo": 1.8,
+      "linea": "L7"
+    },
+    {
+      "origen": "21757086",
+      "destino": "29797659",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "29797659",
+      "destino": "332412246",
+      "tiempo": 5.9,
+      "linea": "L7"
+    },
+    {
+      "origen": "332412246",
+      "destino": "332412974",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "332412974",
+      "destino": "332413315",
+      "tiempo": 2.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "332413315",
+      "destino": "332413739",
+      "tiempo": 2.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "332413739",
+      "destino": "332414252",
+      "tiempo": 1.8,
+      "linea": "L7"
+    },
+    {
+      "origen": "332414252",
+      "destino": "382936499",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "382936499",
+      "destino": "352682750",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "4998691474",
+      "destino": "252728558",
+      "tiempo": 3.6,
+      "linea": "L8"
+    },
+    {
+      "origen": "252728558",
+      "destino": "4405987845",
+      "tiempo": 5.4,
+      "linea": "L8"
+    },
+    {
+      "origen": "4405987845",
+      "destino": "4405987844",
+      "tiempo": 1.8,
+      "linea": "L8"
+    },
+    {
+      "origen": "4405987844",
+      "destino": "4405987840",
+      "tiempo": 4.1,
+      "linea": "L8"
+    },
+    {
+      "origen": "4405987840",
+      "destino": "4405987841",
+      "tiempo": 7.5,
+      "linea": "L8"
+    },
+    {
+      "origen": "4405987841",
+      "destino": "4405987839",
+      "tiempo": 2.7,
+      "linea": "L8"
+    },
+    {
+      "origen": "4405987839",
+      "destino": "4405987838",
+      "tiempo": 4.0,
+      "linea": "L8"
+    },
+    {
+      "origen": "2575149571",
+      "destino": "1430344237",
+      "tiempo": 2.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "1430344237",
+      "destino": "26203552",
+      "tiempo": 2.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "26203552",
+      "destino": "26203551",
+      "tiempo": 1.8,
+      "linea": "L9"
+    },
+    {
+      "origen": "26203551",
+      "destino": "26203553",
+      "tiempo": 2.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "26203553",
+      "destino": "5307455074",
+      "tiempo": 1.6,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307455074",
+      "destino": "102223740",
+      "tiempo": 1.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "102223740",
+      "destino": "1437132920",
+      "tiempo": 1.4,
+      "linea": "L9"
+    },
+    {
+      "origen": "1437132920",
+      "destino": "5302030276",
+      "tiempo": 1.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "5302030276",
+      "destino": "258564816",
+      "tiempo": 1.4,
+      "linea": "L9"
+    },
+    {
+      "origen": "258564816",
+      "destino": "258563993",
+      "tiempo": 1.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "258563993",
+      "destino": "4893932598",
+      "tiempo": 1.4,
+      "linea": "L9"
+    },
+    {
+      "origen": "4893932598",
+      "destino": "265811742",
+      "tiempo": 1.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "265811742",
+      "destino": "5110782972",
+      "tiempo": 2.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "5110782972",
+      "destino": "4405987843",
+      "tiempo": 1.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "4405987843",
+      "destino": "265971847",
+      "tiempo": 1.8,
+      "linea": "L9"
+    },
+    {
+      "origen": "265971847",
+      "destino": "1538557946",
+      "tiempo": 1.6,
+      "linea": "L9"
+    },
+    {
+      "origen": "1538557946",
+      "destino": "1538569021",
+      "tiempo": 1.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "1538569021",
+      "destino": "352693701",
+      "tiempo": 2.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "352693701",
+      "destino": "352692539",
+      "tiempo": 1.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "352692539",
+      "destino": "1859530943",
+      "tiempo": 2.3,
+      "linea": "L9"
+    },
+    {
+      "origen": "1859530943",
+      "destino": "352689806",
+      "tiempo": 2.3,
+      "linea": "L9"
+    },
+    {
+      "origen": "352689806",
+      "destino": "352689520",
+      "tiempo": 1.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "352689520",
+      "destino": "1539159351",
+      "tiempo": 1.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "1539159351",
+      "destino": "311134372",
+      "tiempo": 11.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "311134372",
+      "destino": "420672882",
+      "tiempo": 6.8,
+      "linea": "L9"
+    },
+    {
+      "origen": "420672882",
+      "destino": "420671908",
+      "tiempo": 3.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "420671908",
+      "destino": "306019923",
+      "tiempo": 7.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "306019923",
+      "destino": "420675386",
+      "tiempo": 6.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "5305116633",
+      "destino": "338298428",
+      "tiempo": 6.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "338298428",
+      "destino": "307987235",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "307987235",
+      "destino": "1437138212",
+      "tiempo": 1.6,
+      "linea": "L12"
+    },
+    {
+      "origen": "1437138212",
+      "destino": "317778611",
+      "tiempo": 1.8,
+      "linea": "L12"
+    },
+    {
+      "origen": "317778611",
+      "destino": "317778608",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "317778608",
+      "destino": "338347206",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "338347206",
+      "destino": "338349891",
+      "tiempo": 2.4,
+      "linea": "L12"
+    },
+    {
+      "origen": "338349891",
+      "destino": "317780196",
+      "tiempo": 2.2,
+      "linea": "L12"
+    },
+    {
+      "origen": "317780196",
+      "destino": "317780194",
+      "tiempo": 1.9,
+      "linea": "L12"
+    },
+    {
+      "origen": "317780194",
+      "destino": "317780189",
+      "tiempo": 2.5,
+      "linea": "L12"
+    },
+    {
+      "origen": "317780189",
+      "destino": "308599585",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "308599585",
+      "destino": "411900896",
+      "tiempo": 2.2,
+      "linea": "L12"
+    },
+    {
+      "origen": "411900896",
+      "destino": "356359145",
+      "tiempo": 2.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "356359145",
+      "destino": "356362568",
+      "tiempo": 2.0,
+      "linea": "L12"
+    },
+    {
+      "origen": "356362568",
+      "destino": "308215251",
+      "tiempo": 5.2,
+      "linea": "L12"
+    },
+    {
+      "origen": "308215251",
+      "destino": "308210965",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "308210965",
+      "destino": "324518557",
+      "tiempo": 1.7,
+      "linea": "L12"
+    },
+    {
+      "origen": "324518557",
+      "destino": "1116641891",
+      "tiempo": 1.4,
+      "linea": "L12"
+    },
+    {
+      "origen": "1116641891",
+      "destino": "324419030",
+      "tiempo": 4.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "324419030",
+      "destino": "315293834",
+      "tiempo": 5.4,
+      "linea": "L12"
+    },
+    {
+      "origen": "315293834",
+      "destino": "317777579",
+      "tiempo": 2.4,
+      "linea": "L12"
+    },
+    {
+      "origen": "317777579",
+      "destino": "317777577",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "317777577",
+      "destino": "2609596291",
+      "tiempo": 1.5,
+      "linea": "L12"
+    },
+    {
+      "origen": "2609596291",
+      "destino": "323136833",
+      "tiempo": 2.0,
+      "linea": "L12"
+    },
+    {
+      "origen": "323136833",
+      "destino": "4912161019",
+      "tiempo": 4.6,
+      "linea": "L12"
+    },
+    {
+      "origen": "4912161019",
+      "destino": "2609596056",
+      "tiempo": 3.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "2609596056",
+      "destino": "1067987272",
+      "tiempo": 1.8,
+      "linea": "L12"
+    },
+    {
+      "origen": "1067987272",
+      "destino": "5305116633",
+      "tiempo": 1.8,
+      "linea": "L12"
+    },
+    {
+      "origen": "5299261413",
+      "destino": "354898747",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "354898747",
+      "destino": "253543665",
+      "tiempo": 1.8,
+      "linea": "L4"
+    },
+    {
+      "origen": "253543665",
+      "destino": "253533921",
+      "tiempo": 1.2,
+      "linea": "L4"
+    },
+    {
+      "origen": "253533921",
+      "destino": "253533918",
+      "tiempo": 1.2,
+      "linea": "L4"
+    },
+    {
+      "origen": "253533918",
+      "destino": "5302030278",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5302030278",
+      "destino": "253601582",
+      "tiempo": 1.5,
+      "linea": "L4"
+    },
+    {
+      "origen": "253601582",
+      "destino": "253602179",
+      "tiempo": 2.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "253602179",
+      "destino": "253603189",
+      "tiempo": 1.9,
+      "linea": "L4"
+    },
+    {
+      "origen": "253603189",
+      "destino": "253603188",
+      "tiempo": 1.3,
+      "linea": "L4"
+    },
+    {
+      "origen": "253603188",
+      "destino": "253611377",
+      "tiempo": 1.3,
+      "linea": "L4"
+    },
+    {
+      "origen": "253611377",
+      "destino": "11358105045",
+      "tiempo": 1.5,
+      "linea": "L4"
+    },
+    {
+      "origen": "11358105045",
+      "destino": "4893932595",
+      "tiempo": 1.4,
+      "linea": "L4"
+    },
+    {
+      "origen": "4893932595",
+      "destino": "4892851842",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "4892851842",
+      "destino": "265814419",
+      "tiempo": 1.1,
+      "linea": "L4"
+    },
+    {
+      "origen": "265814419",
+      "destino": "265808559",
+      "tiempo": 1.1,
+      "linea": "L4"
+    },
+    {
+      "origen": "265808559",
+      "destino": "265814147",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "265814147",
+      "destino": "25902051",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "25902051",
+      "destino": "25902050",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "25902050",
+      "destino": "3602269606",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "3602269606",
+      "destino": "25934729",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "25934729",
+      "destino": "5302296741",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5302296741",
+      "destino": "5302296742",
+      "tiempo": 1.6,
+      "linea": "L4"
+    },
+    {
+      "origen": "10047607608",
+      "destino": "5310093839",
+      "tiempo": 1.1,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093839",
+      "destino": "5310093832",
+      "tiempo": 4.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093832",
+      "destino": "5310093830",
+      "tiempo": 1.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093830",
+      "destino": "5310093829",
+      "tiempo": 2.8,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093829",
+      "destino": "5310093822",
+      "tiempo": 4.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093822",
+      "destino": "5310093519",
+      "tiempo": 2.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093519",
+      "destino": "5310093514",
+      "tiempo": 2.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093514",
+      "destino": "5310093507",
+      "tiempo": 2.1,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093507",
+      "destino": "5310093492",
+      "tiempo": 2.1,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093492",
+      "destino": "5310093479",
+      "tiempo": 2.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "5307422105",
+      "destino": "4427602014",
+      "tiempo": 6.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "4427602014",
+      "destino": "4427602016",
+      "tiempo": 7.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "4427602016",
+      "destino": "4427602015",
+      "tiempo": 3.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "4427602015",
+      "destino": "5307426085",
+      "tiempo": 6.8,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307426085",
+      "destino": "5307423809",
+      "tiempo": 11.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307423809",
+      "destino": "5307423814",
+      "tiempo": 1.4,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307423814",
+      "destino": "5307423817",
+      "tiempo": 1.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307423817",
+      "destino": "5307425733",
+      "tiempo": 2.3,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425733",
+      "destino": "5307425743",
+      "tiempo": 2.3,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425743",
+      "destino": "5307425762",
+      "tiempo": 1.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425762",
+      "destino": "5307425771",
+      "tiempo": 2.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425771",
+      "destino": "5307425782",
+      "tiempo": 1.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425782",
+      "destino": "5307425799",
+      "tiempo": 1.6,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425799",
+      "destino": "5307418582",
+      "tiempo": 1.9,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307418582",
+      "destino": "5307422112",
+      "tiempo": 1.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307422112",
+      "destino": "5307435834",
+      "tiempo": 2.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307435834",
+      "destino": "4893932599",
+      "tiempo": 1.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "4893932599",
+      "destino": "5307418592",
+      "tiempo": 1.4,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307418592",
+      "destino": "5307418593",
+      "tiempo": 1.5,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307418593",
+      "destino": "5307418595",
+      "tiempo": 1.4,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307418595",
+      "destino": "5307418597",
+      "tiempo": 1.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307418597",
+      "destino": "5307418611",
+      "tiempo": 1.4,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307418611",
+      "destino": "5307455073",
+      "tiempo": 1.2,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307455073",
+      "destino": "5307425534",
+      "tiempo": 1.6,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425534",
+      "destino": "5307425554",
+      "tiempo": 2.0,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425554",
+      "destino": "5307425567",
+      "tiempo": 1.8,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307425567",
+      "destino": "5307435828",
+      "tiempo": 2.1,
+      "linea": "L9"
+    },
+    {
+      "origen": "5307435828",
+      "destino": "5307426097",
+      "tiempo": 2.3,
+      "linea": "L9"
+    },
+    {
+      "origen": "5296502805",
+      "destino": "5296502806",
+      "tiempo": 1.6,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502806",
+      "destino": "5296502807",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502807",
+      "destino": "5296502809",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502809",
+      "destino": "5296502810",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502810",
+      "destino": "5296502820",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502820",
+      "destino": "5296502819",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502819",
+      "destino": "5296503324",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296503324",
+      "destino": "5296503327",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296503327",
+      "destino": "4892851002",
+      "tiempo": 1.1,
+      "linea": "L4"
+    },
+    {
+      "origen": "4892851002",
+      "destino": "4893932594",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "4893932594",
+      "destino": "5296502803",
+      "tiempo": 1.4,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502803",
+      "destino": "5296502802",
+      "tiempo": 1.5,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502802",
+      "destino": "5296502801",
+      "tiempo": 1.3,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502801",
+      "destino": "5296502800",
+      "tiempo": 1.3,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502800",
+      "destino": "5296502796",
+      "tiempo": 1.9,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502796",
+      "destino": "5296502783",
+      "tiempo": 2.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502783",
+      "destino": "5302296725",
+      "tiempo": 1.5,
+      "linea": "L4"
+    },
+    {
+      "origen": "5302296725",
+      "destino": "5296502775",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502775",
+      "destino": "5296502773",
+      "tiempo": 1.2,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502773",
+      "destino": "5296502772",
+      "tiempo": 1.2,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502772",
+      "destino": "5296502768",
+      "tiempo": 1.9,
+      "linea": "L4"
+    },
+    {
+      "origen": "5296502768",
+      "destino": "5296502767",
+      "tiempo": 1.0,
+      "linea": "L4"
+    },
+    {
+      "origen": "5299216970",
+      "destino": "5299216972",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299216972",
+      "destino": "5299216977",
+      "tiempo": 2.6,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299216977",
+      "destino": "5299216982",
+      "tiempo": 1.2,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299216982",
+      "destino": "5299216985",
+      "tiempo": 1.7,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299216985",
+      "destino": "5299216987",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299216987",
+      "destino": "5299216997",
+      "tiempo": 2.8,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299216997",
+      "destino": "5299217000",
+      "tiempo": 1.1,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299217000",
+      "destino": "5299217006",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299217006",
+      "destino": "5299217008",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299217008",
+      "destino": "5299217010",
+      "tiempo": 1.1,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299217010",
+      "destino": "5299217011",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299217011",
+      "destino": "5299217013",
+      "tiempo": 1.5,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299217013",
+      "destino": "5299217017",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299217017",
+      "destino": "5299219122",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219122",
+      "destino": "5299219127",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219127",
+      "destino": "5299219130",
+      "tiempo": 1.5,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219130",
+      "destino": "5299219185",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219185",
+      "destino": "5299219187",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219187",
+      "destino": "5299219188",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219188",
+      "destino": "5299219189",
+      "tiempo": 1.4,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219189",
+      "destino": "5299219190",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219190",
+      "destino": "5299219193",
+      "tiempo": 1.3,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219193",
+      "destino": "5299219194",
+      "tiempo": 1.5,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219194",
+      "destino": "5299219195",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219195",
+      "destino": "5299219197",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219197",
+      "destino": "5299219209",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219209",
+      "destino": "5299219215",
+      "tiempo": 1.6,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219215",
+      "destino": "5299219204",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219204",
+      "destino": "5299219138",
+      "tiempo": 1.0,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219138",
+      "destino": "5299219156",
+      "tiempo": 2.1,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219156",
+      "destino": "5299219167",
+      "tiempo": 1.2,
+      "linea": "L1"
+    },
+    {
+      "origen": "5299219167",
+      "destino": "5299219181",
+      "tiempo": 1.8,
+      "linea": "L1"
+    },
+    {
+      "origen": "5302031690",
+      "destino": "5302031695",
+      "tiempo": 3.9,
+      "linea": "L8"
+    },
+    {
+      "origen": "5302031695",
+      "destino": "5302031696",
+      "tiempo": 2.7,
+      "linea": "L8"
+    },
+    {
+      "origen": "5302031696",
+      "destino": "5302031714",
+      "tiempo": 7.5,
+      "linea": "L8"
+    },
+    {
+      "origen": "5302031714",
+      "destino": "5302031715",
+      "tiempo": 4.1,
+      "linea": "L8"
+    },
+    {
+      "origen": "5302031715",
+      "destino": "5302031882",
+      "tiempo": 1.8,
+      "linea": "L8"
+    },
+    {
+      "origen": "5302031882",
+      "destino": "5302031883",
+      "tiempo": 5.4,
+      "linea": "L8"
+    },
+    {
+      "origen": "5302031883",
+      "destino": "5302031475",
+      "tiempo": 3.6,
+      "linea": "L8"
+    },
+    {
+      "origen": "5303043429",
+      "destino": "5303043428",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043428",
+      "destino": "5303043425",
+      "tiempo": 2.6,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043425",
+      "destino": "5303043422",
+      "tiempo": 1.9,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043422",
+      "destino": "5303043421",
+      "tiempo": 1.8,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043421",
+      "destino": "5303043320",
+      "tiempo": 1.9,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043320",
+      "destino": "5303043318",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043318",
+      "destino": "5303043317",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043317",
+      "destino": "5303043313",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043313",
+      "destino": "5303043306",
+      "tiempo": 1.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043306",
+      "destino": "5303043493",
+      "tiempo": 1.8,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043493",
+      "destino": "5303043490",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043490",
+      "destino": "5303043488",
+      "tiempo": 1.7,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043488",
+      "destino": "5303043473",
+      "tiempo": 1.6,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043473",
+      "destino": "5303043472",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043472",
+      "destino": "5303043466",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043466",
+      "destino": "5303043465",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043465",
+      "destino": "5303127350",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127350",
+      "destino": "5303043432",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043432",
+      "destino": "5303043330",
+      "tiempo": 1.2,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043330",
+      "destino": "5303043351",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043351",
+      "destino": "5303043349",
+      "tiempo": 1.1,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043349",
+      "destino": "5303043348",
+      "tiempo": 1.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043348",
+      "destino": "5303043343",
+      "tiempo": 1.8,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043343",
+      "destino": "5303043342",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043342",
+      "destino": "5303043340",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043340",
+      "destino": "5303043339",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043339",
+      "destino": "5303043337",
+      "tiempo": 1.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303043337",
+      "destino": "5303127336",
+      "tiempo": 1.7,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303127336",
+      "destino": "5303042475",
+      "tiempo": 1.4,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303042475",
+      "destino": "5303042471",
+      "tiempo": 1.0,
+      "linea": "L5"
+    },
+    {
+      "origen": "5303042471",
+      "destino": "5303127328",
+      "tiempo": 2.3,
+      "linea": "L5"
+    },
+    {
+      "origen": "12772138470",
+      "destino": "5303173563",
+      "tiempo": 5.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173563",
+      "destino": "5303173570",
+      "tiempo": 3.1,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173570",
+      "destino": "5303173571",
+      "tiempo": 2.1,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173571",
+      "destino": "5303173574",
+      "tiempo": 2.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173574",
+      "destino": "5303173575",
+      "tiempo": 2.2,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173575",
+      "destino": "5303173576",
+      "tiempo": 1.2,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173576",
+      "destino": "5303173578",
+      "tiempo": 2.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173578",
+      "destino": "5303173582",
+      "tiempo": 2.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173582",
+      "destino": "5303173587",
+      "tiempo": 1.5,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173587",
+      "destino": "5303173594",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173594",
+      "destino": "5303173598",
+      "tiempo": 1.4,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173598",
+      "destino": "5303173603",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173603",
+      "destino": "5303173605",
+      "tiempo": 1.9,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173605",
+      "destino": "9666807257",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "9666807257",
+      "destino": "5303173607",
+      "tiempo": 1.2,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173607",
+      "destino": "5303173608",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173608",
+      "destino": "5303173609",
+      "tiempo": 1.1,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303173609",
+      "destino": "5303173613",
+      "tiempo": 1.0,
+      "linea": "L3"
+    },
+    {
+      "origen": "5303272058",
+      "destino": "5303272050",
+      "tiempo": 1.6,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272050",
+      "destino": "5303272046",
+      "tiempo": 2.2,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272046",
+      "destino": "5303272281",
+      "tiempo": 2.7,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272281",
+      "destino": "4894222724",
+      "tiempo": 2.1,
+      "linea": "L2"
+    },
+    {
+      "origen": "4894222724",
+      "destino": "5303272274",
+      "tiempo": 2.6,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272274",
+      "destino": "5303272268",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272268",
+      "destino": "5303272264",
+      "tiempo": 1.5,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272264",
+      "destino": "5303272061",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272061",
+      "destino": "5303272012",
+      "tiempo": 1.1,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272012",
+      "destino": "5303272236",
+      "tiempo": 1.5,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272236",
+      "destino": "5303272231",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272231",
+      "destino": "5303272075",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272075",
+      "destino": "5303272068",
+      "tiempo": 1.1,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272068",
+      "destino": "5303272249",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272249",
+      "destino": "5303272248",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272248",
+      "destino": "5303272246",
+      "tiempo": 1.3,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272246",
+      "destino": "5303272244",
+      "tiempo": 1.0,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272244",
+      "destino": "5303272243",
+      "tiempo": 1.4,
+      "linea": "L2"
+    },
+    {
+      "origen": "5303272243",
+      "destino": "5303272239",
+      "tiempo": 1.5,
+      "linea": "L2"
+    },
+    {
+      "origen": "5304629166",
+      "destino": "5304629171",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629171",
+      "destino": "5304629180",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629180",
+      "destino": "5304629186",
+      "tiempo": 1.8,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629186",
+      "destino": "5304628974",
+      "tiempo": 2.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628974",
+      "destino": "5304628979",
+      "tiempo": 2.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628979",
+      "destino": "5304628983",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628983",
+      "destino": "5304628987",
+      "tiempo": 5.9,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628987",
+      "destino": "5304628998",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628998",
+      "destino": "5304629005",
+      "tiempo": 1.8,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629005",
+      "destino": "5304629006",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629006",
+      "destino": "5304629012",
+      "tiempo": 1.7,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629012",
+      "destino": "5304629229",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629229",
+      "destino": "5304629231",
+      "tiempo": 1.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629231",
+      "destino": "5304629233",
+      "tiempo": 1.6,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629233",
+      "destino": "5304629235",
+      "tiempo": 1.8,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629235",
+      "destino": "5304629237",
+      "tiempo": 1.5,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629237",
+      "destino": "4893932596",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "4893932596",
+      "destino": "5304628705",
+      "tiempo": 2.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628705",
+      "destino": "5304628707",
+      "tiempo": 1.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628707",
+      "destino": "5304628708",
+      "tiempo": 1.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628708",
+      "destino": "5304628711",
+      "tiempo": 1.6,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304628711",
+      "destino": "5304629129",
+      "tiempo": 1.7,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629129",
+      "destino": "5304629131",
+      "tiempo": 2.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629131",
+      "destino": "5304629137",
+      "tiempo": 2.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629137",
+      "destino": "5304629139",
+      "tiempo": 1.2,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629139",
+      "destino": "5304629143",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629143",
+      "destino": "5304629145",
+      "tiempo": 1.0,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629145",
+      "destino": "5304629151",
+      "tiempo": 1.4,
+      "linea": "L7"
+    },
+    {
+      "origen": "5304629151",
+      "destino": "5306531887",
+      "tiempo": 1.3,
+      "linea": "L7"
+    },
+    {
+      "origen": "5306531887",
+      "destino": "5304629164",
+      "tiempo": 1.1,
+      "linea": "L7"
+    },
+    {
+      "origen": "5305117482",
+      "destino": "5305117519",
+      "tiempo": 1.8,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117519",
+      "destino": "5305117415",
+      "tiempo": 1.8,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117415",
+      "destino": "5305117732",
+      "tiempo": 3.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117732",
+      "destino": "5305117598",
+      "tiempo": 4.6,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117598",
+      "destino": "5305117575",
+      "tiempo": 2.0,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117575",
+      "destino": "5305117562",
+      "tiempo": 1.5,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117562",
+      "destino": "5305117544",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117544",
+      "destino": "5305117700",
+      "tiempo": 2.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117700",
+      "destino": "5305117668",
+      "tiempo": 5.4,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117668",
+      "destino": "5305116704",
+      "tiempo": 4.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305116704",
+      "destino": "5305116697",
+      "tiempo": 1.4,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305116697",
+      "destino": "5305117634",
+      "tiempo": 1.7,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117634",
+      "destino": "5305116708",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305116708",
+      "destino": "5305116661",
+      "tiempo": 5.2,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305116661",
+      "destino": "5305117353",
+      "tiempo": 2.0,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117353",
+      "destino": "5305117300",
+      "tiempo": 2.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117300",
+      "destino": "5305117280",
+      "tiempo": 2.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117280",
+      "destino": "5305117262",
+      "tiempo": 2.0,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117262",
+      "destino": "5305117232",
+      "tiempo": 2.5,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117232",
+      "destino": "5305117532",
+      "tiempo": 1.9,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117532",
+      "destino": "5305117623",
+      "tiempo": 2.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117623",
+      "destino": "5305117446",
+      "tiempo": 2.4,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117446",
+      "destino": "5305117368",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117368",
+      "destino": "5305116014",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305116014",
+      "destino": "5305117320",
+      "tiempo": 1.8,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117320",
+      "destino": "5305117470",
+      "tiempo": 1.6,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117470",
+      "destino": "5305117379",
+      "tiempo": 2.1,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305117379",
+      "destino": "5305117482",
+      "tiempo": 6.3,
+      "linea": "L12"
+    },
+    {
+      "origen": "5305487735",
+      "destino": "5305487730",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487730",
+      "destino": "5305487727",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487727",
+      "destino": "5305487724",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487724",
+      "destino": "5305487723",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487723",
+      "destino": "5305486519",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305486519",
+      "destino": "5305486514",
+      "tiempo": 1.9,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305486514",
+      "destino": "5305487570",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487570",
+      "destino": "5305487567",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487567",
+      "destino": "5305487555",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487555",
+      "destino": "5305487550",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487550",
+      "destino": "5305487548",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487548",
+      "destino": "5305487547",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487547",
+      "destino": "5305487546",
+      "tiempo": 1.1,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487546",
+      "destino": "4892883351",
+      "tiempo": 1.5,
+      "linea": "L6"
+    },
+    {
+      "origen": "4892883351",
+      "destino": "4893932592",
+      "tiempo": 1.4,
+      "linea": "L6"
+    },
+    {
+      "origen": "4893932592",
+      "destino": "5305486995",
+      "tiempo": 1.8,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305486995",
+      "destino": "4998656170",
+      "tiempo": 1.7,
+      "linea": "L6"
+    },
+    {
+      "origen": "4998656170",
+      "destino": "5305487543",
+      "tiempo": 1.6,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487543",
+      "destino": "5305487540",
+      "tiempo": 1.4,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487540",
+      "destino": "5305487530",
+      "tiempo": 1.2,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487530",
+      "destino": "5305487524",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487524",
+      "destino": "5305487017",
+      "tiempo": 2.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487017",
+      "destino": "5305487015",
+      "tiempo": 1.0,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487015",
+      "destino": "5305487011",
+      "tiempo": 2.2,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487011",
+      "destino": "5305487008",
+      "tiempo": 2.1,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487008",
+      "destino": "5305487006",
+      "tiempo": 2.1,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305487006",
+      "destino": "5305486998",
+      "tiempo": 1.6,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305486998",
+      "destino": "5305487735",
+      "tiempo": 1.3,
+      "linea": "L6"
+    },
+    {
+      "origen": "5305513307",
+      "destino": "5305513302",
+      "tiempo": 3.6,
+      "linea": "L11"
+    },
+    {
+      "origen": "5305513302",
+      "destino": "5305513300",
+      "tiempo": 2.1,
+      "linea": "L11"
+    },
+    {
+      "origen": "5305513300",
+      "destino": "5305513292",
+      "tiempo": 2.1,
+      "linea": "L11"
+    },
+    {
+      "origen": "5305513292",
+      "destino": "5305513290",
+      "tiempo": 1.1,
+      "linea": "L11"
+    },
+    {
+      "origen": "5305513290",
+      "destino": "5305513289",
+      "tiempo": 1.5,
+      "linea": "L11"
+    },
+    {
+      "origen": "5305513289",
+      "destino": "5305513287",
+      "tiempo": 1.8,
+      "linea": "L11"
+    },
+    {
+      "origen": "77813234",
+      "destino": "26753652",
+      "tiempo": 1.3,
+      "linea": "L10"
+    },
+    {
+      "origen": "26753652",
+      "destino": "136855152",
+      "tiempo": 2.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "136855152",
+      "destino": "55966818",
+      "tiempo": 2.1,
+      "linea": "L10"
+    },
+    {
+      "origen": "55966818",
+      "destino": "4411734251",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "4411734251",
+      "destino": "25920146",
+      "tiempo": 1.8,
+      "linea": "L10"
+    },
+    {
+      "origen": "25920146",
+      "destino": "25903008",
+      "tiempo": 1.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "25903008",
+      "destino": "4998656212",
+      "tiempo": 1.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "4998656212",
+      "destino": "25902689",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "25902689",
+      "destino": "25906012",
+      "tiempo": 2.3,
+      "linea": "L10"
+    },
+    {
+      "origen": "25906012",
+      "destino": "21990715",
+      "tiempo": 1.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "21990715",
+      "destino": "25906011",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "25906011",
+      "destino": "25906010",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "25906010",
+      "destino": "21722690",
+      "tiempo": 2.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "21722690",
+      "destino": "21722670",
+      "tiempo": 3.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "21722670",
+      "destino": "21722667",
+      "tiempo": 1.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "21722667",
+      "destino": "5310153780",
+      "tiempo": 2.8,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310153780",
+      "destino": "330557378",
+      "tiempo": 3.3,
+      "linea": "L10"
+    },
+    {
+      "origen": "330557378",
+      "destino": "317737950",
+      "tiempo": 2.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "317737950",
+      "destino": "2540747290",
+      "tiempo": 6.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "2540747290",
+      "destino": "317775809",
+      "tiempo": 1.3,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093477",
+      "destino": "5310093476",
+      "tiempo": 1.3,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093476",
+      "destino": "5310093473",
+      "tiempo": 6.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093473",
+      "destino": "5310093472",
+      "tiempo": 2.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093472",
+      "destino": "5310093471",
+      "tiempo": 3.3,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093471",
+      "destino": "5310093469",
+      "tiempo": 2.8,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093469",
+      "destino": "5310093465",
+      "tiempo": 1.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093465",
+      "destino": "5310093882",
+      "tiempo": 3.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093882",
+      "destino": "5310093880",
+      "tiempo": 2.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093880",
+      "destino": "5310093878",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093878",
+      "destino": "5310093877",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093877",
+      "destino": "7559826150",
+      "tiempo": 1.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "7559826150",
+      "destino": "5310093903",
+      "tiempo": 2.3,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093903",
+      "destino": "4998656211",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "4998656211",
+      "destino": "5310093872",
+      "tiempo": 1.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093872",
+      "destino": "5310093871",
+      "tiempo": 1.6,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093871",
+      "destino": "5310093862",
+      "tiempo": 1.8,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093862",
+      "destino": "5310093856",
+      "tiempo": 1.7,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093856",
+      "destino": "5310093848",
+      "tiempo": 2.0,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093848",
+      "destino": "5310093842",
+      "tiempo": 2.9,
+      "linea": "L10"
+    },
+    {
+      "origen": "5310093842",
+      "destino": "5310093841",
+      "tiempo": 1.3,
+      "linea": "L10"
+    }
+  ]
+}
