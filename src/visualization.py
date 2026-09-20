@@ -23,9 +23,10 @@ def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-L�
     """
     Dibuja el grafo en matplotlib diferenciando vías de tren de pasillos de transbordo.
     """
-    plt.figure(figsize=(24, 24), facecolor='#121212')
+    plt.figure(figsize=(36, 36), facecolor='#121212')
     
-    pos = nx.spring_layout(G, k=0.18, iterations=60, seed=42)
+    # Layout más espaciado para que los 291 nombres se distribuyan limpiamente
+    pos = nx.spring_layout(G, k=0.25, iterations=80, seed=42)
     
     # Separar aristas de vía y de transbordo
     via_edges = [(u, v) for u, v, d in G.edges(data=True) if d.get('tipo') == 'via']
@@ -38,28 +39,29 @@ def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-L�
         node_colors.append(COLORES_LINEAS.get(linea, '#00E5FF'))
         
     grados = dict(G.degree())
-    node_sizes = [v * 60 + 80 for v in grados.values()]
+    node_sizes = [v * 50 + 70 for v in grados.values()]
     
     # 1. Dibujar aristas de transbordo (líneas punteadas blancas suaves)
-    nx.draw_networkx_edges(G, pos, edgelist=trans_edges, width=1.8, 
+    nx.draw_networkx_edges(G, pos, edgelist=trans_edges, width=1.5, 
                            style='dashed', edge_color='#E0E0E0', alpha=0.7)
     
     # 2. Dibujar aristas de vía férrea
-    nx.draw_networkx_edges(G, pos, edgelist=via_edges, width=2.0, 
+    nx.draw_networkx_edges(G, pos, edgelist=via_edges, width=1.8, 
                            edge_color='#888888', alpha=0.6)
     
     # 3. Dibujar nodos
     nx.draw_networkx_nodes(G, pos, node_size=node_sizes, 
-                           node_color=node_colors, edgecolors='#FFFFFF', linewidths=1.2)
+                           node_color=node_colors, edgecolors='#FFFFFF', linewidths=1.0)
     
-    # 4. Etiquetas de texto para estaciones con transbordo o terminales
-    labels = {n: d.get('nombre', n) for n, d in G.nodes(data=True) if grados[n] >= 3}
-    pos_labels = {k: (v[0], v[1]+0.012) for k, v in pos.items()}
-    nx.draw_networkx_labels(G, pos_labels, labels, font_size=8, 
-                            font_color='#FFFFFF', font_weight='bold')
+    # 4. Etiquetas de texto para TODOS los nodos de la red sin excepción
+    labels = {n: f"{d.get('nombre', n)}" for n, d in G.nodes(data=True)}
+    pos_labels = {k: (v[0], v[1]+0.009) for k, v in pos.items()}
+    nx.draw_networkx_labels(G, pos_labels, labels, font_size=6.5, 
+                            font_color='#FFFFFF', font_weight='bold',
+                            font_family='sans-serif')
     
-    plt.title(f"{title}\n(Nodos = Andenes | Líneas punteadas = Transbordos a pie)", 
-              fontsize=20, fontweight='bold', color='white', pad=20)
+    plt.title(f"{title}\n(Todos los nodos con nombre | Nodos = Andenes | Líneas punteadas = Transbordos)", 
+              fontsize=22, fontweight='bold', color='white', pad=25)
     plt.axis('off')
     plt.tight_layout()
     plt.show()
@@ -102,6 +104,7 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
             title=titulo_html, 
             color=color, 
             size=tamanio, 
+            font={'size': 13, 'color': '#ffffff', 'face': 'arial', 'strokeWidth': 2, 'strokeColor': '#000000'},
             borderWidth=2, 
             borderWidthSelected=4, 
             shape='dot',
@@ -217,3 +220,73 @@ def plot_route_matplotlib(G, path, title="Ruta Óptima"):
     plt.tight_layout()
     plt.show()
 
+
+def plot_failed_station_matplotlib(G, failed_node):
+    """
+    Visualiza cómo se divide la red si una estación específica falla.
+    Muestra la estación caída y colorea de forma distinta los fragmentos
+    desconectados que quedan (componentes conexas).
+    """
+    if failed_node not in G:
+        print(f"Error: La estación '{failed_node}' no existe en el grafo.")
+        return
+
+    plt.figure(figsize=(24, 24), facecolor='#121212')
+    pos = nx.spring_layout(G, k=0.25, iterations=60, seed=42)
+
+    # Crear una copia simulando el fallo
+    G_broken = G.copy()
+    G_broken.remove_node(failed_node)
+
+    # Identificar componentes conexas resultantes
+    components = list(nx.connected_components(G_broken))
+    
+    # Dibujar aristas que siguen funcionando
+    nx.draw_networkx_edges(G_broken, pos, edge_color='#666666', width=1.5, alpha=0.5)
+
+    # Obtener una paleta de colores para diferenciar las partes rotas
+    try:
+        cmap = plt.get_cmap('Set1')
+    except AttributeError:
+        # Fallback por compatibilidad
+        import matplotlib.cm as cm
+        cmap = cm.get_cmap('Set1')
+        
+    for i, comp in enumerate(components):
+        node_list = list(comp)
+        # Asignar un color distinto a cada fragmento desconectado
+        color = cmap(i % 9) # Set1 tiene 9 colores discretos
+        nx.draw_networkx_nodes(G, pos, nodelist=node_list, 
+                               node_size=80, node_color=[color], 
+                               edgecolors='white', linewidths=0.5)
+                               
+    # Dibujar las vías/conexiones rotas hacia la estación fallida
+    broken_edges = list(G.edges(failed_node))
+    nx.draw_networkx_edges(G, pos, edgelist=broken_edges, 
+                           edge_color='red', width=2.5, style='dashed', alpha=0.8)
+                           
+    # Dibujar la estación fallida como una gran X roja
+    nx.draw_networkx_nodes(G, pos, nodelist=[failed_node], 
+                           node_size=800, node_color='red', 
+                           node_shape='X', edgecolors='white', linewidths=1)
+                           
+    # Etiquetar la estación caída
+    nombre_fallo = G.nodes[failed_node].get('nombre', str(failed_node))
+    pos_labels = {failed_node: (pos[failed_node][0], pos[failed_node][1] + 0.02)}
+    nx.draw_networkx_labels(G, pos_labels, {failed_node: f"{nombre_fallo} (CAÍDA)"}, 
+                            font_size=16, font_color='red', font_weight='bold')
+
+    # Etiquetar algunas de las estaciones restantes para dar contexto
+    grados = dict(G_broken.degree())
+    context_nodes = [n for n in G_broken.nodes() ]
+    context_labels = {n: G_broken.nodes[n].get('nombre', str(n)) for n in context_nodes}
+    pos_context = {k: (v[0], v[1] + 0.01) for k, v in pos.items() if k in context_nodes}
+    nx.draw_networkx_labels(G_broken, pos_context, context_labels, font_size=8, font_color='#AAAAAA')
+
+    estado = f"La red se dividió en {len(components)} partes separadas." if len(components) > 1 else "La red sigue conectada (sin divisiones)."
+    titulo = f"Impacto de Fallo en Estación: {nombre_fallo}\n{estado}"
+    
+    plt.title(titulo, fontsize=24, fontweight='bold', color='white', pad=20)
+    plt.axis('off')
+    plt.tight_layout()
+    plt.show()
