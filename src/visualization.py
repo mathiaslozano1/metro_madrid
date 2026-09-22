@@ -221,72 +221,96 @@ def plot_route_matplotlib(G, path, title="Ruta Óptima"):
     plt.show()
 
 
-def plot_failed_station_matplotlib(G, failed_node):
+def plot_failed_station_matplotlib(G, failed_station_or_node, title=None):
     """
-    Visualiza cómo se divide la red si una estación específica falla.
-    Muestra la estación caída y colorea de forma distinta los fragmentos
-    desconectados que quedan (componentes conexas).
+    Visualiza el impacto del fallo de una estación (física completa o andén individual).
+    Muestra los andenes caídos en rojo con una 'X' y colorea de forma diferenciada
+    los fragmentos desconectados que quedan (componentes conexas).
     """
-    if failed_node not in G:
-        print(f"Error: La estación '{failed_node}' no existe en el grafo.")
-        return
+    from robustness import resolve_station_nodes_for_removal
+    
+    failed_nodes = resolve_station_nodes_for_removal(G, failed_station_or_node)
+    if not failed_nodes:
+        if failed_station_or_node in G:
+            failed_nodes = [failed_station_or_node]
+        else:
+            print(f"Error: La estación '{failed_station_or_node}' no fue encontrada en la red.")
+            return
 
-    plt.figure(figsize=(24, 24), facecolor='#121212')
+    plt.figure(figsize=(26, 26), facecolor='#121212')
     pos = nx.spring_layout(G, k=0.25, iterations=60, seed=42)
 
     # Crear una copia simulando el fallo
     G_broken = G.copy()
-    G_broken.remove_node(failed_node)
+    G_broken.remove_nodes_from(failed_nodes)
 
     # Identificar componentes conexas resultantes
-    components = list(nx.connected_components(G_broken))
+    components = sorted(list(nx.connected_components(G_broken)), key=len, reverse=True)
     
     # Dibujar aristas que siguen funcionando
-    nx.draw_networkx_edges(G_broken, pos, edge_color='#666666', width=1.5, alpha=0.5)
+    nx.draw_networkx_edges(G_broken, pos, edge_color='#444444', width=1.5, alpha=0.5)
 
-    # Obtener una paleta de colores para diferenciar las partes rotas
-    try:
-        cmap = plt.get_cmap('Set1')
-    except AttributeError:
-        # Fallback por compatibilidad
-        import matplotlib.cm as cm
-        cmap = cm.get_cmap('Set1')
-        
-    for i, comp in enumerate(components):
-        node_list = list(comp)
-        # Asignar un color distinto a cada fragmento desconectado
-        color = cmap(i % 9) # Set1 tiene 9 colores discretos
-        nx.draw_networkx_nodes(G, pos, nodelist=node_list, 
-                               node_size=80, node_color=[color], 
+    # Colorear nodos activos: si hay partición, colorear por componente; si no, por línea
+    if len(components) > 1:
+        try:
+            cmap = plt.get_cmap('tab10')
+        except AttributeError:
+            import matplotlib.cm as cm
+            cmap = cm.get_cmap('tab10')
+            
+        for i, comp in enumerate(components):
+            node_list = list(comp)
+            color = cmap(i % 10)
+            nx.draw_networkx_nodes(G, pos, nodelist=node_list, 
+                                   node_size=80, node_color=[color], 
+                                   edgecolors='white', linewidths=0.5)
+    else:
+        # Una sola componente (red sigue conectada) -> colores de línea
+        node_colors = [COLORES_LINEAS.get(G.nodes[n].get('linea', ''), '#00E5FF') for n in G_broken.nodes()]
+        nx.draw_networkx_nodes(G_broken, pos, nodelist=list(G_broken.nodes()), 
+                               node_size=80, node_color=node_colors, 
                                edgecolors='white', linewidths=0.5)
-                               
-    # Dibujar las vías/conexiones rotas hacia la estación fallida
-    broken_edges = list(G.edges(failed_node))
-    nx.draw_networkx_edges(G, pos, edgelist=broken_edges, 
-                           edge_color='red', width=2.5, style='dashed', alpha=0.8)
-                           
-    # Dibujar la estación fallida como una gran X roja
-    nx.draw_networkx_nodes(G, pos, nodelist=[failed_node], 
-                           node_size=800, node_color='red', 
-                           node_shape='X', edgecolors='white', linewidths=1)
-                           
-    # Etiquetar la estación caída
-    nombre_fallo = G.nodes[failed_node].get('nombre', str(failed_node))
-    pos_labels = {failed_node: (pos[failed_node][0], pos[failed_node][1] + 0.02)}
-    nx.draw_networkx_labels(G, pos_labels, {failed_node: f"{nombre_fallo} (CAÍDA)"}, 
-                            font_size=16, font_color='red', font_weight='bold')
 
-    # Etiquetar algunas de las estaciones restantes para dar contexto
-    grados = dict(G_broken.degree())
-    context_nodes = [n for n in G_broken.nodes() ]
+    # Dibujar las vías rotas hacia los andenes fallidos
+    broken_edges = [(u, v) for u, v in G.edges() if (u in failed_nodes or v in failed_nodes)]
+    nx.draw_networkx_edges(G, pos, edgelist=broken_edges, 
+                           edge_color='#FF3333', width=2.5, style='dashed', alpha=0.85)
+                           
+    # Dibujar los andenes fallidos como grandes X rojas
+    nx.draw_networkx_nodes(G, pos, nodelist=failed_nodes, 
+                           node_size=900, node_color='#FF0000', 
+                           node_shape='X', edgecolors='white', linewidths=1.5)
+                           
+    # Obtener nombre común de la estación
+    nombres_estaciones = list(dict.fromkeys(G.nodes[n].get('nombre', n) for n in failed_nodes))
+    nombre_display = ", ".join(nombres_estaciones)
+    
+    # Etiquetar los andenes caídos
+    for fn in failed_nodes:
+        pos_label = {fn: (pos[fn][0], pos[fn][1] + 0.02)}
+        lbl = f"{fn} (CAÍDA)"
+        nx.draw_networkx_labels(G, pos_label, {fn: lbl}, 
+                                font_size=13, font_color='#FF5555', font_weight='bold')
+
+    # Etiquetar todas las estaciones restantes con letra pequeña para ubicación
+    context_nodes = list(G_broken.nodes())
     context_labels = {n: G_broken.nodes[n].get('nombre', str(n)) for n in context_nodes}
     pos_context = {k: (v[0], v[1] + 0.01) for k, v in pos.items() if k in context_nodes}
     nx.draw_networkx_labels(G_broken, pos_context, context_labels, font_size=8, font_color='#AAAAAA')
 
-    estado = f"La red se dividió en {len(components)} partes separadas." if len(components) > 1 else "La red sigue conectada (sin divisiones)."
-    titulo = f"Impacto de Fallo en Estación: {nombre_fallo}\n{estado}"
-    
-    plt.title(titulo, fontsize=24, fontweight='bold', color='white', pad=20)
+    num_comp = len(components)
+    if num_comp > 1:
+        aisladas = sum(len(c) for c in components[1:])
+        estado = f"¡ALERTA! La red se dividió en {num_comp} fragmentos desconectados ({aisladas} andenes aislados)."
+    else:
+        estado = "La red SIGUE CONECTADA. Los usuarios pueden tomar rutas alternativas."
+        
+    if not title:
+        titulo = f"Simulación de Cierre: {nombre_display} ({len(failed_nodes)} andén(es) afectado(s))\n{estado}"
+    else:
+        titulo = f"{title}\n{estado}"
+        
+    plt.title(titulo, fontsize=22, fontweight='bold', color='white', pad=25)
     plt.axis('off')
     plt.tight_layout()
     plt.show()

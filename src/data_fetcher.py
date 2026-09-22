@@ -18,7 +18,7 @@ def estimate_time(dist_km):
     tiempo_min = dist_km / 0.5
     return round(max(1.2, tiempo_min), 1)
 
-def build_station_line_dataset(transfer_penalty_minutes=3.5, output_file='data/metro_madrid.json'):
+def build_station_line_dataset(transfer_penalty_minutes=4, output_file='data/metro_madrid.json'):
     """
     Construye el dataset oficial del modelo Estación-Línea del Metro de Madrid.
     - Cada nodo es un andén: '{Estación} [{Línea}]'.
