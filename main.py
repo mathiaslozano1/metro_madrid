@@ -28,19 +28,39 @@ while True:
         origen = input("Ingrese la estación de origen: ")
         destino = input("Ingrese la estación de destino: ")
         rutas = compare_routes(G, origen, destino)
-        if rutas:
+        print(f"\nRutas encontradas entre '{origen}' y '{destino}':")
+        print(f"Número de rutas encontradas: {len(rutas)}")
+        print(rutas)
+        print("Mejor ruta por tiempo estimado:")
+        for i in rutas['menor_tiempo']['path']:
+            print(f" - {i}")
+        print(f"\nTiempo estimado: {rutas['menor_tiempo']['tiempo_total_texto']} minutos")
+        print(f"Tiempo en tren de {rutas['menor_tiempo']['tiempo_tren_formato']} minutos")
+        print(f"Transbordos: {rutas['menor_tiempo']['num_transbordos']}")
+        print(f"Tiempo aproximado en transbordo:{rutas['menor_tiempo']['tiempo_transbordo_formato']} minutos")
+
+        print("Mejor ruta por menor número de transbordos:")
+        for i in rutas['menores_transbordos']['path']:
+            print(f" - {i}")
+        print(f"Tiempo estimado: {rutas['menores_transbordos']['tiempo_total_formato']} minutos")
+        print(f"Transbordos: {rutas['menores_transbordos']['num_transbordos']}")
+
+        plot_route_matplotlib(G, rutas['menor_tiempo']['path'])
+
+        
+
+        
+        """if rutas:
             for i, ruta in enumerate(rutas):
                 print(f"Ruta {i+1}: {' -> '.join(ruta)}")
                 plot_route_matplotlib(G, ruta)
         else:
-            print(f"No se encontraron rutas entre '{origen}' y '{destino}'.")
+            print(f"No se encontraron rutas entre '{origen}' y '{destino}'.")"""
 
     elif opcion == 2:
         metrics = get_all_metrics(G)
         print("\nMétricas de la red:")
-        #for key, value in metrics.items():
-        #    print(f"{key}: {value}")
-
+        
         top_degree = get_top_stations_by_degree(G)
         top_betweenness = get_top_stations_by_betweenness(G)
 

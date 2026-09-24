@@ -2,6 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
 
+from src.robustness import resolve_station_nodes_for_removal
 # Diccionario de colores oficiales del Metro de Madrid (soporta formato '1', 'L1', etc.)
 COLORES_LINEAS = {
     '1': '#0097D6', 'L1': '#0097D6',
@@ -221,13 +222,13 @@ def plot_route_matplotlib(G, path, title="Ruta Óptima"):
     plt.show()
 
 
-def plot_failed_station_matplotlib(G, failed_station_or_node, title=None):
+def plot_failed_station_matplotlib(G, failed_station_or_node, title=None, resolve_station_nodes_for_removal=resolve_station_nodes_for_removal):
     """
     Visualiza el impacto del fallo de una estación (física completa o andén individual).
     Muestra los andenes caídos en rojo con una 'X' y colorea de forma diferenciada
     los fragmentos desconectados que quedan (componentes conexas).
     """
-    from robustness import resolve_station_nodes_for_removal
+    
     
     failed_nodes = resolve_station_nodes_for_removal(G, failed_station_or_node)
     if not failed_nodes:
