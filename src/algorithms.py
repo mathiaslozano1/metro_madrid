@@ -311,11 +311,14 @@ def compare_routes(G, origin_station, destination_station):
             'time_formatted': time_fmt,   # Cadena directa 'MM:SS'
             'tiempo_formato': time_fmt,   # Cadena directa 'MM:SS'
             'time_decimal': float(time_val),
+            'stops': route_time.get('num_paradas_tren', 0) if route_time else 0,
+            'transfers': route_time.get('num_transbordos', 0) if route_time else 0,
             'details': route_time
         },
         'bfs': {
             'path': trans_path,
             'stops': trans_stops,
+            'transfers': route_transfers.get('num_transbordos', 0) if route_transfers else 0,
             'time': trans_time,           # FormattedTime: al imprimirse en f-string da 'MM:SS'
             'time_formatted': trans_fmt,  # Cadena directa 'MM:SS'
             'tiempo_formato': trans_fmt,  # Cadena directa 'MM:SS'
