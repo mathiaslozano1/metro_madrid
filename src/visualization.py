@@ -2,7 +2,10 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
 
-from src.robustness import resolve_station_nodes_for_removal
+try:
+    from robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
+except ImportError:
+    from src.robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
 # Diccionario de colores oficiales del Metro de Madrid (soporta formato '1', 'L1', etc.)
 COLORES_LINEAS = {
     '1': '#0097D6', 'L1': '#0097D6',
@@ -312,6 +315,103 @@ def plot_failed_station_matplotlib(G, failed_station_or_node, title=None, resolv
         titulo = f"{title}\n{estado}"
         
     plt.title(titulo, fontsize=22, fontweight='bold', color='white', pad=25)
+    plt.axis('off')
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_failed_edge_matplotlib(G, source, target, linea=None, title=None):
+    """
+    Visualiza el impacto del cierre o remoción de un tramo (arista) de vía o transbordo.
+    - Muestra el tramo cerrado en rojo discontinuo grueso con una marca de corte 'X'.
+    - Resalta las estaciones de origen y destino del tramo.
+    - Si existe una ruta alternativa, la dibuja y resalta en verde brillante.
+    - Si la red se desconecta (arista puente), colorea los componentes desconectados.
+    """
+    try:
+        res = simulate_edge_removal(G, source, target, linea)
+    except ValueError as e:
+        print("\n" + "=" * 75)
+        print("[!] ERROR EN LA SIMULACIÓN DE CIERRE DE TRAMO:")
+        print(str(e))
+        print("=" * 75 + "\n")
+        return None
+        
+    u, v = res['removed_edge']
+    G_broken = res['new_graph']
+    
+    plt.figure(figsize=(26, 26), facecolor='#121212')
+    pos = nx.spring_layout(G, k=0.25, iterations=60, seed=42)
+    
+    # 1. Aristas normales de la red
+    other_edges = [e for e in G_broken.edges() if e != (u, v) and e != (v, u)]
+    nx.draw_networkx_edges(G_broken, pos, edgelist=other_edges, edge_color='#333333', width=1.4, alpha=0.4)
+    
+    # 2. Si hay ruta alternativa, dibujarla en verde brillante
+    if res.get('has_alternative_path') and len(res.get('alternative_path', [])) > 1:
+        alt_path = res['alternative_path']
+        alt_edges = list(zip(alt_path[:-1], alt_path[1:]))
+        nx.draw_networkx_edges(G_broken, pos, edgelist=alt_edges, edge_color='#00FF00', width=4.5, alpha=0.9)
+        nx.draw_networkx_nodes(G_broken, pos, nodelist=alt_path, node_size=120, node_color='#00FF00', edgecolors='white', linewidths=1.0)
+        
+        # Etiquetas de la ruta alternativa
+        alt_labels = {n: G.nodes[n].get('nombre', n) for n in alt_path}
+        pos_alt = {k: (v_pos[0], v_pos[1] + 0.012) for k, v_pos in pos.items() if k in alt_path}
+        nx.draw_networkx_labels(G_broken, pos_alt, alt_labels, font_size=10, font_color='#00FF00', font_weight='bold')
+    
+    # 3. Colorear nodos generales
+    components_list = res.get('components', [])
+    if res.get('num_components', 1) > 1 and components_list:
+        try:
+            cmap = plt.get_cmap('tab10')
+        except AttributeError:
+            import matplotlib.cm as cm
+            cmap = cm.get_cmap('tab10')
+        for i, comp in enumerate(components_list):
+            comp_nodes = list(comp)
+            color = cmap(i % 10)
+            nx.draw_networkx_nodes(G_broken, pos, nodelist=comp_nodes, node_size=80, 
+                                   node_color=[color] * len(comp_nodes), edgecolors='white', linewidths=0.5)
+    else:
+        node_colors = [COLORES_LINEAS.get(G.nodes[n].get('linea', ''), '#00E5FF') for n in G_broken.nodes()]
+        nx.draw_networkx_nodes(G_broken, pos, nodelist=list(G_broken.nodes()), node_size=80, 
+                               node_color=node_colors, edgecolors='white', linewidths=0.5)
+                               
+    # 4. Dibujar el tramo cortado en rojo grueso discontinuo
+    nx.draw_networkx_edges(G, pos, edgelist=[(u, v)], edge_color='#FF0000', width=5.0, style='dashed', alpha=0.95)
+    
+    # Punto medio del tramo cortado con una 'X' roja
+    mid_x = (pos[u][0] + pos[v][0]) / 2.0
+    mid_y = (pos[u][1] + pos[v][1]) / 2.0
+    plt.scatter([mid_x], [mid_y], s=1200, c='#FF0000', marker='X', edgecolors='white', linewidths=2.0, zorder=10)
+    
+    # 5. Resaltar los extremos del tramo cortado
+    nx.draw_networkx_nodes(G, pos, nodelist=[u], node_size=400, node_color='#FFFF00', edgecolors='white', linewidths=2)
+    nx.draw_networkx_nodes(G, pos, nodelist=[v], node_size=400, node_color='#FF6600', edgecolors='white', linewidths=2)
+    
+    nx.draw_networkx_labels(G, {u: (pos[u][0], pos[u][1] - 0.018)}, {u: f"{u} [CORTE]"}, 
+                            font_size=12, font_color='#FFFF00', font_weight='bold')
+    nx.draw_networkx_labels(G, {v: (pos[v][0], pos[v][1] - 0.018)}, {v: f"{v} [CORTE]"}, 
+                            font_size=12, font_color='#FF6600', font_weight='bold')
+                            
+    # 6. Etiquetas de contexto de estaciones
+    alt_set = set(res.get('alternative_path', [])) if res.get('has_alternative_path') else set()
+    context_nodes = [n for n in G_broken.nodes() if n not in [u, v] and n not in alt_set]
+    context_labels = {n: G_broken.nodes[n].get('nombre', str(n)) for n in context_nodes}
+    pos_context = {k: (val[0], val[1] + 0.008) for k, val in pos.items() if k in context_nodes}
+    nx.draw_networkx_labels(G_broken, pos_context, context_labels, font_size=7.5, font_color='#888888')
+    
+    # 7. Título y estado
+    linea_info = f" (Línea {res['linea']})" if res.get('linea') else ""
+    if res.get('has_alternative_path'):
+        estado = (f"El tramo está CERRADO pero la red sigue conectada.\n"
+                  f"Ruta alternativa más rápida: {res['alternative_time']} (+{res['time_increase']} respecto al tramo directo).")
+    else:
+        aisladas = sum(len(c) for c in components_list[1:]) if len(components_list) > 1 else len(res.get('isolated_nodes', []))
+        estado = f"¡ALERTA TRAMO PUENTE! La clausura dividió la red en {res['num_components']} componentes ({aisladas} andenes aislados)."
+        
+    full_title = title if title else f"Simulación de Cierre de Tramo: {res['source_station']} <---> {res['target_station']}{linea_info}\n{estado}"
+    plt.title(full_title, fontsize=20, fontweight='bold', color='white', pad=25)
     plt.axis('off')
     plt.tight_layout()
     plt.show()
