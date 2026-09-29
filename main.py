@@ -52,6 +52,7 @@ while True:
         metrics = get_all_metrics(G)
         print("\nMétricas de la red:")
 
+
         top_degree = get_top_stations_by_degree(G)
         top_betweenness = get_top_stations_by_betweenness(G)
 
