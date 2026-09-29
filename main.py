@@ -7,6 +7,8 @@ from src.metrics import get_all_metrics, get_top_stations_by_degree, get_top_sta
 from src.robustness import identify_articulation_points, simulate_node_removal, simulate_edge_removal
 from src.visualization import plot_failed_edge_matplotlib, plot_graph_matplotlib,plot_graph_pyvis,plot_route_matplotlib,plot_failed_station_matplotlib
 
+from src.rutas_y_estaciones_vecinas import mostrar_vecinas, opcion_ruta_con_parada
+
 data = load_data('./data/metro_madrid.json')
 G = build_metro_graph(data)
 
@@ -21,9 +23,11 @@ while True:
     print("5. Simular fallo de un tramo ferroviario")
     print("6. Visualizar grafo completo (matplotlib)")
     print("7. Visualizar grafo completo (pyvis)")
-    print("8. Salir")
+    print("8. Ver estaciones vecinas")
+    print("9. Buscar ruta pasando por una estación")
+    print("10. Salir")
 
-    opcion =  int(input("Seleccione una opción (1-8): "))
+    opcion =  int(input("Seleccione una opción (1-10): "))
 
     if opcion == 1:
         origen = input("Ingrese la estación de origen: ")
@@ -113,5 +117,11 @@ while True:
         plot_graph_pyvis(G)
 
     elif opcion == 8:
+        mostrar_vecinas(G)
+
+    elif opcion == 9:
+        opcion_ruta_con_parada(G)
+
+    elif opcion == 10:
         print("Saliendo del programa.")
         break
