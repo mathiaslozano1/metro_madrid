@@ -1,3 +1,4 @@
+import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
@@ -6,6 +7,7 @@ try:
     from robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
 except ImportError:
     from src.robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
+
 # Diccionario de colores oficiales del Metro de Madrid (soporta formato '1', 'L1', etc.)
 COLORES_LINEAS = {
     '1': '#0097D6', 'L1': '#0097D6',
@@ -23,14 +25,77 @@ COLORES_LINEAS = {
     'R': '#FFFFFF', 'LR': '#FFFFFF'
 }
 
-def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-Línea)"):
+def get_geographic_layout(G, jitter_radius=0.0014, is_pyvis=False, pyvis_scale=12000):
     """
-    Dibuja el grafo en matplotlib diferenciando vías de tren de pasillos de transbordo.
+    Calcula la posición (x, y) de cada nodo basándose en sus coordenadas GPS reales (lat, lon).
+    - Para estaciones físicas con múltiples andenes (transbordos), aplica un desplazamiento radial
+      equidistante para evitar solapamientos y visualizar con claridad los pasillos peatonales.
+    - Para PyVis (HTML Canvas), centra las coordenadas e invierte el eje Y para que el Norte quede arriba.
+    - Para Matplotlib, utiliza directamente longitud en X y latitud en Y con corrección de aspecto.
     """
-    plt.figure(figsize=(36, 36), facecolor='#121212')
+    station_nodes = {}
+    for node, data in G.nodes(data=True):
+        nombre = data.get('nombre', node)
+        station_nodes.setdefault(nombre, []).append(node)
+        
+    pos = {}
     
-    # Layout más espaciado para que los 291 nombres se distribuyan limpiamente
-    pos = nx.spring_layout(G, k=0.25, iterations=80, seed=42)
+    if is_pyvis:
+        lats = [d.get('lat', 40.4168) for _, d in G.nodes(data=True)]
+        lons = [d.get('lon', -3.7038) for _, d in G.nodes(data=True)]
+        center_lat = (min(lats) + max(lats)) / 2.0
+        center_lon = (min(lons) + max(lons)) / 2.0
+        cos_lat = np.cos(np.radians(center_lat))
+        
+        for nombre, nodes in station_nodes.items():
+            k = len(nodes)
+            base_lat = G.nodes[nodes[0]].get('lat', center_lat)
+            base_lon = G.nodes[nodes[0]].get('lon', center_lon)
+            
+            for i, node in enumerate(nodes):
+                if k == 1:
+                    d_lon, d_lat = 0.0, 0.0
+                else:
+                    angle = 2 * np.pi * i / k
+                    d_lon = (jitter_radius / cos_lat) * np.cos(angle)
+                    d_lat = jitter_radius * np.sin(angle)
+                    
+                cur_lon = base_lon + d_lon
+                cur_lat = base_lat + d_lat
+                
+                # Canvas HTML: X hacia la derecha, Y invertido (hacia arriba es Norte)
+                x = (cur_lon - center_lon) * cos_lat * pyvis_scale
+                y = -(cur_lat - center_lat) * pyvis_scale
+                pos[node] = (x, y)
+    else:
+        cos_lat = np.cos(np.radians(40.42))
+        for nombre, nodes in station_nodes.items():
+            k = len(nodes)
+            base_lat = G.nodes[nodes[0]].get('lat', 40.4168)
+            base_lon = G.nodes[nodes[0]].get('lon', -3.7038)
+            
+            for i, node in enumerate(nodes):
+                if k == 1:
+                    d_lon, d_lat = 0.0, 0.0
+                else:
+                    angle = 2 * np.pi * i / k
+                    d_lon = (jitter_radius / cos_lat) * np.cos(angle)
+                    d_lat = jitter_radius * np.sin(angle)
+                    
+                pos[node] = (base_lon + d_lon, base_lat + d_lat)
+                
+    return pos
+
+def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-Línea - Geográfico)"):
+    """
+    Dibuja el grafo en matplotlib diferenciando vías de tren de pasillos de transbordo
+    respetando la disposición geográfica real.
+    """
+    plt.figure(figsize=(32, 28), facecolor='#121212')
+    ax = plt.gca()
+    ax.set_facecolor('#121212')
+    
+    pos = get_geographic_layout(G)
     
     # Separar aristas de vía y de transbordo
     via_edges = [(u, v) for u, v, d in G.edges(data=True) if d.get('tipo') == 'via']
@@ -43,11 +108,11 @@ def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-L�
         node_colors.append(COLORES_LINEAS.get(linea, '#00E5FF'))
         
     grados = dict(G.degree())
-    node_sizes = [v * 50 + 70 for v in grados.values()]
+    node_sizes = [v * 35 + 50 for v in grados.values()]
     
     # 1. Dibujar aristas de transbordo (líneas punteadas blancas suaves)
     nx.draw_networkx_edges(G, pos, edgelist=trans_edges, width=1.5, 
-                           style='dashed', edge_color='#E0E0E0', alpha=0.7)
+                           style='dashed', edge_color='#FFFFFF', alpha=0.85)
     
     # 2. Dibujar aristas de vía férrea
     nx.draw_networkx_edges(G, pos, edgelist=via_edges, width=1.8, 
@@ -55,16 +120,19 @@ def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-L�
     
     # 3. Dibujar nodos
     nx.draw_networkx_nodes(G, pos, node_size=node_sizes, 
-                           node_color=node_colors, edgecolors='#FFFFFF', linewidths=1.0)
+                           node_color=node_colors, edgecolors='#FFFFFF', linewidths=0.8)
     
     # 4. Etiquetas de texto para TODOS los nodos de la red sin excepción
     labels = {n: f"{d.get('nombre', n)}" for n, d in G.nodes(data=True)}
-    pos_labels = {k: (v[0], v[1]+0.009) for k, v in pos.items()}
-    nx.draw_networkx_labels(G, pos_labels, labels, font_size=6.5, 
+    pos_labels = {k: (v[0], v[1] + 0.0018) for k, v in pos.items()}
+    nx.draw_networkx_labels(G, pos_labels, labels, font_size=6.0, 
                             font_color='#FFFFFF', font_weight='bold',
                             font_family='sans-serif')
     
-    plt.title(f"{title}\n(Todos los nodos con nombre | Nodos = Andenes | Líneas punteadas = Transbordos)", 
+    # Corrección de aspecto geográfico para evitar deformaciones
+    ax.set_aspect(1.0 / np.cos(np.radians(40.42)))
+    
+    plt.title(f"{title}\n(Disposición Geográfica Real | Nodos = Andenes | Líneas punteadas = Transbordos)", 
               fontsize=22, fontweight='bold', color='white', pad=25)
     plt.axis('off')
     plt.tight_layout()
@@ -72,16 +140,15 @@ def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-L�
 
 def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
     """
-    Genera una visualización interactiva Premium con Pyvis bajo el modelo Estación-Línea.
+    Genera una visualización interactiva Premium con Pyvis bajo el modelo Estación-Línea y coordenadas geográficas.
     """
     net = Network(height="950px", width="100%", bgcolor="#141420", font_color="#e0e0e0", 
                   select_menu=True, filter_menu=True)
     
     grados = dict(G.degree())
     
-    # Nodos
-    # Calcular posiciones fijas para que no pierda la forma
-    pos = nx.spring_layout(G, k=0.18, iterations=100, seed=42)
+    # Nodos con posiciones geográficas calibradas para canvas
+    pos = get_geographic_layout(G, is_pyvis=True, pyvis_scale=12000)
     
     for node, d in G.nodes(data=True):
         nombre = d.get('nombre', node)
@@ -98,9 +165,7 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
             f"</div>"
         )
         
-        # Multiplicamos la coordenada por un factor para que se expanda bien
-        x = pos[node][0] * 1000
-        y = pos[node][1] * 1000
+        x, y = pos[node]
         
         net.add_node(
             node, 
@@ -151,7 +216,7 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
                 width=3.5
             )
         
-    # Físicas desactivadas para que no se mueva el grafo
+    # Físicas desactivadas para mantener la forma fija del mapa geográfico
     net.set_options("""
     var options = {
       "physics": {
@@ -162,7 +227,6 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
     
     # Generar el HTML y escribirlo usando UTF-8 para arreglar las tildes
     html_content = net.generate_html(notebook=False)
-    # Insertar la etiqueta meta charset="utf-8" si no la tiene
     if "<meta charset=\"utf-8\">" not in html_content.lower():
         html_content = html_content.replace("<head>", "<head>\n<meta charset=\"utf-8\">")
 
@@ -174,12 +238,14 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
 
 def plot_route_matplotlib(G, path, title="Ruta Óptima"):
     """
-    Genera una visualización estática destacando la ruta óptima usando matplotlib.
+    Genera una visualización estática destacando la ruta óptima usando matplotlib sobre el mapa geográfico.
     path es una lista de nodos en el orden del recorrido.
     """
-    plt.figure(figsize=(24, 24), facecolor='#121212')
+    plt.figure(figsize=(26, 24), facecolor='#121212')
+    ax = plt.gca()
+    ax.set_facecolor('#121212')
     
-    pos = nx.spring_layout(G, k=0.18, iterations=60, seed=42)
+    pos = get_geographic_layout(G)
     
     path_edges = set(zip(path[:-1], path[1:]))
     path_edges.update([(v, u) for u, v in path_edges])
@@ -200,13 +266,13 @@ def plot_route_matplotlib(G, path, title="Ruta Óptima"):
     nx.draw_networkx_nodes(G, pos, nodelist=other_nodes, node_size=30, node_color=node_colors_other, alpha=0.2)
     
     # 2. Dibujar la ruta (resaltada)
-    nx.draw_networkx_edges(G, pos, edgelist=route_edges, width=5.0, edge_color='#00FF00', alpha=0.9)
+    nx.draw_networkx_edges(G, pos, edgelist=route_edges, width=4.5, edge_color='#00FF00', alpha=0.9)
     nx.draw_networkx_nodes(G, pos, nodelist=route_nodes, node_size=150, node_color='#00FF00', edgecolors='#FFFFFF', linewidths=2)
     
     # 3. Etiquetas de texto sólo para los nodos de la ruta
     labels = {n: G.nodes[n].get('nombre', str(n)) for n in route_nodes}
-    pos_labels = {k: (v[0], v[1]+0.015) for k, v in pos.items() if k in route_nodes}
-    nx.draw_networkx_labels(G, pos_labels, labels, font_size=12, font_color='#00FF00', font_weight='bold')
+    pos_labels = {k: (v[0], v[1] + 0.0025) for k, v in pos.items() if k in route_nodes}
+    nx.draw_networkx_labels(G, pos_labels, labels, font_size=11, font_color='#00FF00', font_weight='bold')
     
     # 4. Resaltar inicio y fin
     if path:
@@ -214,12 +280,13 @@ def plot_route_matplotlib(G, path, title="Ruta Óptima"):
         nx.draw_networkx_nodes(G, pos, nodelist=[start_node], node_size=300, node_color='#FFFF00', edgecolors='#FFFFFF')
         nx.draw_networkx_nodes(G, pos, nodelist=[end_node], node_size=300, node_color='#FF0000', edgecolors='#FFFFFF')
         
-        pos_start = {start_node: (pos[start_node][0], pos[start_node][1]-0.02)}
-        pos_end = {end_node: (pos[end_node][0], pos[end_node][1]-0.02)}
-        nx.draw_networkx_labels(G, pos_start, {start_node: 'INICIO'}, font_size=14, font_color='#FFFF00', font_weight='bold')
-        nx.draw_networkx_labels(G, pos_end, {end_node: 'FIN'}, font_size=14, font_color='#FF0000', font_weight='bold')
+        pos_start = {start_node: (pos[start_node][0], pos[start_node][1] - 0.0035)}
+        pos_end = {end_node: (pos[end_node][0], pos[end_node][1] - 0.0035)}
+        nx.draw_networkx_labels(G, pos_start, {start_node: 'INICIO'}, font_size=13, font_color='#FFFF00', font_weight='bold')
+        nx.draw_networkx_labels(G, pos_end, {end_node: 'FIN'}, font_size=13, font_color='#FF0000', font_weight='bold')
     
-    plt.title(title, fontsize=24, fontweight='bold', color='white', pad=20)
+    ax.set_aspect(1.0 / np.cos(np.radians(40.42)))
+    plt.title(f"{title} (Mapa Geográfico)", fontsize=22, fontweight='bold', color='white', pad=20)
     plt.axis('off')
     plt.tight_layout()
     plt.show()
@@ -227,12 +294,10 @@ def plot_route_matplotlib(G, path, title="Ruta Óptima"):
 
 def plot_failed_station_matplotlib(G, failed_station_or_node, title=None, resolve_station_nodes_for_removal=resolve_station_nodes_for_removal):
     """
-    Visualiza el impacto del fallo de una estación (física completa o andén individual).
+    Visualiza el impacto del fallo de una estación (física completa o andén individual) sobre el mapa geográfico.
     Muestra los andenes caídos en rojo con una 'X' y colorea de forma diferenciada
     los fragmentos desconectados que quedan (componentes conexas).
     """
-    
-    
     failed_nodes = resolve_station_nodes_for_removal(G, failed_station_or_node)
     if not failed_nodes:
         if failed_station_or_node in G:
@@ -241,8 +306,10 @@ def plot_failed_station_matplotlib(G, failed_station_or_node, title=None, resolv
             print(f"Error: La estación '{failed_station_or_node}' no fue encontrada en la red.")
             return
 
-    plt.figure(figsize=(26, 26), facecolor='#121212')
-    pos = nx.spring_layout(G, k=0.25, iterations=60, seed=42)
+    plt.figure(figsize=(26, 24), facecolor='#121212')
+    ax = plt.gca()
+    ax.set_facecolor('#121212')
+    pos = get_geographic_layout(G)
 
     # Crear una copia simulando el fallo
     G_broken = G.copy()
@@ -291,16 +358,16 @@ def plot_failed_station_matplotlib(G, failed_station_or_node, title=None, resolv
     
     # Etiquetar los andenes caídos
     for fn in failed_nodes:
-        pos_label = {fn: (pos[fn][0], pos[fn][1] + 0.02)}
+        pos_label = {fn: (pos[fn][0], pos[fn][1] + 0.0035)}
         lbl = f"{fn} (CAÍDA)"
         nx.draw_networkx_labels(G, pos_label, {fn: lbl}, 
-                                font_size=13, font_color='#FF5555', font_weight='bold')
+                                font_size=12, font_color='#FF5555', font_weight='bold')
 
     # Etiquetar todas las estaciones restantes con letra pequeña para ubicación
     context_nodes = list(G_broken.nodes())
     context_labels = {n: G_broken.nodes[n].get('nombre', str(n)) for n in context_nodes}
-    pos_context = {k: (v[0], v[1] + 0.01) for k, v in pos.items() if k in context_nodes}
-    nx.draw_networkx_labels(G_broken, pos_context, context_labels, font_size=8, font_color='#AAAAAA')
+    pos_context = {k: (v[0], v[1] + 0.0018) for k, v in pos.items() if k in context_nodes}
+    nx.draw_networkx_labels(G_broken, pos_context, context_labels, font_size=7.5, font_color='#888888')
 
     num_comp = len(components)
     if num_comp > 1:
@@ -314,7 +381,8 @@ def plot_failed_station_matplotlib(G, failed_station_or_node, title=None, resolv
     else:
         titulo = f"{title}\n{estado}"
         
-    plt.title(titulo, fontsize=22, fontweight='bold', color='white', pad=25)
+    ax.set_aspect(1.0 / np.cos(np.radians(40.42)))
+    plt.title(titulo, fontsize=20, fontweight='bold', color='white', pad=25)
     plt.axis('off')
     plt.tight_layout()
     plt.show()
@@ -322,7 +390,7 @@ def plot_failed_station_matplotlib(G, failed_station_or_node, title=None, resolv
 
 def plot_failed_edge_matplotlib(G, source, target, linea=None, title=None):
     """
-    Visualiza el impacto del cierre o remoción de un tramo (arista) de vía o transbordo.
+    Visualiza el impacto del cierre o remoción de un tramo (arista) de vía o transbordo sobre el mapa geográfico.
     - Muestra el tramo cerrado en rojo discontinuo grueso con una marca de corte 'X'.
     - Resalta las estaciones de origen y destino del tramo.
     - Si existe una ruta alternativa, la dibuja y resalta en verde brillante.
@@ -340,8 +408,10 @@ def plot_failed_edge_matplotlib(G, source, target, linea=None, title=None):
     u, v = res['removed_edge']
     G_broken = res['new_graph']
     
-    plt.figure(figsize=(26, 26), facecolor='#121212')
-    pos = nx.spring_layout(G, k=0.25, iterations=60, seed=42)
+    plt.figure(figsize=(26, 24), facecolor='#121212')
+    ax = plt.gca()
+    ax.set_facecolor('#121212')
+    pos = get_geographic_layout(G)
     
     # 1. Aristas normales de la red
     other_edges = [e for e in G_broken.edges() if e != (u, v) and e != (v, u)]
@@ -356,7 +426,7 @@ def plot_failed_edge_matplotlib(G, source, target, linea=None, title=None):
         
         # Etiquetas de la ruta alternativa
         alt_labels = {n: G.nodes[n].get('nombre', n) for n in alt_path}
-        pos_alt = {k: (v_pos[0], v_pos[1] + 0.012) for k, v_pos in pos.items() if k in alt_path}
+        pos_alt = {k: (v_pos[0], v_pos[1] + 0.0025) for k, v_pos in pos.items() if k in alt_path}
         nx.draw_networkx_labels(G_broken, pos_alt, alt_labels, font_size=10, font_color='#00FF00', font_weight='bold')
     
     # 3. Colorear nodos generales
@@ -389,16 +459,16 @@ def plot_failed_edge_matplotlib(G, source, target, linea=None, title=None):
     nx.draw_networkx_nodes(G, pos, nodelist=[u], node_size=400, node_color='#FFFF00', edgecolors='white', linewidths=2)
     nx.draw_networkx_nodes(G, pos, nodelist=[v], node_size=400, node_color='#FF6600', edgecolors='white', linewidths=2)
     
-    nx.draw_networkx_labels(G, {u: (pos[u][0], pos[u][1] - 0.018)}, {u: f"{u} [CORTE]"}, 
-                            font_size=12, font_color='#FFFF00', font_weight='bold')
-    nx.draw_networkx_labels(G, {v: (pos[v][0], pos[v][1] - 0.018)}, {v: f"{v} [CORTE]"}, 
-                            font_size=12, font_color='#FF6600', font_weight='bold')
+    nx.draw_networkx_labels(G, {u: (pos[u][0], pos[u][1] - 0.0035)}, {u: f"{u} [CORTE]"}, 
+                            font_size=11, font_color='#FFFF00', font_weight='bold')
+    nx.draw_networkx_labels(G, {v: (pos[v][0], pos[v][1] - 0.0035)}, {v: f"{v} [CORTE]"}, 
+                            font_size=11, font_color='#FF6600', font_weight='bold')
                             
     # 6. Etiquetas de contexto de estaciones
     alt_set = set(res.get('alternative_path', [])) if res.get('has_alternative_path') else set()
     context_nodes = [n for n in G_broken.nodes() if n not in [u, v] and n not in alt_set]
     context_labels = {n: G_broken.nodes[n].get('nombre', str(n)) for n in context_nodes}
-    pos_context = {k: (val[0], val[1] + 0.008) for k, val in pos.items() if k in context_nodes}
+    pos_context = {k: (val[0], val[1] + 0.0018) for k, val in pos.items() if k in context_nodes}
     nx.draw_networkx_labels(G_broken, pos_context, context_labels, font_size=7.5, font_color='#888888')
     
     # 7. Título y estado
@@ -411,6 +481,8 @@ def plot_failed_edge_matplotlib(G, source, target, linea=None, title=None):
         estado = f"¡ALERTA TRAMO PUENTE! La clausura dividió la red en {res['num_components']} componentes ({aisladas} andenes aislados)."
         
     full_title = title if title else f"Simulación de Cierre de Tramo: {res['source_station']} <---> {res['target_station']}{linea_info}\n{estado}"
+    
+    ax.set_aspect(1.0 / np.cos(np.radians(40.42)))
     plt.title(full_title, fontsize=20, fontweight='bold', color='white', pad=25)
     plt.axis('off')
     plt.tight_layout()
