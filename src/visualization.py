@@ -6,9 +6,12 @@ from pyvis.network import Network
 try:
     from robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
     from html_generator import generate_metro_interactive_html
+    from html_presentation_generator import generate_metro_presentation_html
 except ImportError:
     from src.robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
     from src.html_generator import generate_metro_interactive_html
+    from src.html_presentation_generator import generate_metro_presentation_html
+
 
 # Diccionario de colores oficiales del Metro de Madrid (soporta formato '1', 'L1', etc.)
 COLORES_LINEAS = {
@@ -152,6 +155,21 @@ def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
     """
     pos = get_geographic_layout(G, is_pyvis=True, pyvis_scale=12000)
     generate_metro_interactive_html(G, pos, output_file=output_file)
+
+def plot_graph_presentation(G, output_file="metro_madrid_presentacion.html"):
+    """
+    Genera la visualización interactiva definitiva para la PRESENTACIÓN FINAL (Sección 1.6 Requerimientos).
+    Incluye todos los apartados requeridos:
+    1. Estructura formal del grafo (Nodos, aristas de vía y transbordo, densidad, diámetro, pesos temporales).
+    2. Rutas óptimas comparativas (Menor tiempo vs Menos paradas/saltos vs Menos transbordos).
+    3. Métricas de Centralidad e Importancia (Rankings interactivos de Grado y Betweenness).
+    4. Conectividad y Resiliencia tras cierre de estaciones clave (Presets de hubs de transbordo en 1 clic).
+    5. Puntos Únicos de Fallo (Puntos de articulación y estaciones críticas con simulación en 1 clic).
+    6. Distribución Estadística de Grados (Histograma interactivo con Chart.js y ficha descriptiva completa).
+    """
+    pos = get_geographic_layout(G, is_pyvis=True, pyvis_scale=12000)
+    generate_metro_presentation_html(G, pos, output_file=output_file)
+
 
 
 

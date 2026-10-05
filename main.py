@@ -3,7 +3,7 @@ from src.graph_builder import load_data, build_metro_graph
 from src.algorithms import compare_routes
 from src.metrics import get_all_metrics, get_top_stations_by_degree, get_top_stations_by_betweenness
 from src.robustness import identify_articulation_points, simulate_node_removal, simulate_edge_removal
-from src.visualization import plot_failed_edge_matplotlib, plot_graph_matplotlib,plot_graph_pyvis,plot_route_matplotlib,plot_failed_station_matplotlib
+from src.visualization import plot_failed_edge_matplotlib, plot_graph_matplotlib, plot_graph_pyvis, plot_graph_presentation, plot_route_matplotlib, plot_failed_station_matplotlib
 
 data = load_data('./data/metro_madrid.json')
 G = build_metro_graph(data)
@@ -18,10 +18,11 @@ while True:
     print("4. Simular fallo de una estación o andén")
     print("5. Simular fallo de un tramo ferroviario")
     print("6. Visualizar grafo completo")
-    print("7. Menu Interactivo")
-    print("8. Salir")
+    print("7. Menú Interactivo ")
+    print("8. Menú Interactivo para Presentación Final ")
+    print("9. Salir")
 
-    opcion =  int(input("Seleccione una opción (1-8): "))
+    opcion =  int(input("Seleccione una opción (1-9): "))
 
     if opcion == 1:
         origen = input("Ingrese la estación de origen: ")
@@ -105,5 +106,9 @@ while True:
         plot_graph_pyvis(G)
 
     elif opcion == 8:
+        plot_graph_presentation(G)
+
+    elif opcion == 9:
         print("Saliendo del programa.")
         break
+
