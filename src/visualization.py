@@ -5,8 +5,10 @@ from pyvis.network import Network
 
 try:
     from robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
+    from html_generator import generate_metro_interactive_html
 except ImportError:
     from src.robustness import resolve_station_nodes_for_removal, resolve_edge, simulate_edge_removal
+    from src.html_generator import generate_metro_interactive_html
 
 # Diccionario de colores oficiales del Metro de Madrid (soporta formato '1', 'L1', etc.)
 COLORES_LINEAS = {
@@ -140,100 +142,17 @@ def plot_graph_matplotlib(G, title="Red del Metro de Madrid (Modelo Estación-L�
 
 def plot_graph_pyvis(G, output_file="metro_madrid_pyvis.html"):
     """
-    Genera una visualización interactiva Premium con Pyvis bajo el modelo Estación-Línea y coordenadas geográficas.
+    Genera una visualización interactiva Premium con Vis.js bajo el modelo Estación-Línea y coordenadas geográficas.
+    Incluye:
+    - Buscador interactivo de estaciones con autocompletado y zoom automático.
+    - Leyenda oficial de líneas con filtro interactivo y aislamiento de líneas.
+    - Calculador de rutas óptimas (menor tiempo y menor transbordo) con itinerario detallado paso a paso.
+    - Simulador visual de resiliencia y fallos (cierre de estaciones o tramos) con rutas alternativas.
+    - Modo oscuro unificado y dependencias CDN 100% autónomas.
     """
-    net = Network(height="950px", width="100%", bgcolor="#141420", font_color="#e0e0e0", 
-                  select_menu=True, filter_menu=True)
-    
-    grados = dict(G.degree())
-    
-    # Nodos con posiciones geográficas calibradas para canvas
     pos = get_geographic_layout(G, is_pyvis=True, pyvis_scale=12000)
-    
-    for node, d in G.nodes(data=True):
-        nombre = d.get('nombre', node)
-        linea = d.get('linea', '')
-        color = COLORES_LINEAS.get(linea, '#00E5FF')
-        grado = grados.get(node, 1)
-        
-        tamanio = grado * 3.5 + 14
-        titulo_html = (
-            f"<div style='font-family: Arial; padding: 5px; color: #222;'>"
-            f"<b>{nombre}</b><br>"
-            f"Línea: <b>{linea}</b><br>"
-            f"Conexiones (Grado): {grado}"
-            f"</div>"
-        )
-        
-        x, y = pos[node]
-        
-        net.add_node(
-            node, 
-            label=f"{nombre} ({linea})", 
-            title=titulo_html, 
-            color=color, 
-            size=tamanio, 
-            font={'size': 13, 'color': '#ffffff', 'face': 'arial', 'strokeWidth': 2, 'strokeColor': '#000000'},
-            borderWidth=2, 
-            borderWidthSelected=4, 
-            shape='dot',
-            x=x,
-            y=y
-        )
-        
-    # Función auxiliar para formatear tiempo (min:seg)
-    def format_time(peso):
-        m = int(peso)
-        s = int(round((peso - m) * 60))
-        return f"{m}:{s:02d}"
+    generate_metro_interactive_html(G, pos, output_file=output_file)
 
-    # Aristas
-    for u, v, data in G.edges(data=True):
-        peso = data.get('tiempo', 2.0)
-        linea = data.get('linea', '')
-        tipo = data.get('tipo', 'via')
-        
-        tiempo_formateado = format_time(peso)
-        
-        if tipo == 'transbordo':
-            # Pasillo peatonal
-            net.add_edge(
-                u, v, 
-                value=2.0, 
-                title=f"Pasillo de Transbordo a pie: {tiempo_formateado} min", 
-                color="#FFFFFF", 
-                dashes=True, 
-                width=2
-            )
-        else:
-            # Tramo ferroviario
-            color = COLORES_LINEAS.get(linea, '#888888')
-            net.add_edge(
-                u, v, 
-                value=peso, 
-                title=f"Tramo Línea {linea}: {tiempo_formateado} min", 
-                color=color, 
-                width=3.5
-            )
-        
-    # Físicas desactivadas para mantener la forma fija del mapa geográfico
-    net.set_options("""
-    var options = {
-      "physics": {
-        "enabled": false
-      }
-    }
-    """)
-    
-    # Generar el HTML y escribirlo usando UTF-8 para arreglar las tildes
-    html_content = net.generate_html(notebook=False)
-    if "<meta charset=\"utf-8\">" not in html_content.lower():
-        html_content = html_content.replace("<head>", "<head>\n<meta charset=\"utf-8\">")
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(html_content)
-        
-    print(f"Visualización interactiva guardada en: {output_file}")
 
 
 def plot_route_matplotlib(G, path, title="Ruta Óptima"):

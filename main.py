@@ -17,8 +17,8 @@ while True:
     print("3. Identificar puntos de articulación")
     print("4. Simular fallo de una estación o andén")
     print("5. Simular fallo de un tramo ferroviario")
-    print("6. Visualizar grafo completo (matplotlib)")
-    print("7. Visualizar grafo completo (pyvis)")
+    print("6. Visualizar grafo completo")
+    print("7. Menu Interactivo")
     print("8. Salir")
 
     opcion =  int(input("Seleccione una opción (1-8): "))
