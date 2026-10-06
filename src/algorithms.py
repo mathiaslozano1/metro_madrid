@@ -327,6 +327,111 @@ def compare_routes(G, origin_station, destination_station):
         }
     }
 
+def find_route_with_disruption(G, origin_station, destination_station, avoid_station=None, avoid_line=None, avoid_edge=None, criteria='time'):
+    """
+    Calcula la ruta de contingencia entre dos estaciones esquivando una estación cerrada
+    (completa o una línea específica) o un tramo de vía cortado.
+    Compara el resultado contra la ruta normal habitual.
+    """
+    # 1. Ruta normal sin incidencias
+    normal_route = find_best_route(G, origin_station, destination_station, criteria=criteria)
+    
+    # 2. Construir grafo con la incidencia aplicada
+    G_disrupted = G.copy()
+    excluded_desc = []
+    
+    if avoid_station:
+        st_nodes = resolve_station_nodes(G, avoid_station)
+        if avoid_line:
+            clean_l = str(avoid_line).upper()
+            if not clean_l.startswith('L') and clean_l != 'R':
+                clean_l = f"L{clean_l}"
+            nodes_to_cut = [n for n in st_nodes if G.nodes[n].get('linea') == clean_l]
+            excluded_desc.append(f"Andén de {avoid_station} en {clean_l}")
+        else:
+            nodes_to_cut = st_nodes
+            excluded_desc.append(f"Estación completa {avoid_station} ({len(st_nodes)} andenes)")
+            
+        G_disrupted.remove_nodes_from(nodes_to_cut)
+        
+    if avoid_edge:
+        u_query, v_query = avoid_edge[0], avoid_edge[1]
+        line_filter = avoid_edge[2] if len(avoid_edge) > 2 else None
+        
+        try:
+            from robustness import clean_line_code
+        except ImportError:
+            from src.robustness import clean_line_code
+            
+        clean_l = clean_line_code(line_filter)
+        u_nodes = resolve_station_nodes(G_disrupted, u_query)
+        v_nodes = resolve_station_nodes(G_disrupted, v_query)
+        
+        edges_to_remove = set()
+        for u in u_nodes:
+            for v in v_nodes:
+                if G_disrupted.has_edge(u, v):
+                    d = G_disrupted.get_edge_data(u, v)
+                    if d.get('tipo') == 'via':
+                        if not clean_l or clean_line_code(d.get('linea')) == clean_l:
+                            edges_to_remove.add((u, v))
+                            
+        # Si no hay vía directa pero se especificó una línea continua entre ambas paradas:
+        if not edges_to_remove and clean_l:
+            u_line = [n for n in u_nodes if clean_line_code(G_disrupted.nodes[n].get('linea')) == clean_l]
+            v_line = [n for n in v_nodes if clean_line_code(G_disrupted.nodes[n].get('linea')) == clean_l]
+            if u_line and v_line:
+                try:
+                    line_sub = nx.Graph()
+                    for u_sub, v_sub, d_sub in G_disrupted.edges(data=True):
+                        if d_sub.get('tipo') == 'via' and clean_line_code(d_sub.get('linea')) == clean_l:
+                            line_sub.add_edge(u_sub, v_sub, weight=d_sub.get('weight', 1))
+                    seg_path = nx.shortest_path(line_sub, u_line[0], v_line[0])
+                    for seg_u, seg_v in zip(seg_path[:-1], seg_path[1:]):
+                        edges_to_remove.add((seg_u, seg_v))
+                except (nx.NetworkXNoPath, nx.NodeNotFound):
+                    pass
+                    
+        for u, v in edges_to_remove:
+            if G_disrupted.has_edge(u, v):
+                G_disrupted.remove_edge(u, v)
+                
+        u_disp = G.nodes[u_nodes[0]].get('nombre', u_query) if u_nodes else u_query
+        v_disp = G.nodes[v_nodes[0]].get('nombre', v_query) if v_nodes else v_query
+        l_info = f" ({clean_l})" if clean_l else ""
+        excluded_desc.append(f"Tramo de vía {u_disp} <-> {v_disp}{l_info}")
+        
+    # 3. Calcular ruta en red con incidencia
+    detour_route = None
+    try:
+        detour_route = find_best_route(G_disrupted, origin_station, destination_station, criteria=criteria)
+    except (ValueError, nx.NetworkXNoPath):
+        detour_route = None
+        
+    is_possible = detour_route is not None
+    extra_time = None
+    extra_time_text = "N/A"
+    
+    if is_possible and normal_route:
+        diff = max(0.0, detour_route['tiempo_total'] - normal_route['tiempo_total'])
+        extra_time = FormattedTime(diff)
+        extra_time_text = extra_time.text
+        
+    return {
+        'origen': origin_station,
+        'destino': destination_station,
+        'criterio': criteria,
+        'avoid_station': avoid_station,
+        'avoid_line': avoid_line,
+        'avoid_edge': avoid_edge,
+        'elementos_excluidos': " | ".join(excluded_desc),
+        'ruta_normal': normal_route,
+        'ruta_desvio': detour_route,
+        'es_posible': is_possible,
+        'sobrecosto_tiempo': extra_time,
+        'sobrecosto_tiempo_texto': extra_time_text
+    }
+
 if __name__ == "__main__":
     from graph_builder import load_data, build_metro_graph
     
@@ -340,3 +445,4 @@ if __name__ == "__main__":
     print(f"  Tiempo Tren: {rt['tiempo_tren_formato']} | Tiempo Transbordo: {rt['tiempo_transbordo_formato']}")
     for inst in rt['instrucciones']:
         print(f"   • {inst}")
+

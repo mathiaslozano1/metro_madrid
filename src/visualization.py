@@ -424,3 +424,139 @@ def plot_failed_edge_matplotlib(G, source, target, linea=None, title=None):
     plt.axis('off')
     plt.tight_layout()
     plt.show()
+
+
+def plot_contingency_route_matplotlib(G, result_dict, title=None):
+    """
+    Visualiza la ruta de contingencia/desvío ante una incidencia en la red:
+    - Resalta la ruta alternativa en verde neón con paradas y transbordos.
+    - Destaca el elemento cortado (estación, andén o tramo de vía) en rojo vivo con una gran 'X'.
+    - Destaca las estaciones de origen (amarillo) y destino (naranja).
+    - Incorpora una leyenda explicativa y detalles de la demora adicional (+X min Y s).
+    """
+    from matplotlib.lines import Line2D
+    
+    pos = get_geographic_layout(G)
+    plt.figure(figsize=(26, 22), facecolor='#0B0F19')
+    ax = plt.gca()
+    ax.set_facecolor('#0B0F19')
+
+    origen = result_dict.get('origen', 'Origen')
+    destino = result_dict.get('destino', 'Destino')
+    detour = result_dict.get('ruta_desvio')
+    norm = result_dict.get('ruta_normal')
+    elementos = result_dict.get('elementos_excluidos', 'Incidencia')
+    sobrecosto = result_dict.get('sobrecosto_tiempo_texto', '')
+    avoid_st = result_dict.get('avoid_station')
+    avoid_line = result_dict.get('avoid_line')
+    avoid_edge = result_dict.get('avoid_edge')
+
+    # 1. Dibujar red base atenuada
+    all_edges = list(G.edges())
+    all_nodes = list(G.nodes())
+    node_colors_base = [COLORES_LINEAS.get(G.nodes[n].get('linea', ''), '#00E5FF') for n in all_nodes]
+    nx.draw_networkx_edges(G, pos, edgelist=all_edges, width=1.0, edge_color='#2A3447', alpha=0.35)
+    nx.draw_networkx_nodes(G, pos, nodelist=all_nodes, node_size=25, node_color=node_colors_base, alpha=0.25)
+
+    # 2. Dibujar ruta habitual atenuada si existe (línea punteada gris)
+    if norm and norm.get('path'):
+        norm_path = norm['path']
+        norm_edges = list(zip(norm_path[:-1], norm_path[1:]))
+        nx.draw_networkx_edges(G, pos, edgelist=norm_edges, width=2.0, edge_color='#64748B', style='dotted', alpha=0.45)
+
+    # 3. Dibujar ruta de contingencia/desvío si es posible
+    legend_handles = []
+    if detour and detour.get('path'):
+        alt_path = detour['path']
+        alt_edges = list(zip(alt_path[:-1], alt_path[1:]))
+        nx.draw_networkx_edges(G, pos, edgelist=alt_edges, width=5.0, edge_color='#10B981', alpha=0.95)
+        nx.draw_networkx_nodes(G, pos, nodelist=alt_path, node_size=150, node_color='#10B981', edgecolors='#FFFFFF', linewidths=1.5)
+
+        # Etiquetas a lo largo del desvío
+        labels_alt = {n: G.nodes[n].get('nombre', str(n)) for n in alt_path}
+        pos_labels = {k: (v[0], v[1] + 0.0022) for k, v in pos.items() if k in alt_path}
+        nx.draw_networkx_labels(G, pos_labels, labels_alt, font_size=9, font_color='#E2E8F0', font_weight='bold')
+
+        # Resaltar Origen y Destino
+        start_node, end_node = alt_path[0], alt_path[-1]
+        nx.draw_networkx_nodes(G, pos, nodelist=[start_node], node_size=400, node_color='#FACC15', edgecolors='#FFFFFF', linewidths=2)
+        nx.draw_networkx_nodes(G, pos, nodelist=[end_node], node_size=400, node_color='#F97316', edgecolors='#FFFFFF', linewidths=2)
+        nx.draw_networkx_labels(G, {start_node: (pos[start_node][0], pos[start_node][1] - 0.0035)},
+                                {start_node: f"ORIGEN: {origen}"}, font_size=11, font_color='#FACC15', font_weight='bold')
+        nx.draw_networkx_labels(G, {end_node: (pos[end_node][0], pos[end_node][1] - 0.0035)},
+                                {end_node: f"DESTINO: {destino}"}, font_size=11, font_color='#F97316', font_weight='bold')
+
+        legend_handles.append(Line2D([0], [0], color='#10B981', lw=4, label=f"Ruta Alternativa ({detour['tiempo_total_texto']}, {detour['num_transbordos']} transb.)"))
+        legend_handles.append(Line2D([0], [0], marker='o', color='w', markerfacecolor='#FACC15', markersize=10, label=f"Origen: {origen}"))
+        legend_handles.append(Line2D([0], [0], marker='o', color='w', markerfacecolor='#F97316', markersize=10, label=f"Destino: {destino}"))
+        if norm:
+            legend_handles.append(Line2D([0], [0], color='#64748B', lw=2, linestyle='dotted', label=f"Ruta Habitual ({norm['tiempo_total_texto']})"))
+
+    # 4. Dibujar el elemento bloqueado/cortado en ROJO vivo
+    affected_nodes = []
+    if avoid_st:
+        from src.algorithms import resolve_station_nodes
+        st_nodes = resolve_station_nodes(G, avoid_st)
+        if avoid_line:
+            clean_l = avoid_line.strip().upper()
+            if not clean_l.startswith('L') and clean_l != 'R':
+                clean_l = 'L' + clean_l
+            affected_nodes = [n for n in st_nodes if G.nodes[n].get('linea') == clean_l]
+        else:
+            affected_nodes = st_nodes
+
+        if affected_nodes:
+            # Dibujar X grande sobre la estación cerrada
+            nx.draw_networkx_nodes(G, pos, nodelist=affected_nodes, node_size=900, node_color='#EF4444',
+                                   node_shape='X', edgecolors='#FFFFFF', linewidths=2.0)
+            # Aristas rotas conectadas a esos andenes
+            cut_edges = [(u, v) for u, v in G.edges() if u in affected_nodes or v in affected_nodes]
+            nx.draw_networkx_edges(G, pos, edgelist=cut_edges, edge_color='#EF4444', width=3.5, style='dashed', alpha=0.9)
+            for an in affected_nodes:
+                nx.draw_networkx_labels(G, {an: (pos[an][0], pos[an][1] - 0.0035)},
+                                        {an: f"{an} [CERRADA]"}, font_size=11, font_color='#EF4444', font_weight='bold')
+            legend_handles.append(Line2D([0], [0], marker='X', color='w', markerfacecolor='#EF4444', markersize=12, label=f"Cierre: {elementos}"))
+
+    elif avoid_edge:
+        u_name, v_name = avoid_edge[0], avoid_edge[1]
+        line_filter = avoid_edge[2] if len(avoid_edge) > 2 else None
+        cut_edges = []
+        for u, v, d in G.edges(data=True):
+            if d.get('tipo') == 'via':
+                u_st = G.nodes[u].get('nombre', '')
+                v_st = G.nodes[v].get('nombre', '')
+                if (u_st == u_name and v_st == v_name) or (u_st == v_name and v_st == u_name):
+                    if not line_filter or d.get('linea') == line_filter:
+                        cut_edges.append((u, v))
+        if cut_edges:
+            nx.draw_networkx_edges(G, pos, edgelist=cut_edges, edge_color='#EF4444', width=5.5, style='dashed', alpha=0.95)
+            for u, v in cut_edges:
+                mid_x = (pos[u][0] + pos[v][0]) / 2.0
+                mid_y = (pos[u][1] + pos[v][1]) / 2.0
+                plt.scatter([mid_x], [mid_y], s=1300, c='#EF4444', marker='X', edgecolors='#FFFFFF', linewidths=2.0, zorder=12)
+                nx.draw_networkx_nodes(G, pos, nodelist=[u, v], node_size=280, node_color='#F59E0B', edgecolors='#FFFFFF', linewidths=1.5)
+                nx.draw_networkx_labels(G, {u: (pos[u][0], pos[u][1] - 0.003)}, {u: f"{u} [CORTE]"}, font_size=10, font_color='#F59E0B', font_weight='bold')
+                nx.draw_networkx_labels(G, {v: (pos[v][0], pos[v][1] - 0.003)}, {v: f"{v} [CORTE]"}, font_size=10, font_color='#F59E0B', font_weight='bold')
+            legend_handles.append(Line2D([0], [0], marker='X', color='w', markerfacecolor='#EF4444', markersize=12, label=f"Tramo cortado: {u_name} ⟷ {v_name}"))
+
+    # 5. Configurar Leyenda y Título
+    if legend_handles:
+        plt.legend(handles=legend_handles, loc='upper left', facecolor='#1E293B', edgecolor='#334155',
+                   labelcolor='#FFFFFF', fontsize=11, framealpha=0.9, borderpad=1.2)
+
+    if detour:
+        demora_str = f" | Demora adicional: +{sobrecosto}" if sobrecosto and sobrecosto != 'N/A' else ""
+        plot_title = (f"Ruta Alternativa ante Incidencias: {origen} ➔ {destino}\n"
+                      f"Evitando: {elementos}{demora_str} (Tiempo desvío: {detour['tiempo_total_texto']})")
+    else:
+        plot_title = (f"⚠️ Imposible Conectar {origen} y {destino}\n"
+                      f"La incidencia en {elementos} interrumpió toda conectividad disponible entre ambos puntos.")
+
+    if title:
+        plot_title = title
+
+    ax.set_aspect(1.0 / np.cos(np.radians(40.42)))
+    plt.title(plot_title, fontsize=18, fontweight='bold', color='#FFFFFF', pad=22)
+    plt.axis('off')
+    plt.tight_layout()
+    plt.show()

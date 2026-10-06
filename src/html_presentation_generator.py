@@ -3,12 +3,13 @@ Generador de Visualización y Presentación Interactiva Final para el Metro de M
 Incorpora:
 1. Estructura Topológica Global (Nodos, aristas de vía y transbordo, densidad, diámetro, pesos temporales).
 2. Rutas Óptimas Comparativas (Tiempos en minutos y segundos, comparativa lado a lado).
-3. Análisis de Centralidad (Rankings de Grado y Betweenness Centrality con localización interactiva).
-4. Simulación de Robustez y Fallos (Cierre de estación completa O de una línea específica en estaciones multilínea, y corte de tramos).
-5. Puntos Críticos de Articulación (Puntos únicos de fallo y estaciones críticas con simulación en 1 clic).
-6. Distribución de Grados (Histograma interactivo con Chart.js, estadísticas descriptivas y Top de estaciones con mayor grado).
-7. Nodos de menor tamaño y mayor nitidez visual con iluminación interactiva de aristas al pasar el cursor.
-8. Separación de altura perfecta sin solapamientos entre la barra superior y el panel lateral.
+3. Rutas de Contingencia / Desvíos ante Incidencias: Cálculo de rutas alternativas tras eliminar una estación completa, una línea específica o un tramo de vía cortado, con cálculo de sobrecosto y trazado en el mapa.
+4. Análisis de Centralidad (Rankings de Grado y Betweenness Centrality con localización interactiva).
+5. Simulación de Robustez y Fallos (Cierre de estación completa O de una línea específica en estaciones multilínea, y corte de tramos con botón directo para probar rutas de desvío).
+6. Puntos Críticos de Articulación (Puntos únicos de fallo y estaciones críticas con simulación en 1 clic).
+7. Distribución de Grados (Histograma interactivo con Chart.js, estadísticas descriptivas y Top de estaciones con mayor grado).
+8. Nodos de menor tamaño y mayor nitidez visual con iluminación interactiva de aristas al pasar el cursor.
+9. Separación de altura perfecta sin solapamientos entre la barra superior y el panel lateral.
 """
 
 import json
@@ -18,9 +19,11 @@ import networkx as nx
 try:
     from metrics import get_all_metrics, get_top_stations_by_degree, get_top_stations_by_betweenness, aggregate_station_metrics
     from robustness import identify_critical_stations, identify_articulation_points
+    from algorithms import find_route_with_disruption
 except ImportError:
     from src.metrics import get_all_metrics, get_top_stations_by_degree, get_top_stations_by_betweenness, aggregate_station_metrics
     from src.robustness import identify_critical_stations, identify_articulation_points
+    from src.algorithms import find_route_with_disruption
 
 COLORES_LINEAS = {
     '1': '#0097D6', 'L1': '#0097D6',
@@ -138,7 +141,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             z-index: 1;
         }
 
-        /* Barra Superior Flotante: Altura compacta y fija para evitar solapamiento */
+        /* Barra Superior Flotante */
         .top-navbar {
             position: fixed;
             top: 12px;
@@ -201,39 +204,143 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             line-height: 1.1;
         }
 
-        .kpi-badges {
+        /* Cluster Central de Métricas del Header */
+        .header-metrics-cluster {
+            display: flex;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 4px 12px;
+            gap: 12px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+        }
+
+        .metrics-subgroup {
             display: flex;
             align-items: center;
             gap: 8px;
-            flex-wrap: nowrap;
-            overflow: hidden;
+            font-size: 0.78rem;
         }
 
-        .kpi-chip {
+        .subgroup-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
             display: flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border-subtle);
-            padding: 4px 10px;
-            border-radius: 18px;
-            font-size: 0.78rem;
+            gap: 4px;
+        }
+
+        .metric-pill {
             color: var(--text-secondary);
-            font-weight: 500;
+            font-size: 0.78rem;
             white-space: nowrap;
         }
 
-        .kpi-chip b {
+        .metric-pill b {
             color: #ffffff;
             font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
         }
 
-        .top-actions {
+        .cluster-divider {
+            width: 1px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .metric-pill-highlight {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(250, 204, 21, 0.12);
+            border: 1px solid rgba(250, 204, 21, 0.35);
+            padding: 3px 10px;
+            border-radius: 14px;
+            font-size: 0.78rem;
+            color: #fef08a;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .metric-pill-highlight:hover {
+            background: rgba(250, 204, 21, 0.24);
+            border-color: #facc15;
+            transform: translateY(-1px);
+            box-shadow: 0 0 12px rgba(250, 204, 21, 0.35);
+        }
+
+        .metric-pill-highlight b {
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+        }
+
+        .badge-route-hint {
+            background: rgba(0, 229, 255, 0.2);
+            color: #00E5FF;
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            margin-left: 2px;
+        }
+
+        /* Cluster Derecho de Acciones */
+        .header-actions-cluster {
             display: flex;
             align-items: center;
             gap: 8px;
             flex-shrink: 0;
+            flex-wrap: nowrap;
+        }
+
+        .actions-button-group {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 2px;
+            gap: 2px;
+            flex-wrap: nowrap;
+        }
+
+        .actions-button-group .btn-action {
+            background: transparent;
+            border: none;
+            padding: 6px 11px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+        }
+
+        .actions-button-group .btn-action:hover {
+            background: rgba(255, 255, 255, 0.14);
+            color: #00E5FF;
+            transform: none;
+        }
+
+        .actions-button-group .btn-action.btn-reset {
+            background: rgba(239, 68, 68, 0.16);
+            color: #fca5a5;
+        }
+
+        .actions-button-group .btn-action.btn-reset:hover {
+            background: rgba(239, 68, 68, 0.35);
+            color: #ffffff;
+        }
+
+        .actions-divider {
+            width: 1px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 0 4px;
         }
 
         .btn-action {
@@ -270,12 +377,13 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             color: #ffffff;
         }
 
-        /* Panel Lateral (Sidebar Drawer): Posicionado con holgura segura bajo el header */
+        /* Panel Lateral (Sidebar Drawer) */
         .sidebar-drawer {
             position: fixed;
             top: 78px;
             left: 14px;
             width: 485px;
+            max-width: 95vw;
             max-height: calc(100vh - 92px);
             z-index: 999;
             background: var(--bg-panel);
@@ -287,11 +395,15 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .sidebar-drawer.expanded {
+            width: 760px;
         }
 
         .sidebar-drawer.collapsed {
-            transform: translateX(-515px);
+            transform: translateX(-800px);
             opacity: 0;
             pointer-events: none;
         }
@@ -302,7 +414,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             background: rgba(0, 0, 0, 0.38);
             border-bottom: 1px solid var(--border-subtle);
             padding: 6px;
-            gap: 3px;
+            gap: 4px;
             overflow-x: auto;
             scrollbar-width: none;
         }
@@ -312,9 +424,9 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
         }
 
         .sidebar-tab-btn {
-            flex: 1;
-            min-width: 60px;
-            padding: 7px 3px;
+            flex: 1 1 0;
+            min-width: 58px;
+            padding: 7px 2px;
             background: transparent;
             border: none;
             color: var(--text-dim);
@@ -328,6 +440,8 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             gap: 4px;
             transition: all 0.2s ease;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .sidebar-tab-btn i {
@@ -347,7 +461,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
         }
 
         .sidebar-tab-content {
-            padding: 16px;
+            padding: 16px 16px 48px 16px;
             overflow-y: auto;
             flex: 1;
             scrollbar-width: thin;
@@ -377,7 +491,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Insignia de encabezado temático (Limpio y profesional, sin menciones a requerimientos) */
+        /* Insignia de encabezado temático */
         .section-header-badge {
             display: inline-flex;
             align-items: center;
@@ -409,7 +523,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             line-height: 1.45;
         }
 
-        /* Cards y contenedores con contraste impecable */
+        /* Cards y contenedores */
         .info-card-box {
             background: var(--bg-panel-subtle);
             border: 1px solid var(--border-subtle);
@@ -814,8 +928,12 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             box-shadow: 4px 6px 14px rgba(0, 0, 0, 0.4);
         }
 
+        .btn-toggle-sidebar.expanded-sidebar {
+            left: 787px;
+        }
+
         .btn-toggle-sidebar.collapsed {
-            left: 14px;
+            left: 14px !important;
             border-radius: 10px;
         }
 
@@ -871,6 +989,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
 
     <!-- Barra de Navegación Superior: Fija y elegante -->
     <header class="top-navbar">
+        <!-- 1. Cluster Marca / Título -->
         <div class="brand-section">
             <div class="brand-logo-rhombus">
                 <i class="fa-solid fa-subway text-white" style="transform: rotate(-45deg); font-size: 0.95rem;"></i>
@@ -883,34 +1002,50 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             </div>
         </div>
 
-        <div class="kpi-badges d-none d-xl-flex">
-            <div class="kpi-chip" title="Estaciones físicas únicas">
-                <i class="fa-solid fa-map-pin text-info"></i> Estaciones: <b id="kpi-stations">__STATIONS_COUNT__</b>
+        <!-- 2. Cluster Central: Métricas Clave de la Red -->
+        <div class="header-metrics-cluster d-none d-lg-flex">
+            <!-- Subgrupo Topología -->
+            <div class="metrics-subgroup" title="Topología de la red de transporte">
+                <span class="subgroup-label"><i class="fa-solid fa-network-wired text-info"></i> Red</span>
+                <span class="metric-pill">Estaciones: <b id="kpi-stations">__STATIONS_COUNT__</b></span>
+                <span class="metric-pill">Andenes: <b id="kpi-nodes">__NODES_COUNT__</b></span>
             </div>
-            <div class="kpi-chip" title="Andenes individuales en el grafo">
-                <i class="fa-solid fa-circle-nodes text-warning"></i> Andenes/Nodos: <b id="kpi-nodes">__NODES_COUNT__</b>
+            
+            <div class="cluster-divider"></div>
+
+            <!-- Subgrupo Infraestructura -->
+            <div class="metrics-subgroup" title="Infraestructura física y conexiones">
+                <span class="subgroup-label"><i class="fa-solid fa-train text-success"></i> Vías</span>
+                <span class="metric-pill">Tramos: <b id="kpi-via">__VIA_COUNT__</b></span>
+                <span class="metric-pill">Transbordos: <b id="kpi-trans">__TRANS_COUNT__</b></span>
             </div>
-            <div class="kpi-chip" title="Tramos de vía férrea">
-                <i class="fa-solid fa-train text-success"></i> Tramos Vía: <b id="kpi-via">__VIA_COUNT__</b>
-            </div>
-            <div class="kpi-chip" title="Pasillos peatonales de transbordo">
-                <i class="fa-solid fa-person-walking text-primary"></i> Transbordos: <b id="kpi-trans">__TRANS_COUNT__</b>
-            </div>
-            <div class="kpi-chip" title="Diámetro de la red">
-                <i class="fa-solid fa-arrows-left-right" style="color: #c084fc;"></i> Diámetro: <b id="kpi-diam">__DIAMETER__</b>
+
+            <div class="cluster-divider"></div>
+
+            <!-- Subgrupo Diámetro Interactivo -->
+            <div class="metric-pill-highlight" onclick="showDiameterRoute()" title="Clic para ver la ruta más larga de la red (Diámetro: __DIAMETER__ saltos)">
+                <i class="fa-solid fa-arrows-left-right text-warning"></i> Diámetro: <b id="kpi-diam">__DIAMETER__</b>
+                <span class="badge-route-hint"><i class="fa-solid fa-route"></i> Ver Ruta</span>
             </div>
         </div>
 
-        <div class="top-actions">
-            <button class="btn-action" onclick="resetNetworkView()" title="Centrar mapa completo">
-                <i class="fa-solid fa-crosshairs"></i> <span class="d-none d-md-inline">Centrar Mapa</span>
-            </button>
-            <button class="btn-action" onclick="toggleFullScreen()" title="Modo pantalla completa para presentación">
-                <i class="fa-solid fa-expand"></i> <span class="d-none d-md-inline">Presentar</span>
-            </button>
-            <button class="btn-action btn-reset" onclick="resetAllState()" title="Restablecer filtros y simulaciones">
-                <i class="fa-solid fa-arrow-rotate-left"></i> <span class="d-none d-md-inline">Restablecer</span>
-            </button>
+        <!-- 3. Cluster Derecho: Controles y Herramientas -->
+        <div class="header-actions-cluster">
+            <div class="actions-button-group">
+                <button class="btn-action" id="expand-sidebar-btn" onclick="toggleSidebarWidth()" title="Agrandar / Reducir panel lateral para presentación">
+                    <i class="fa-solid fa-table-columns"></i> <span id="expand-btn-text" class="d-none d-md-inline">Agrandar Panel</span>
+                </button>
+                <button class="btn-action" onclick="resetNetworkView()" title="Centrar mapa completo (sin resetear filtros)">
+                    <i class="fa-solid fa-crosshairs"></i> <span class="d-none d-md-inline">Centrar Mapa</span>
+                </button>
+                <button class="btn-action" onclick="toggleFullScreen()" title="Modo pantalla completa para presentación">
+                    <i class="fa-solid fa-expand"></i> <span class="d-none d-md-inline">Presentar</span>
+                </button>
+                <div class="actions-divider"></div>
+                <button class="btn-action btn-reset" onclick="resetAllState()" title="Restablecer filtros, selecciones y vista">
+                    <i class="fa-solid fa-arrow-rotate-left"></i> <span class="d-none d-md-inline">Restablecer</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -926,7 +1061,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                 <i class="fa-solid fa-diagram-project"></i>
                 <span>Estructura</span>
             </button>
-            <button class="sidebar-tab-btn" onclick="switchTab('tab-routes')" title="Rutas Óptimas">
+            <button class="sidebar-tab-btn" onclick="switchTab('tab-routes')" title="Rutas Óptimas y Contingencias">
                 <i class="fa-solid fa-route"></i>
                 <span>Rutas</span>
             </button>
@@ -992,9 +1127,9 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                             <div class="metric-stat-val" style="color: #38bdf8;" id="struct-density">__DENSITY__</div>
                             <div class="metric-stat-label">Densidad (ρ)</div>
                         </div>
-                        <div class="metric-stat-box">
-                            <div class="metric-stat-val" style="color: #c084fc;" id="struct-diameter">__DIAMETER__</div>
-                            <div class="metric-stat-label">Diámetro (Saltos)</div>
+                        <div class="metric-stat-box" onclick="showDiameterRoute()" style="cursor: pointer;" title="Clic para ver la ruta más larga (Diámetro: __DIAMETER__ saltos)">
+                            <div class="metric-stat-val text-warning" id="struct-diameter">__DIAMETER__</div>
+                            <div class="metric-stat-label">Diámetro (Saltos) <i class="fa-solid fa-route ms-1 text-info"></i></div>
                         </div>
                         <div class="metric-stat-box">
                             <div class="metric-stat-val" style="color: #4ade80;" id="struct-avg-deg">__AVG_DEGREE__</div>
@@ -1005,6 +1140,20 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                             <div class="metric-stat-label">Líneas Oficiales</div>
                         </div>
                     </div>
+                    <button class="btn-action w-100 mt-2 justify-content-center" onclick="showDiameterRoute()" title="Ver la ruta del diámetro en el mapa">
+                        <i class="fa-solid fa-route text-warning me-2"></i> Ver Ruta Más Larga de la Red (__DIAMETER__ saltos)
+                    </button>
+                </div>
+
+                <div class="info-card-box">
+                    <div class="info-card-header">
+                        <span><i class="fa-solid fa-circle-info text-info me-2"></i>Datos Relevantes de Topología</span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+                        • <b>Topología Dispersa:</b> Densidad de <b>0.00801</b> (red planar-like), lo que minimiza el consumo de infraestructura subterránea y maximiza la cobertura urbana.<br>
+                        • <b>Diámetro Global:</b> <b>__DIAMETER__ saltos</b> entre los extremos más lejanos de la red (Hospital Infanta Sofía en L10 hasta Parque de los Estados en L12).<br>
+                        • <b>Grado Promedio:</b> 2.32 conexiones por andén, reflejando una estructura mayoritariamente en línea recta con bifurcaciones puntuales.
+                    </p>
                 </div>
 
                 <div class="info-card-box">
@@ -1028,12 +1177,12 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                 </div>
             </div>
 
-            <!-- PESTAÑA: RUTAS ÓPTIMAS -->
+            <!-- PESTAÑA: RUTAS ÓPTIMAS Y RUTAS CON CONTINGENCIA -->
             <div id="tab-routes" class="tab-pane">
                 <div class="section-header-badge"><i class="fa-solid fa-diamond-turn-right me-1"></i> Algoritmos de Ruta</div>
                 <h2 class="section-main-title">Cálculo y Comparativa de Rutas</h2>
                 <p class="section-desc">
-                    Calcula y compara rutas entre dos estaciones bajo tres criterios: menor tiempo, menor número de paradas o menor cantidad de transbordos.
+                    Calcula la ruta óptima habitual y <b>rutas de contingencia / desvío</b> cuando existen estaciones, líneas o tramos inhabilitados.
                 </p>
 
                 <div class="mb-3">
@@ -1067,11 +1216,63 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                     </div>
                 </div>
 
+                <!-- NUEVA SECCIÓN: INCIDENCIAS Y CONTINGENCIA EN RUTA -->
+                <div class="info-card-box mb-3" style="border: 1px dashed rgba(239, 68, 68, 0.45); background: rgba(239, 68, 68, 0.08);">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <label class="form-check-label text-white fw-bold d-flex align-items-center gap-2 m-0" style="cursor: pointer; font-size: 0.84rem;">
+                            <input type="checkbox" id="route-disruption-toggle" class="form-check-input" onchange="toggleRouteDisruptionUI(this.checked)" style="background-color: #0f172a; border-color: #ef4444; cursor: pointer;">
+                            <span><i class="fa-solid fa-triangle-exclamation text-danger"></i> Simular Incidencia en la Red (Desvío)</span>
+                        </label>
+                        <span class="badge bg-danger-subtle text-danger" style="font-size: 0.7rem;">Contingencia</span>
+                    </div>
+
+                    <div id="route-disruption-panel" style="display: none; padding-top: 10px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.08);">
+                        <p style="font-size: 0.77rem; color: var(--text-muted); margin-bottom: 10px;">
+                            Calcula el trayecto alternativo que deben tomar los usuarios evitando el elemento inoperativo.
+                        </p>
+                        <div class="d-flex gap-2 mb-2">
+                            <label class="btn-quick flex-fill text-center" style="cursor: pointer; font-size: 0.75rem;">
+                                <input type="radio" name="disrupt-type" value="station" checked onchange="toggleDisruptType(this.value)" class="me-1"> Evitar Estación/Línea
+                            </label>
+                            <label class="btn-quick flex-fill text-center" style="cursor: pointer; font-size: 0.75rem;">
+                                <input type="radio" name="disrupt-type" value="edge" onchange="toggleDisruptType(this.value)" class="me-1"> Evitar Tramo de Vía
+                            </label>
+                        </div>
+
+                        <!-- Evitar Estacion -->
+                        <div id="disrupt-station-fields">
+                            <div class="mb-2">
+                                <label class="form-label-custom" style="font-size: 0.72rem;">Estación a Evitar</label>
+                                <select id="disrupt-station-select" class="form-select-custom" onchange="onDisruptStationChange()"></select>
+                            </div>
+                            <div class="mb-1">
+                                <label class="form-label-custom" style="font-size: 0.72rem;">Alcance del Bloqueo</label>
+                                <select id="disrupt-line-scope" class="form-select-custom"></select>
+                            </div>
+                        </div>
+
+                        <!-- Evitar Tramo -->
+                        <div id="disrupt-edge-fields" style="display: none;">
+                            <div class="mb-2">
+                                <label class="form-label-custom" style="font-size: 0.72rem;">Estación A del Tramo</label>
+                                <select id="disrupt-edge-u" class="form-select-custom" onchange="updateDisruptEdgeTargets()"></select>
+                            </div>
+                            <div class="mb-1">
+                                <label class="form-label-custom" style="font-size: 0.72rem;">Estación B Conectada</label>
+                                <select id="disrupt-edge-v" class="form-select-custom"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <button class="btn-calc" onclick="calculateAndDisplayRouteMultiCriteria()">
-                    <i class="fa-solid fa-route"></i> Calcular y Comparar Rutas
+                    <i class="fa-solid fa-route"></i> Calcular Ruta y Desvío
                 </button>
 
                 <div id="route-results-container" style="display: none;">
+                    <!-- Alerta de contingencia (si aplica) -->
+                    <div id="route-contingency-banner" style="display: none;"></div>
+
                     <div id="route-summary" class="route-summary-card"></div>
 
                     <!-- Comparativa Lado a Lado -->
@@ -1139,10 +1340,12 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
 
                 <div class="info-card-box">
                     <div class="info-card-header">
-                        <span><i class="fa-solid fa-lightbulb text-warning me-2"></i>Conclusión para Presentación</span>
+                        <span><i class="fa-solid fa-chart-line text-warning me-2"></i>Datos Relevantes de Centralidad</span>
                     </div>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.45;">
-                        <b>Avenida de América</b> y <b>Sol</b> son los corazones de la red. Presentan la mayor centralidad de intermediación (> 0.27), canalizando más del 30% de todas las rutas óptimas del Metro de Madrid.
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+                        • <b>Líderes de Intermediación:</b> <b>Avenida de América</b> (0.4032), <b>Legazpi</b> (0.2842) y <b>Sol</b> (0.2775) canalizan el mayor volumen de caminos mínimos entre todas las estaciones de Madrid.<br>
+                        • <b>Ejes de Distribución Cardinal:</b> Avenida de América (puerta noreste con 4 líneas) y Legazpi (puerta sur enlazando L3 con la circular L6) actúan como las dos grandes válvulas de escape y transferencia metropolitana.<br>
+                        • <b>Dependencia de Nodos Troncales:</b> La gran mayoría de estaciones periféricas tienen centralidad cercana a 0, dependiendo críticamente de estos nodos articuladores para acceder a cualquier otro cuadrante de la red.
                     </p>
                 </div>
             </div>
@@ -1198,7 +1401,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                         <select id="sim-station-select" class="form-select-custom" onchange="onSimStationChange()"></select>
                     </div>
 
-                    <!-- Selector de Alcance: Toda la estacion O solo una linea -->
+                    <!-- Selector de Alcance -->
                     <div class="mb-3" id="sim-line-scope-group">
                         <label class="form-label-custom">Alcance del Cierre (Líneas)</label>
                         <select id="sim-line-scope" class="form-select-custom"></select>
@@ -1227,8 +1430,14 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                 <div id="sim-results" style="display: none;">
                     <div id="sim-alert" class="failure-alert-box"></div>
                     <div id="sim-details" style="font-size: 0.82rem; margin-top: 10px; color: var(--text-secondary); line-height: 1.45;"></div>
-                    <button class="btn-action w-100 justify-content-center mt-3" onclick="resetAllState()">
-                        <i class="fa-solid fa-wrench"></i> Restablecer Red Completa
+                    
+                    <!-- Boton directo para probar ruta de desvio -->
+                    <button class="btn-action w-100 justify-content-center mt-3" style="background: rgba(0, 229, 255, 0.15); border-color: rgba(0, 229, 255, 0.4); color: #00E5FF;" onclick="transferSimToRoute()">
+                        <i class="fa-solid fa-route me-1"></i> Probar Ruta de Desvío que Evite este Cierre
+                    </button>
+                    
+                    <button class="btn-action w-100 justify-content-center mt-2" onclick="resetAllState()">
+                        <i class="fa-solid fa-wrench me-1"></i> Restablecer Red Completa
                     </button>
                 </div>
             </div>
@@ -1269,48 +1478,13 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                 </div>
             </div>
 
-            <!-- PESTAÑA: DISTRIBUCIÓN ESTADÍSTICA DE GRADOS -->
+            <!-- PESTAÑA: CONECTIVIDAD Y GRADOS -->
             <div id="tab-degrees" class="tab-pane">
-                <div class="section-header-badge"><i class="fa-solid fa-chart-column me-1"></i> Distribución de Conectividad</div>
-                <h2 class="section-main-title">Distribución Estadística de Grados</h2>
+                <div class="section-header-badge"><i class="fa-solid fa-network-wired me-1"></i> Conectividad de la Red</div>
+                <h2 class="section-main-title">Conexiones entre Estaciones (Grados)</h2>
                 <p class="section-desc">
-                    Histograma de frecuencias de grado para los andenes y ranking de estaciones con mayor grado de conectividad.
+                    Ranking de estaciones físicas con mayor número de conexiones ferroviarias directas hacia otras estaciones de la red.
                 </p>
-
-                <!-- Grafico Chart.js -->
-                <div class="info-card-box">
-                    <div class="info-card-header">
-                        <span><i class="fa-solid fa-chart-column text-info me-2"></i>Histograma de Grados P(k)</span>
-                    </div>
-                    <div style="position: relative; height: 210px; width: 100%;">
-                        <canvas id="degreeChartCanvas"></canvas>
-                    </div>
-                </div>
-
-                <!-- Tarjetas de Estadísticas Descriptivas -->
-                <div class="info-card-box">
-                    <div class="info-card-header">
-                        <span><i class="fa-solid fa-calculator text-success me-2"></i>Estadísticos Descriptivos</span>
-                    </div>
-                    <div class="grid-2col">
-                        <div class="metric-stat-box">
-                            <div class="metric-stat-val text-success" id="stat-mean">__AVG_DEGREE__</div>
-                            <div class="metric-stat-label">Media (μ)</div>
-                        </div>
-                        <div class="metric-stat-box">
-                            <div class="metric-stat-val text-info" id="stat-median">__MEDIAN_DEGREE__</div>
-                            <div class="metric-stat-label">Mediana (Med)</div>
-                        </div>
-                        <div class="metric-stat-box">
-                            <div class="metric-stat-val text-warning" id="stat-max">__MAX_DEGREE__</div>
-                            <div class="metric-stat-label">Grado Máx. (Andén)</div>
-                        </div>
-                        <div class="metric-stat-box">
-                            <div class="metric-stat-val text-primary" id="stat-std">__STD_DEGREE__</div>
-                            <div class="metric-stat-label">Desv. Estándar (σ)</div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- TOP Estaciones con mas grados -->
                 <div class="info-card-box">
@@ -1323,7 +1497,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                                 <th>#</th>
                                 <th>Estación</th>
                                 <th>Líneas</th>
-                                <th>Grado</th>
+                                <th>Conexiones</th>
                                 <th>Mapa</th>
                             </tr>
                         </thead>
@@ -1333,12 +1507,12 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
 
                 <div class="info-card-box">
                     <div class="info-card-header">
-                        <span><i class="fa-solid fa-comment-dots text-primary me-2"></i>Interpretación Teórica</span>
+                        <span><i class="fa-solid fa-circle-info text-info me-2"></i>Datos Relevantes de Conectividad</span>
                     </div>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.45;">
-                        • <b>Grado 1:</b> Estaciones terminales o cabeceras de línea (extremos del túnel).<br>
-                        • <b>Grado 2 (Moda > 70%):</b> Estaciones intermedias típicas con conexión únicamente a la parada anterior y siguiente.<br>
-                        • <b>Grados 3 a 5:</b> Andenes de transbordo con pasillos peatonales interlínea.
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5;">
+                        • <b>Líderes de Conectividad:</b> <b>Avenida de América</b> lidera con <b>7 conexiones directas</b> hacia otras estaciones, seguida por <b>Sol</b> y <b>Alonso Martínez</b> con <b>6 conexiones directas</b> cada una.<br>
+                        • <b>Estructura de Paso:</b> Más del <b>70%</b> de los andenes de la red tienen exactamente grado 2 (conectan únicamente con su parada anterior y posterior en la línea).<br>
+                        • <b>Terminales de Línea:</b> Los fondos de saco y cabeceras presentan grado 1, actuando como extremos del sistema sin continuidad de vía.
                     </p>
                 </div>
             </div>
@@ -1521,12 +1695,11 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                     const nodeId = params.nodes[0];
                     const node = nodeMap.get(nodeId);
                     if (node) {
-                        const station = stationMap.get(node.nombre);
-                        if (station) {
-                            displayStationDetails(station);
-                            switchTab('tab-stations');
-                        }
+                        focusStationByName(node.nombre);
                     }
+                } else {
+                    // Clic por fuera de cualquier estación: desmarcar pero mantener el zoom actual
+                    unfocusStation(true);
                 }
             });
         }
@@ -1536,25 +1709,144 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             const destSelect = document.getElementById('route-dest');
             const simStationSelect = document.getElementById('sim-station-select');
             const simEdgeUSelect = document.getElementById('sim-edge-u');
+            const disruptStSelect = document.getElementById('disrupt-station-select');
+            const disruptEdgeUSelect = document.getElementById('disrupt-edge-u');
 
             physicalStations.forEach(st => {
                 originSelect.add(new Option(st.nombre, st.nombre));
                 destSelect.add(new Option(st.nombre, st.nombre));
                 simStationSelect.add(new Option(st.nombre, st.nombre));
                 simEdgeUSelect.add(new Option(st.nombre, st.nombre));
+                disruptStSelect.add(new Option(st.nombre, st.nombre));
+                disruptEdgeUSelect.add(new Option(st.nombre, st.nombre));
             });
 
             if (stationMap.has('Sol')) {
                 originSelect.value = 'Sol';
                 simEdgeUSelect.value = 'Sol';
+                disruptEdgeUSelect.value = 'Sol';
             }
             if (stationMap.has('Avenida de América')) destSelect.value = 'Avenida de América';
-            if (stationMap.has('Pueblo Nuevo')) simStationSelect.value = 'Pueblo Nuevo';
+            if (stationMap.has('Pueblo Nuevo')) {
+                simStationSelect.value = 'Pueblo Nuevo';
+                disruptStSelect.value = 'Pueblo Nuevo';
+            }
 
             onSimStationChange();
             updateSimEdgeTargets();
+            onDisruptStationChange();
+            updateDisruptEdgeTargets();
         }
 
+        // ==================== CONTINGENCIAS EN RUTA ====================
+        function toggleRouteDisruptionUI(active) {
+            const panel = document.getElementById('route-disruption-panel');
+            panel.style.display = active ? 'block' : 'none';
+        }
+
+        function toggleDisruptType(type) {
+            const stFields = document.getElementById('disrupt-station-fields');
+            const edFields = document.getElementById('disrupt-edge-fields');
+            if (type === 'station') {
+                stFields.style.display = 'block';
+                edFields.style.display = 'none';
+            } else {
+                stFields.style.display = 'none';
+                edFields.style.display = 'block';
+                updateDisruptEdgeTargets();
+            }
+        }
+
+        function onDisruptStationChange() {
+            const stationName = document.getElementById('disrupt-station-select').value;
+            const scopeSelect = document.getElementById('disrupt-line-scope');
+            scopeSelect.innerHTML = '';
+
+            const station = stationMap.get(stationName);
+            if (!station) return;
+
+            if (station.lineas.length > 1) {
+                scopeSelect.add(new Option(`Toda la estación (${station.lineas.length} líneas)`, 'ALL'));
+                station.lineas.forEach(lineCode => {
+                    scopeSelect.add(new Option(`Solo Línea ${lineCode.replace('L','')}`, lineCode));
+                });
+            } else {
+                const singleLine = station.lineas[0] || '';
+                scopeSelect.add(new Option(`Estación completa (Línea ${singleLine.replace('L','')})`, 'ALL'));
+            }
+        }
+
+        function updateDisruptEdgeTargets() {
+            const uName = document.getElementById('disrupt-edge-u').value;
+            const vSelect = document.getElementById('disrupt-edge-v');
+            vSelect.innerHTML = '';
+
+            const uStation = stationMap.get(uName);
+            if (!uStation) return;
+
+            const neighborStations = new Set();
+            uStation.nodos.forEach(nodeId => {
+                rawEdges.forEach(e => {
+                    if (e.tipo === 'via') {
+                        if (e.from === nodeId) {
+                            const nbrNode = nodeMap.get(e.to);
+                            if (nbrNode && nbrNode.nombre !== uName) neighborStations.add(nbrNode.nombre);
+                        } else if (e.to === nodeId) {
+                            const nbrNode = nodeMap.get(e.from);
+                            if (nbrNode && nbrNode.nombre !== uName) neighborStations.add(nbrNode.nombre);
+                        }
+                    }
+                });
+            });
+
+            Array.from(neighborStations).sort().forEach(name => {
+                vSelect.add(new Option(name, name));
+            });
+        }
+
+        function transferSimToRoute() {
+            const simMode = document.querySelector('input[name="sim-mode"]:checked').value;
+            switchTab('tab-routes');
+            const toggle = document.getElementById('route-disruption-toggle');
+            toggle.checked = true;
+            toggleRouteDisruptionUI(true);
+
+            if (simMode === 'station') {
+                const stName = document.getElementById('sim-station-select').value;
+                const lineScope = document.getElementById('sim-line-scope').value;
+
+                document.querySelector('input[name="disrupt-type"][value="station"]').checked = true;
+                toggleDisruptType('station');
+                document.getElementById('disrupt-station-select').value = stName;
+                onDisruptStationChange();
+                document.getElementById('disrupt-line-scope').value = lineScope;
+
+                // Si el origen o destino actual coincide con la estacion cerrada, sugerir estaciones adyacentes
+                if (document.getElementById('route-origin').value === stName) {
+                    document.getElementById('route-origin').value = (stName === 'Sol') ? 'Gran Vía' : 'Sol';
+                }
+                if (document.getElementById('route-dest').value === stName) {
+                    document.getElementById('route-dest').value = (stName === 'Nuevos Ministerios') ? 'Cuatro Caminos' : 'Nuevos Ministerios';
+                }
+            } else {
+                const uName = document.getElementById('sim-edge-u').value;
+                const vName = document.getElementById('sim-edge-v').value;
+
+                document.querySelector('input[name="disrupt-type"][value="edge"]').checked = true;
+                toggleDisruptType('edge');
+                document.getElementById('disrupt-edge-u').value = uName;
+                updateDisruptEdgeTargets();
+                document.getElementById('disrupt-edge-v').value = vName;
+
+                // Configurar origen y destino justo entre los extremos del tramo cortado para evidenciar el desvío
+                document.getElementById('route-origin').value = uName;
+                document.getElementById('route-dest').value = vName;
+            }
+
+            calculateAndDisplayRouteMultiCriteria();
+        }
+
+        // ==================== SIMULADOR DE RESILIENCIA ====================
         function onSimStationChange() {
             const stationName = document.getElementById('sim-station-select').value;
             const scopeSelect = document.getElementById('sim-line-scope');
@@ -1725,7 +2017,9 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
         }
 
         function initDegreeChart() {
-            const ctx = document.getElementById('degreeChartCanvas').getContext('2d');
+            const canvasEl = document.getElementById('degreeChartCanvas');
+            if (!canvasEl) return;
+            const ctx = canvasEl.getContext('2d');
             const labels = degreeDistributionData.labels.map(l => `Grado ${l}`);
             const dataCounts = degreeDistributionData.counts;
 
@@ -1777,6 +2071,12 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             const targetPane = document.getElementById(tabId);
             if (targetPane) targetPane.classList.add('active');
 
+            // Resetear scroll superior para evitar cortes visuales
+            const scrollContainer = document.querySelector('.sidebar-tab-content');
+            if (scrollContainer) {
+                scrollContainer.scrollTop = 0;
+            }
+
             const tabMap = {
                 'tab-structure': 0,
                 'tab-routes': 1,
@@ -1814,12 +2114,118 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
 
         function focusStationByName(name) {
             const station = stationMap.get(name);
-            if (station && station.nodos.length > 0) {
-                network.fit({
-                    nodes: station.nodos,
-                    animation: { duration: 600, easingFunction: 'easeInOutQuad' }
-                });
-                displayStationDetails(station);
+            if (!station || !station.nodos || station.nodos.length === 0) return;
+
+            const targetSet = new Set(station.nodos);
+
+            // 1. Identificar aristas incidentes (vías conectadas y transbordos internos de la estación)
+            const incidentEdgeIds = new Set();
+            rawEdges.forEach(e => {
+                if (targetSet.has(e.from) || targetSet.has(e.to)) {
+                    incidentEdgeIds.add(e.id);
+                }
+            });
+
+            // 2. Nodos: la estación seleccionada brilla; todas las demás estaciones se apagan
+            nodesDataSet.update(rawNodes.map(n => {
+                const isSelected = targetSet.has(n.id);
+                if (isSelected) {
+                    return {
+                        id: n.id,
+                        color: {
+                            background: n.color,
+                            border: '#FFFFFF',
+                            highlight: { background: n.color, border: '#FFFFFF' }
+                        },
+                        shape: 'dot',
+                        size: Math.max(n.size * 1.6, 18),
+                        borderWidth: 3,
+                        font: {
+                            color: '#FFFFFF',
+                            size: 13,
+                            bold: true,
+                            strokeWidth: 3,
+                            strokeColor: '#000000'
+                        },
+                        shadow: {
+                            enabled: true,
+                            color: n.color,
+                            size: 20,
+                            x: 0,
+                            y: 0
+                        }
+                    };
+                } else {
+                    return {
+                        id: n.id,
+                        color: {
+                            background: 'rgba(30, 41, 59, 0.35)',
+                            border: 'rgba(51, 65, 85, 0.25)',
+                            highlight: { background: 'rgba(30, 41, 59, 0.45)', border: 'rgba(51, 65, 85, 0.35)' }
+                        },
+                        shape: 'dot',
+                        size: 4,
+                        borderWidth: 1,
+                        font: { size: 0, color: 'transparent', strokeWidth: 0 },
+                        shadow: { enabled: false }
+                    };
+                }
+            }));
+
+            // 3. Aristas: las vías de la estación se mantienen visibles; las demás se apagan
+            edgesDataSet.update(rawEdges.map(e => {
+                const isIncident = incidentEdgeIds.has(e.id);
+                if (isIncident) {
+                    return {
+                        id: e.id,
+                        color: { color: e.color, opacity: 0.95 },
+                        width: Math.max(e.width, 3),
+                        dashes: e.dashes
+                    };
+                } else {
+                    return {
+                        id: e.id,
+                        color: { color: 'rgba(255, 255, 255, 0.03)' },
+                        width: 0.6,
+                        dashes: false
+                    };
+                }
+            }));
+
+            // 4. Centrar y hacer zoom sobre la estación seleccionada
+            network.fit({
+                nodes: station.nodos,
+                animation: { duration: 700, easingFunction: 'easeInOutQuad' }
+            });
+
+            // 5. Mostrar ficha técnica en el panel lateral
+            displayStationDetails(station);
+            switchTab('tab-stations');
+        }
+
+        function unfocusStation(keepZoom = true) {
+            nodesDataSet.update(rawNodes.map(n => ({
+                id: n.id,
+                color: { background: n.color, border: '#FFFFFF', highlight: { background: n.color, border: '#FFFFFF' } },
+                shape: 'dot',
+                size: n.size,
+                borderWidth: 1.5,
+                shadow: { enabled: false },
+                font: { color: '#ffffff', size: 10, strokeWidth: 0, strokeColor: 'transparent' }
+            })));
+
+            edgesDataSet.update(rawEdges.map(e => ({
+                id: e.id,
+                color: { color: e.color },
+                width: e.width,
+                dashes: e.dashes
+            })));
+
+            const stCard = document.getElementById('station-card');
+            if (stCard) stCard.style.display = 'none';
+
+            if (!keepZoom && network) {
+                resetNetworkView();
             }
         }
 
@@ -1828,12 +2234,19 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             document.getElementById('card-station-name').textContent = station.nombre;
             document.getElementById('card-station-platforms').textContent = station.nodos.length;
 
-            let totalDeg = 0;
-            station.nodos.forEach(id => {
-                const n = nodeMap.get(id);
-                if (n) totalDeg += n.grado;
+            // Conexiones reales entre estaciones (excluyendo transbordos internos entre líneas de la misma estación)
+            const stNodesSet = new Set(station.nodos);
+            let extConnections = 0;
+            rawEdges.forEach(e => {
+                if (e.tipo === 'via') {
+                    const fromIn = stNodesSet.has(e.from);
+                    const toIn = stNodesSet.has(e.to);
+                    if ((fromIn && !toIn) || (!fromIn && toIn)) {
+                        extConnections++;
+                    }
+                }
             });
-            document.getElementById('card-station-degree').textContent = totalDeg;
+            document.getElementById('card-station-degree').textContent = extConnections;
 
             const linesContainer = document.getElementById('card-station-lines');
             linesContainer.innerHTML = '';
@@ -1980,7 +2393,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             simulateStationRemoval();
         }
 
-        // ==================== ALGORITMOS DE RUTA ====================
+        // ==================== ALGORITMOS DE RUTA (CON O SIN CONTINGENCIA) ====================
         function dijkstraMetro(startNodeIds, endNodeIds, mode = 'time', excludedNodes = new Set(), excludedEdges = new Set()) {
             const dist = new Map();
             const prev = new Map();
@@ -2070,21 +2483,104 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             if (!originSt || !destSt) return;
 
             const criteria = document.querySelector('input[name="route-criteria"]:checked').value;
+            const isDisruptionActive = document.getElementById('route-disruption-toggle').checked;
 
-            const resTime = dijkstraMetro(originSt.nodos, destSt.nodos, 'time');
-            const resStops = dijkstraMetro(originSt.nodos, destSt.nodos, 'stops');
-            const resTrans = dijkstraMetro(originSt.nodos, destSt.nodos, 'transfers');
+            let excludedNodes = new Set();
+            let excludedEdges = new Set();
+            let closedNodesList = [];
+            let closedEdgesList = [];
+            let disruptionDesc = "";
+
+            if (isDisruptionActive) {
+                const disruptType = document.querySelector('input[name="disrupt-type"]:checked').value;
+                if (disruptType === 'station') {
+                    const avoidStName = document.getElementById('disrupt-station-select').value;
+                    const lineScope = document.getElementById('disrupt-line-scope').value;
+                    const avoidSt = stationMap.get(avoidStName);
+
+                    if (avoidSt) {
+                        if (lineScope === 'ALL' || avoidSt.lineas.length <= 1) {
+                            avoidSt.nodos.forEach(id => excludedNodes.add(id));
+                            closedNodesList = [...avoidSt.nodos];
+                            disruptionDesc = `Estación ${avoidStName} (Cierre total)`;
+                        } else {
+                            avoidSt.nodos.forEach(id => {
+                                const n = nodeMap.get(id);
+                                if (n && n.linea === lineScope) {
+                                    excludedNodes.add(id);
+                                    closedNodesList.push(id);
+                                }
+                            });
+                            disruptionDesc = `Estación ${avoidStName} (Solo Línea ${lineScope.replace('L','')})`;
+                        }
+                    }
+
+                    // Validar si el origen o destino fue completamente clausurado
+                    if (originSt.nodos.every(id => excludedNodes.has(id))) {
+                        alert(`La estación de origen (${originName}) se encuentra clausurada. No es posible iniciar el viaje.`);
+                        return;
+                    }
+                    if (destSt.nodos.every(id => excludedNodes.has(id))) {
+                        alert(`La estación de destino (${destName}) se encuentra clausurada. No es posible finalizar el viaje.`);
+                        return;
+                    }
+                } else {
+                    const uName = document.getElementById('disrupt-edge-u').value;
+                    const vName = document.getElementById('disrupt-edge-v').value;
+
+                    const targetEdge = rawEdges.find(e => {
+                        if (e.tipo !== 'via') return false;
+                        const uN = nodeMap.get(e.from);
+                        const vN = nodeMap.get(e.to);
+                        return (uN && vN && ((uN.nombre === uName && vN.nombre === vName) || (vN.nombre === uName && uN.nombre === vName)));
+                    });
+
+                    if (targetEdge) {
+                        excludedEdges.add(targetEdge.id);
+                        closedEdgesList.push(targetEdge);
+                        disruptionDesc = `Tramo de vía ${uName} ⟷ ${vName}`;
+                    }
+                }
+            }
+
+            // 1. Calcular ruta habitual (red completa sin restricciones)
+            const resTimeNormal = dijkstraMetro(originSt.nodos, destSt.nodos, 'time');
+            
+            // 2. Calcular ruta activa (con restricciones si contingencia esta activa)
+            const resTime = dijkstraMetro(originSt.nodos, destSt.nodos, 'time', excludedNodes, excludedEdges);
+            const resStops = dijkstraMetro(originSt.nodos, destSt.nodos, 'stops', excludedNodes, excludedEdges);
+            const resTrans = dijkstraMetro(originSt.nodos, destSt.nodos, 'transfers', excludedNodes, excludedEdges);
 
             let activeRes = resTime;
             if (criteria === 'stops') activeRes = resStops;
             if (criteria === 'transfers') activeRes = resTrans;
 
+            const contingencyBanner = document.getElementById('route-contingency-banner');
+
             if (!activeRes) {
-                alert("No se encontró ruta entre las estaciones seleccionadas.");
+                // Caso sin camino posible debido a la desconexion
+                contingencyBanner.style.display = 'block';
+                contingencyBanner.className = 'failure-alert-box mb-3';
+                contingencyBanner.innerHTML = `
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <i class="fa-solid fa-triangle-exclamation text-danger fa-lg"></i>
+                        <strong class="text-white">¡Ruta Imposible por Interrupción de Red!</strong>
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">
+                        El corte de <b>${disruptionDesc}</b> ha desconectado físicamente el trayecto entre <b>${originName}</b> y <b>${destName}</b>. No existe ninguna combinación de trenes o transbordos disponible.
+                    </div>
+                `;
+                document.getElementById('route-results-container').style.display = 'block';
+                document.getElementById('route-summary').innerHTML = '';
+                document.getElementById('route-comparison-grid').innerHTML = '<div class="text-danger p-2">Sin conexión operativa.</div>';
+                document.getElementById('route-steps').innerHTML = '';
+
+                // Resaltar elemento cerrado en el mapa
+                highlightDisruptionFailure(closedNodesList, closedEdgesList);
                 return;
             }
 
-            // Renderizar resumen de la ruta activa con tiempos en min y s
+            // Caso con ruta encontrada (normal o contingencia)
             let totalTimeMin = 0;
             let transferCount = 0;
             let trainStopsCount = 0;
@@ -2094,6 +2590,33 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                 if (e.tipo === 'transbordo') transferCount++;
                 else trainStopsCount++;
             });
+
+            // Banner de contingencia si esta activa
+            if (isDisruptionActive) {
+                let normalTimeMin = 0;
+                if (resTimeNormal) {
+                    resTimeNormal.pathEdges.forEach(e => normalTimeMin += e.tiempo);
+                }
+                const extraTimeMin = Math.max(0, totalTimeMin - normalTimeMin);
+
+                contingencyBanner.style.display = 'block';
+                contingencyBanner.className = 'failure-alert-box connected mb-3';
+                contingencyBanner.innerHTML = `
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <strong class="text-white">
+                            <i class="fa-solid fa-route text-success me-1"></i> Ruta de Desvío / Contingencia Activa
+                        </strong>
+                        <span class="badge bg-warning text-dark font-monospace">+${formatTimeMinSec(extraTimeMin)} de sobrecosto</span>
+                    </div>
+                    <div style="font-size: 0.78rem; color: var(--text-muted);">
+                        Evitando: <b>${disruptionDesc}</b>.<br>
+                        Tiempo habitual: <span class="text-white">${formatTimeMinSec(normalTimeMin)}</span> ➔ 
+                        Tiempo con desvío: <span class="text-success fw-bold">${formatTimeMinSec(totalTimeMin)}</span>.
+                    </div>
+                `;
+            } else {
+                contingencyBanner.style.display = 'none';
+            }
 
             const summaryDiv = document.getElementById('route-summary');
             summaryDiv.innerHTML = `
@@ -2193,25 +2716,45 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
 
             document.getElementById('route-results-container').style.display = 'block';
 
-            // Iluminar ruta en Vis.js
-            highlightRouteOnMap(activeRes.pathNodes, activeRes.pathEdges);
+            // Iluminar ruta en Vis.js mostrando el desvio en verde y lo cerrado en rojo
+            highlightRouteOnMap(activeRes.pathNodes, activeRes.pathEdges, closedNodesList, closedEdgesList);
         }
 
-        function highlightRouteOnMap(routeNodeIds, routeEdges) {
+        function highlightRouteOnMap(routeNodeIds, routeEdges, closedNodesList = [], closedEdgesList = []) {
             const routeNodeSet = new Set(routeNodeIds);
             const routeEdgeSet = new Set(routeEdges.map(e => e.id));
+            const closedNodeSet = new Set(closedNodesList);
+            const closedEdgeSet = new Set(closedEdgesList.map(e => e.id));
 
             nodesDataSet.update(rawNodes.map(n => {
+                if (closedNodeSet.has(n.id)) {
+                    return {
+                        id: n.id,
+                        color: { background: '#ef4444', border: '#ffffff' },
+                        shape: 'diamond',
+                        size: 20,
+                        font: { color: '#ef4444', size: 12 }
+                    };
+                }
                 const inRoute = routeNodeSet.has(n.id);
                 return {
                     id: n.id,
                     color: inRoute ? { background: '#10b981', border: '#FFFFFF' } : { background: '#1e293b', border: '#334155' },
                     size: inRoute ? 18 : 6,
+                    shape: 'dot',
                     font: { color: inRoute ? '#ffffff' : 'transparent', size: inRoute ? 12 : 8 }
                 };
             }));
 
             edgesDataSet.update(rawEdges.map(e => {
+                if (closedEdgeSet.has(e.id)) {
+                    return {
+                        id: e.id,
+                        color: { color: '#ef4444' },
+                        width: 5,
+                        dashes: [6, 6]
+                    };
+                }
                 const inRoute = routeEdgeSet.has(e.id);
                 return {
                     id: e.id,
@@ -2220,7 +2763,52 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
                 };
             }));
 
-            network.fit({ nodes: routeNodeIds, animation: { duration: 800 } });
+            const nodesToFit = [...routeNodeIds, ...closedNodesList];
+            network.fit({ nodes: nodesToFit.length > 0 ? nodesToFit : undefined, animation: { duration: 800 } });
+        }
+
+        function highlightDisruptionFailure(closedNodesList, closedEdgesList) {
+            const closedNodeSet = new Set(closedNodesList);
+            const closedEdgeSet = new Set(closedEdgesList.map(e => e.id));
+
+            nodesDataSet.update(rawNodes.map(n => {
+                if (closedNodeSet.has(n.id)) {
+                    return {
+                        id: n.id,
+                        color: { background: '#ef4444', border: '#ffffff' },
+                        shape: 'diamond',
+                        size: 24,
+                        font: { color: '#ef4444', size: 14 }
+                    };
+                }
+                return {
+                    id: n.id,
+                    color: { background: '#1e293b', border: '#334155' },
+                    size: 6,
+                    shape: 'dot',
+                    font: { color: 'transparent', size: 8 }
+                };
+            }));
+
+            edgesDataSet.update(rawEdges.map(e => {
+                if (closedEdgeSet.has(e.id)) {
+                    return {
+                        id: e.id,
+                        color: { color: '#ef4444' },
+                        width: 6,
+                        dashes: [6, 6]
+                    };
+                }
+                return {
+                    id: e.id,
+                    color: { color: 'rgba(255,255,255,0.03)' },
+                    width: 1
+                };
+            }));
+
+            if (closedNodesList.length > 0) {
+                network.fit({ nodes: closedNodesList, animation: { duration: 800 } });
+            }
         }
 
         function clearRouteHighlight() {
@@ -2436,7 +3024,7 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             const detailsDiv = document.getElementById('sim-details');
 
             if (altResult) {
-                const extraTime = altResult.totalCost - targetEdge.tiempo;
+                const extraTime = Math.round((altResult.totalCost - targetEdge.tiempo) * 10) / 10;
                 alertBox.className = 'failure-alert-box connected';
                 alertBox.innerHTML = `
                     <div class="d-flex align-items-center gap-2 mb-1">
@@ -2469,17 +3057,43 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             network.fit({ nodes: [targetEdge.from, targetEdge.to], animation: { duration: 600 } });
         }
 
+        function resetNetworkView() {
+            if (network) {
+                network.fit({
+                    animation: { duration: 800, easingFunction: 'easeInOutQuad' }
+                });
+            }
+        }
+
         function resetAllState() {
             activeLineFilter = 'ALL';
             document.querySelectorAll('.line-card').forEach(c => c.classList.remove('active'));
-            document.getElementById('sim-results').style.display = 'none';
+            
+            const simRes = document.getElementById('sim-results');
+            if (simRes) simRes.style.display = 'none';
+
+            const stCard = document.getElementById('station-card');
+            if (stCard) stCard.style.display = 'none';
+
+            const routeContBanner = document.getElementById('route-contingency-banner');
+            if (routeContBanner) routeContBanner.style.display = 'none';
+
+            const routeRes = document.getElementById('route-results-container');
+            if (routeRes) routeRes.style.display = 'none';
+
+            const searchInput = document.getElementById('station-search');
+            if (searchInput) searchInput.value = '';
+            const searchAuto = document.getElementById('station-autocomplete');
+            if (searchAuto) searchAuto.style.display = 'none';
 
             nodesDataSet.update(rawNodes.map(n => ({
                 id: n.id,
-                color: { background: n.color, border: '#FFFFFF' },
+                color: { background: n.color, border: '#FFFFFF', highlight: { background: n.color, border: '#FFFFFF' } },
                 shape: 'dot',
                 size: n.size,
-                font: { color: '#ffffff', size: 10 }
+                borderWidth: 1.5,
+                shadow: { enabled: false },
+                font: { color: '#ffffff', size: 10, strokeWidth: 0, strokeColor: 'transparent' }
             })));
 
             edgesDataSet.update(rawEdges.map(e => ({
@@ -2492,10 +3106,124 @@ PRESENTATION_HTML_TEMPLATE = r"""<!DOCTYPE html>
             resetNetworkView();
         }
 
-        function resetNetworkView() {
-            if (network) {
-                network.fit({ animation: { duration: 600, easingFunction: 'easeInOutQuad' } });
+        function toggleSidebarWidth() {
+            const sidebar = document.getElementById('sidebar-drawer');
+            const btn = document.getElementById('expand-sidebar-btn');
+            const btnText = document.getElementById('expand-btn-text');
+            const toggleBtn = document.getElementById('toggle-sidebar-btn');
+
+            sidebar.classList.toggle('expanded');
+            const isExp = sidebar.classList.contains('expanded');
+
+            if (toggleBtn) {
+                toggleBtn.classList.toggle('expanded-sidebar', isExp);
             }
+
+            if (isExp) {
+                if (btnText) btnText.textContent = 'Normal';
+                btn.style.background = 'rgba(0, 229, 255, 0.25)';
+                btn.style.borderColor = '#00E5FF';
+                btn.style.color = '#00E5FF';
+            } else {
+                if (btnText) btnText.textContent = 'Agrandar Panel';
+                btn.style.background = '';
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }
+        }
+
+        const DIAMETER_PATH = [
+            "Hospital Infanta Sofía [L10]", "Reyes Católicos [L10]", "Baunatal [L10]", "Manuel de Falla [L10]",
+            "Marqués de la Valdavia [L10]", "La Moraleja [L10]", "La Granja [L10]", "Ronda de la Comunicación [L10]",
+            "Las Tablas [L10]", "Montecarmelo [L10]", "Tres Olivos [L10]", "Fuencarral [L10]", "Begoña [L10]",
+            "Chamartín [L10]", "Chamartín [L1]", "Plaza de Castilla [L1]", "Plaza de Castilla [L10]", "Cuzco [L10]",
+            "Santiago Bernabéu [L10]", "Nuevos Ministerios [L10]", "Gregorio Marañón [L10]", "Alonso Martínez [L10]",
+            "Tribunal [L10]", "Plaza de España [L10]", "Plaza de España [L3]", "Callao [L3]", "Sol [L3]",
+            "Lavapiés [L3]", "Embajadores [L3]", "Palos de la Frontera [L3]", "Delicias [L3]", "Legazpi [L3]",
+            "Almendrales [L3]", "Hospital 12 de Octubre [L3]", "San Fermín-Orcasur [L3]", "Ciudad de los Ángeles [L3]",
+            "Villaverde Bajo - Cruce [L3]", "San Cristóbal [L3]", "Villaverde Alto [L3]", "El Casar [L3]",
+            "El Casar [L12]", "Juan de la Cierva [L12]", "Getafe Central [L12]", "Alonso de Mendoza [L12]",
+            "Conservatorio [L12]", "Arroyo Culebro [L12]", "Parque de los Estados [L12]"
+        ];
+
+        function showDiameterRoute() {
+            const pathSet = new Set(DIAMETER_PATH);
+            const pathEdgesSet = new Set();
+            for (let i = 0; i < DIAMETER_PATH.length - 1; i++) {
+                const u = DIAMETER_PATH[i];
+                const v = DIAMETER_PATH[i + 1];
+                pathEdgesSet.add(`${u}__${v}`);
+                pathEdgesSet.add(`${v}__${u}`);
+            }
+
+            const startNode = DIAMETER_PATH[0];
+            const endNode = DIAMETER_PATH[DIAMETER_PATH.length - 1];
+
+            // 1. Resaltar nodos del diámetro y atenuar el resto
+            nodesDataSet.update(rawNodes.map(n => {
+                const inPath = pathSet.has(n.id);
+                if (inPath) {
+                    const isStart = (n.id === startNode);
+                    const isEnd = (n.id === endNode);
+                    let bg = '#FACC15';
+                    let sz = 13;
+                    if (isStart) {
+                        bg = '#10B981';
+                        sz = 22;
+                    } else if (isEnd) {
+                        bg = '#EF4444';
+                        sz = 22;
+                    }
+                    return {
+                        id: n.id,
+                        color: { background: bg, border: '#FFFFFF', highlight: { background: bg, border: '#FFFFFF' } },
+                        shape: 'dot',
+                        size: sz,
+                        borderWidth: (isStart || isEnd) ? 3.5 : 2,
+                        font: { color: '#ffffff', size: (isStart || isEnd) ? 14 : 11, bold: true, strokeWidth: 3, strokeColor: '#000000' },
+                        shadow: { enabled: true, color: bg, size: 15, x: 0, y: 0 }
+                    };
+                } else {
+                    return {
+                        id: n.id,
+                        color: { background: 'rgba(30, 41, 59, 0.35)', border: 'rgba(51, 65, 85, 0.25)' },
+                        shape: 'dot',
+                        size: 4,
+                        borderWidth: 1,
+                        font: { size: 0, color: 'transparent', strokeWidth: 0 },
+                        shadow: { enabled: false }
+                    };
+                }
+            }));
+
+            // 2. Resaltar aristas del diámetro
+            edgesDataSet.update(rawEdges.map(e => {
+                const inEdge = pathEdgesSet.has(`${e.from}__${e.to}`) || pathEdgesSet.has(`${e.to}__${e.from}`);
+                if (inEdge) {
+                    return {
+                        id: e.id,
+                        color: { color: '#FACC15', opacity: 1.0 },
+                        width: 4.5,
+                        dashes: e.dashes
+                    };
+                } else {
+                    return {
+                        id: e.id,
+                        color: { color: 'rgba(255, 255, 255, 0.03)' },
+                        width: 0.6,
+                        dashes: false
+                    };
+                }
+            }));
+
+            // 3. Ajustar vista para abarcar toda la ruta
+            network.fit({
+                nodes: DIAMETER_PATH,
+                animation: { duration: 900, easingFunction: 'easeInOutQuad' }
+            });
+
+            // 4. Asegurarse de que la pestaña Estructura esté abierta
+            switchTab('tab-structure');
         }
 
         function toggleFullScreen() {

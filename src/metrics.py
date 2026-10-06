@@ -25,8 +25,12 @@ def aggregate_station_metrics(G):
     """
     Agrupa las métricas calculadas a nivel de andén por estación física única.
     Permite obtener rankings de estaciones reales sin repeticiones por línea.
+    
+    Para el grado (conexiones entre estaciones):
+    NO se cuentan los transbordos internos entre líneas de la misma estación
+    (por ejemplo, los enlaces internos entre L4, L6, L7 y L9 de Avenida de América),
+    sino únicamente las conexiones ferroviarias reales con OTRAS estaciones distintas.
     """
-    grados = calculate_degree(G)
     centralidades = calculate_betweenness_centrality(G)
     
     estaciones_grados = {}
@@ -39,12 +43,22 @@ def aggregate_station_metrics(G):
         
         if nombre not in estaciones_lineas:
             estaciones_lineas[nombre] = set()
+            estaciones_grados[nombre] = 0
+            estaciones_centralidad[nombre] = 0.0
+            
         if linea:
             estaciones_lineas[nombre].add(linea)
             
-        estaciones_grados[nombre] = estaciones_grados.get(nombre, 0) + grados.get(nodo, 0)
-        estaciones_centralidad[nombre] = estaciones_centralidad.get(nombre, 0.0) + centralidades.get(nodo, 0.0)
+        estaciones_centralidad[nombre] += centralidades.get(nodo, 0.0)
         
+    # Calcular conexiones reales entre estaciones físicas distintas (excluyendo transbordos de la misma estación)
+    for u, v, d in G.edges(data=True):
+        u_nombre = G.nodes[u].get('nombre', u)
+        v_nombre = G.nodes[v].get('nombre', v)
+        if u_nombre != v_nombre:
+            estaciones_grados[u_nombre] = estaciones_grados.get(u_nombre, 0) + 1
+            estaciones_grados[v_nombre] = estaciones_grados.get(v_nombre, 0) + 1
+            
     return {
         'grados_estacion': estaciones_grados,
         'centralidad_estacion': estaciones_centralidad,
